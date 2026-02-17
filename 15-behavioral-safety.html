@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 5: Behavioral Safety Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .case-study-box {
+            background: #fff3cd;
+            border: 2px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .abc-model {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .abc-component {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+        }
+
+        .abc-letter {
+            font-size: 3em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .abc-title {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .observation-cycle {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .cycle-step {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .metrics-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .metric-before {
+            text-align: center;
+            padding: 20px;
+            background: #ffebee;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .metric-after {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .metric-arrow {
+            font-size: 2em;
+            color: #764ba2;
+        }
+
+        .critical-behaviors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .behavior-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #ff9800;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .quote-box {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #555;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #764ba2;
+        }
+
+        .feedback-model {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feedback-type {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .feedback-positive {
+            border-left: 5px solid #4CAF50;
+        }
+
+        .feedback-constructive {
+            border-left: 5px solid #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Case Study 5: Behavioral Safety Program</h1>
+            <div class="nav-buttons">
+                <a href="14-process-safety.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="16-carbon-capture.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Real Case Study Introduction -->
+        <div class="case-study-box">
+            <h3 style="color: #764ba2; margin-bottom: 15px;">👥 Real-World Case Study: Manufacturing Plant Behavioral Safety Program</h3>
+            <p><strong>Facility:</strong> Midwest Manufacturing Assembly Plant</p>
+            <p><strong>Industry:</strong> Automotive parts manufacturing</p>
+            <p><strong>Employees:</strong> 850 production workers, 150 salaried</p>
+            <p><strong>Timeframe:</strong> 2020-2024 (4-year implementation)</p>
+            <p><strong>Initial TRIR:</strong> 4.8 (significantly above industry average)</p>
+            <p><strong>Final TRIR:</strong> 1.2 (below industry average)</p>
+            <p><strong>Key Innovation:</strong> Peer-to-peer observation program focused on 12 critical safety behaviors</p>
+            <p>This case study examines how a manufacturing plant transformed its safety culture and performance through a comprehensive behavioral safety program that engaged every employee in observing, providing feedback, and improving safety behaviors.</p>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Behavioral Safety</h2>
+            <div class="module-content">
+                <p>Behavioral safety is a systematic approach to improving workplace safety by focusing on observable behaviors—what people actually do—and using positive reinforcement to encourage safe practices. Unlike traditional safety programs that focus on conditions (hazards, equipment) or outcomes (injury rates), behavioral safety addresses the human factors that contribute to incidents.</p>
+                
+                <div class="info-box">
+                    <strong>Key Insight:</strong> Studies consistently show that 80-95% of workplace incidents are caused by at-risk behaviors, not unsafe conditions. Addressing behavior is essential to achieving zero injuries.
+                </div>
+
+                <p>The plant in this case study had invested heavily in engineering controls, PPE, and training, yet injuries persisted. Analysis revealed that workers were taking shortcuts, skipping steps, and working around safeguards—not because they didn't know better, but because of production pressure, habits, and cultural norms.</p>
+                
+                <p>This module follows their journey to implement a peer-to-peer behavioral safety program that fundamentally changed how workers thought about and practiced safety.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: The ABC Model of Behavior -->
+        <div class="module-section">
+            <h2 class="module-title">1. The ABC Model of Behavior</h2>
+            <div class="module-content">
+                <p>All behavioral safety programs are built on the ABC model—a fundamental concept from behavioral psychology that explains why people do what they do.</p>
+
+                <div class="abc-model">
+                    <div class="abc-component">
+                        <div class="abc-letter">A</div>
+                        <div class="abc-title">Antecedent</div>
+                        <p>What happens before the behavior</p>
+                        <small>Triggers, prompts, expectations</small>
+                    </div>
+                    <div style="font-size: 2em;">→</div>
+                    <div class="abc-component">
+                        <div class="abc-letter">B</div>
+                        <div class="abc-title">Behavior</div>
+                        <p>The observable action</p>
+                        <small>What people do</small>
+                    </div>
+                    <div style="font-size: 2em;">→</div>
+                    <div class="abc-component">
+                        <div class="abc-letter">C</div>
+                        <div class="abc-title">Consequence</div>
+                        <p>What happens after the behavior</p>
+                        <small>Reinforces or discourages</small>
+                    </div>
+                </div>
+
+                <h3>A. Antecedents</h3>
+                <p>Antecedents are the triggers that prompt behavior. They include:</p>
+                <table class="learning-table">
+                    <tr>
+                        <th>Antecedent Type</th>
+                        <th>Examples</th>
+                        <th>Effectiveness</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Training</strong></td>
+                        <td>Safety classes, toolbox talks, demonstrations</td>
+                        <td>Necessary but insufficient alone</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Signs & Labels</strong></td>
+                        <td>"Wear PPE" signs, hazard warnings</td>
+                        <td>Easily ignored over time</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Procedures</strong></td>
+                        <td>Written instructions, work orders</td>
+                        <td>Only effective if followed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Goals & Targets</strong></td>
+                        <td>Safety goals, production targets</td>
+                        <td>Can conflict with each other</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Modeling</strong></td>
+                        <td>Supervisors and peers demonstrating behavior</td>
+                        <td>Highly influential</td>
+                    </tr>
+                </table>
+
+                <h3>B. Behaviors</h3>
+                <p>Behaviors are the observable actions that either increase or decrease risk. The plant identified 12 critical safety behaviors:</p>
+                
+                <div class="critical-behaviors">
+                    <div class="behavior-card">
+                        <strong>1. PPE Compliance</strong>
+                        <small>Wearing required PPE correctly</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>2. Lockout/Tagout</strong>
+                        <small>Following energy control procedures</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>3. Body Positioning</strong>
+                        <small>Keeping hands/body out of pinch points</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>4. Housekeeping</strong>
+                        <small>Maintaining clean, uncluttered work areas</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>5. Tool Safety</strong>
+                        <small>Using right tool, inspecting before use</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>6. Lifting Technique</strong>
+                        <small>Using proper lifting mechanics</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>7. Line of Fire</strong>
+                        <small>Avoiding struck-by hazards</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>8. Walking Paths</strong>
+                        <small>Staying in designated walkways</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>9. Chemical Handling</strong>
+                        <small>Following chemical safety procedures</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>10. Forklift Safety</strong>
+                        <small>Safe operation around pedestrians</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>11. Stairway Safety</strong>
+                        <small>Using handrails, not rushing</small>
+                    </div>
+                    <div class="behavior-card">
+                        <strong>12. Reporting Hazards</strong>
+                        <small>Identifying and reporting unsafe conditions</small>
+                    </div>
+                </div>
+
+                <h3>C. Consequences</h3>
+                <p>Consequences determine whether behaviors will be repeated. They can be positive or negative, immediate or delayed, certain or uncertain.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Consequence Type</th>
+                        <th>Example</th>
+                        <th>Impact on Behavior</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Positive Immediate</strong></td>
+                        <td>Peer recognition for safe behavior</td>
+                        <td>Strongly reinforces</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative Immediate</strong></td>
+                        <td>Injury, near-miss</td>
+                        <td>Suppresses behavior temporarily</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Positive Delayed</strong></td>
+                        <td>Safety bonus at year-end</td>
+                        <td>Weak reinforcement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative Delayed</strong></td>
+                        <td>Long-term health effects</td>
+                        <td>Little impact on daily behavior</td>
+                    </tr>
+                </table>
+
+                <div class="quote-box">
+                    "Before the program, the consequence for skipping safety steps was getting the job done faster (immediate positive). The consequence for following procedures was production pressure (immediate negative). No wonder people took shortcuts." - Plant Manager
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: The Observation and Feedback Process -->
+        <div class="module-section">
+            <h2 class="module-title">2. The Observation and Feedback Process</h2>
+            <div class="module-content">
+                <p>The heart of the behavioral safety program was a structured peer observation process.</p>
+
+                <h3>A. The Observation Cycle</h3>
+                <div class="observation-cycle">
+                    <div class="cycle-step">
+                        <div class="step-number">1</div>
+                        <strong>Observe</strong>
+                        <small>Watch work for 10-15 minutes</small>
+                    </div>
+                    <div style="font-size: 2em;">→</div>
+                    <div class="cycle-step">
+                        <div class="step-number">2</div>
+                        <strong>Record</strong>
+                        <small>Document safe and at-risk behaviors</small>
+                    </div>
+                    <div style="font-size: 2em;">→</div>
+                    <div class="cycle-step">
+                        <div class="step-number">3</div>
+                        <strong>Provide Feedback</strong>
+                        <small>Immediate, respectful conversation</small>
+                    </div>
+                    <div style="font-size: 2em;">→</div>
+                    <div class="cycle-step">
+                        <div class="step-number">4</div>
+                        <strong>Analyze Data</strong>
+                        <small>Identify trends and opportunities</small>
+                    </div>
+                </div>
+
+                <h3>B. The Observation Card</h3>
+                <p>Observers used a simple card listing the 12 critical behaviors, with columns to mark safe and at-risk observations.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Behavior</th>
+                        <th>Safe</th>
+                        <th>At-Risk</th>
+                        <th>Comments</th>
+                    </tr>
+                    <tr>
+                        <td>PPE Compliance</td>
+                        <td style="text-align: center;">✓</td>
+                        <td style="text-align: center;"></td>
+                        <td>All PPE worn correctly</td>
+                    </tr>
+                    <tr>
+                        <td>Lockout/Tagout</td>
+                        <td style="text-align: center;"></td>
+                        <td style="text-align: center;">✗</td>
+                        <td>Did not test after lockout</td>
+                    </tr>
+                    <tr>
+                        <td>Body Positioning</td>
+                        <td style="text-align: center;">✓</td>
+                        <td style="text-align: center;"></td>
+                        <td>Good awareness of pinch points</td>
+                    </tr>
+                    <tr>
+                        <td>Housekeeping</td>
+                        <td style="text-align: center;">✓</td>
+                        <td style="text-align: center;"></td>
+                        <td>Area clean and organized</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><strong>Safe: 3 | At-Risk: 1 | % Safe: 75%</strong></td>
+                    </tr>
+                </table>
+
+                <h3>C. Feedback Protocols</h3>
+                <p>All observers were trained in how to provide effective feedback:</p>
+
+                <div class="feedback-model">
+                    <div class="feedback-type feedback-positive">
+                        <div style="min-width: 100px;"><strong>Positive Feedback</strong></div>
+                        <div>"I noticed you checked your PPE before starting. That's exactly right—thanks for setting a good example."</div>
+                    </div>
+                    <div class="feedback-type feedback-constructive">
+                        <div style="min-width: 100px;"><strong>Constructive Feedback</strong></div>
+                        <div>"I saw you didn't test the lock after applying it. Testing is critical to make sure energy is really isolated. Let's test it together now."</div>
+                    </div>
+                </div>
+
+                <h4>Key Feedback Principles:</h4>
+                <ul>
+                    <li><strong>Immediate:</strong> Feedback given right after observation</li>
+                    <li><strong>Specific:</strong> Focus on observed behavior, not personality</li>
+                    <li><strong>Respectful:</strong> Private conversation, non-confrontational</li>
+                    <li><strong>Positive first:</strong> Start with what was done right</li>
+                    <li><strong>Collaborative:</strong> Ask for their perspective, involve them in solution</li>
+                    <li><strong>Non-punitive:</strong> No names, no discipline—focus on learning</li>
+                </ul>
+
+                <div class="quote-box">
+                    "The first time someone observed me, I was nervous—thought I was in trouble. But he just said 'nice job on your PPE' and mentioned one thing I could improve. Now I actually look forward to observations." - Production Worker
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Implementation Journey -->
+        <div class="module-section">
+            <h2 class="module-title">3. The Four-Year Implementation Journey</h2>
+            <div class="module-content">
+                <p>The plant implemented the behavioral safety program in carefully planned phases.</p>
+
+                <h3>A. Phase 1: Planning and Design (2020)</h3>
+                <ul>
+                    <li><strong>Steering team formed:</strong> 12 members including production workers, supervisors, safety staff</li>
+                    <li><strong>Critical behavior identification:</strong> Analyzed incident data to identify 12 key behaviors</li>
+                    <li><strong>Observation tool developed:</strong> Simple card with behaviors and feedback guidelines</li>
+                    <li><strong>Pilot area selected:</strong> One production line with 45 workers</li>
+                </ul>
+
+                <h3>B. Phase 2: Pilot Program (2021)</h3>
+                <ul>
+                    <li><strong>Observer training:</strong> 20 volunteers trained in observation and feedback skills</li>
+                    <li><strong>Six-month pilot:</strong> 150 observations completed in pilot area</li>
+                    <li><strong>Results:</strong> Safe behavior increased from 72% to 89% in pilot area</li>
+                    <li><strong>Feedback incorporated:</strong> Simplified form, improved training based on pilot</li>
+                </ul>
+
+                <h3>C. Phase 3: Facility-Wide Rollout (2022)</h3>
+                <ul>
+                    <li><strong>All employees trained:</strong> Half-day training for all 1,000 employees</li>
+                    <li><strong>Observation schedule:</strong> Target of 100 observations per week facility-wide</li>
+                    <li><strong>Data system:</strong> Database to track observations and trends</li>
+                    <li><strong>Communication:</strong> Weekly safety meetings to share results</li>
+                </ul>
+
+                <h3>D. Phase 4: Integration and Continuous Improvement (2023-2024)</h3>
+                <ul>
+                    <li><strong>Behaviors updated:</strong> Added 3 new behaviors based on incident trends</li>
+                    <li><strong>Supervisor training:</strong> Additional training for supervisors on supporting the process</li>
+                    <li><strong>Recognition program:</strong> Celebrated observers and teams with highest participation</li>
+                    <li><strong>Integration:</strong> Observation data used in incident investigations and hazard assessments</li>
+                </ul>
+
+                <h3>E. Results Over Time</h3>
+                <div class="metrics-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">4.8</div>
+                        <div>TRIR (2020)</div>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">1.2</div>
+                        <div>TRIR (2024)</div>
+                    </div>
+                </div>
+
+                <div class="metrics-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">72%</div>
+                        <div>Safe Behavior (2020)</div>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">94%</div>
+                        <div>Safe Behavior (2024)</div>
+                    </div>
+                </div>
+
+                <div class="metrics-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">0</div>
+                        <div>Observations/month (2020)</div>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">450</div>
+                        <div>Observations/month (2024)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Critical Success Factors -->
+        <div class="module-section">
+            <h2 class="module-title">4. Critical Success Factors</h2>
+            <div class="module-content">
+                <p>The plant identified several factors that were essential to the program's success.</p>
+
+                <h3>A. Leadership Commitment</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Leadership Action</th>
+                        <th>Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Plant manager participated in observations monthly</td>
+                        <td>Demonstrated that behavioral safety applies to everyone</td>
+                    </tr>
+                    <tr>
+                        <td>No disciplinary action based on observations</td>
+                        <td>Built trust that process was for learning, not punishment</td>
+                    </tr>
+                    <tr>
+                        <td>Resources allocated for training and data system</td>
+                        <td>Showed genuine commitment, not just talk</td>
+                    </tr>
+                    <tr>
+                        <td>Observation goals included in department scorecards</td>
+                        <td>Made behavioral safety a priority</td>
+                    </tr>
+                </table>
+
+                <h3>B. Employee Ownership</h3>
+                <ul>
+                    <li><strong>Peer observers:</strong> Observations conducted by peers, not supervisors</li>
+                    <li><strong>Steering team:</strong> Majority production workers, rotated annually</li>
+                    <li><strong>Anonymous data:</strong> No names recorded, only behaviors</li>
+                    <li><strong>Problem-solving:</strong> Workers helped develop solutions for at-risk behaviors</li>
+                </ul>
+
+                <h3>C. Training Quality</h3>
+                <ul>
+                    <li><strong>Interactive:</strong> Role-playing, practice observations, feedback scenarios</li>
+                    <li><strong>Refresher training:</strong> Annual updates and skill practice</li>
+                    <li><strong>Observer certification:</strong> Demonstrated competence before conducting observations</li>
+                    <li><strong>Supervisor training:</strong> How to support observers, use data</li>
+                </ul>
+
+                <h3>D. Data Utilization</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Data Use</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>Identify trends</td>
+                        <td>PPE compliance dropped in summer → provided lighter PPE options</td>
+                    </tr>
+                    <tr>
+                        <td>Target training</td>
+                        <td>Lifting technique at-risk in shipping department → specialized training</td>
+                    </tr>
+                    <tr>
+                        <td>Reinforce successes</td>
+                        <td>Housekeeping scores improved → celebrated with pizza party</td>
+                    </tr>
+                    <tr>
+                        <td>Guide resource allocation</td>
+                        <td>Lockout/tagout errors identified → purchased new lockout devices</td>
+                    </tr>
+                </table>
+
+                <div class="quote-box">
+                    "The data showed us that people weren't following lockout procedures because the locks were hard to use. We bought better locks and errors dropped by 80%. That's the power of behavioral data—it tells you what to fix." - Safety Manager
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Challenges and Solutions -->
+        <div class="module-section">
+            <h2 class="module-title">5. Challenges and Solutions</h2>
+            <div class="module-content">
+                <p>The implementation faced significant challenges that had to be overcome.</p>
+
+                <table class="learning-table">
+                    <tr>
+                        <th>Challenge</th>
+                        <th>Why It Occurred</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Skepticism ("Flavor of the month")</strong></td>
+                        <td>Workers had seen many programs come and go</td>
+                        <td>Pilot program demonstrated results; early adopters became champions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fear of discipline</strong></td>
+                        <td>Workers worried observations would be used against them</td>
+                        <td>Strong policy of no names, no discipline; reinforced consistently</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supervisor resistance</strong></td>
+                        <td>Some supervisors felt observations undermined their authority</td>
+                        <td>Separate training for supervisors; emphasized their role in supporting, not doing, observations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time constraints</strong></td>
+                        <td>Workers felt too busy to do observations</td>
+                        <td>Built observation time into schedule; tracked as performance metric</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Plateauing results</strong></td>
+                        <td>After initial improvement, progress slowed</td>
+                        <td>Added new behaviors; set higher targets; celebrated milestones</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Key Lesson:</strong> Trust is the foundation of behavioral safety. Every policy, every communication, every action must reinforce that the program is about learning and improvement, not punishment.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Results and Lessons Learned -->
+        <div class="module-section">
+            <h2 class="module-title">6. Results and Lessons Learned</h2>
+            <div class="module-content">
+                <p>The behavioral safety program produced remarkable results across multiple dimensions.</p>
+
+                <h3>A. Quantitative Results</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>2020 (Before)</th>
+                        <th>2024 (After)</th>
+                        <th>Improvement</th>
+                    </tr>
+                    <tr>
+                        <td>Total Recordable Incident Rate</td>
+                        <td>4.8</td>
+                        <td>1.2</td>
+                        <td>75% reduction</td>
+                    </tr>
+                    <tr>
+                        <td>Lost Time Injuries</td>
+                        <td>12 per year</td>
+                        <td>2 per year</td>
+                        <td>83% reduction</td>
+                    </tr>
+                    <tr>
+                        <td>Observations per month</td>
+                        <td>0</td>
+                        <td>450</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>Safe behavior percentage</td>
+                        <td>72%</td>
+                        <td>94%</td>
+                        <td>22 percentage point increase</td>
+                    </tr>
+                    <tr>
+                        <td>Workers' compensation costs</td>
+                        <td>$890,000/year</td>
+                        <td>$210,000/year</td>
+                        <td>76% reduction</td>
+                    </tr>
+                </table>
+
+                <h3>B. Qualitative Results</h3>
+                <ul>
+                    <li><strong>Safety culture:</strong> Employees now remind each other about safety without resentment</li>
+                    <li><strong>Communication:</strong> More open dialogue about hazards between shifts and departments</li>
+                    <li><strong>Problem-solving:</strong> Workers proactively identify and fix issues</li>
+                    <li><strong>Trust:</strong> Improved relationship between workers and management</li>
+                    <li><strong>Morale:</strong> Employees feel valued and heard</li>
+                </ul>
+
+                <h3>C. Lessons Learned</h3>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Start small, prove success.</strong> The pilot program was essential to building credibility.</li>
+                        <li><strong>Involve workers from day one.</strong> They know the work and what will be accepted.</li>
+                        <li><strong>Protect anonymity rigorously.</strong> One breach destroys trust.</li>
+                        <li><strong>Focus on positive reinforcement.</strong> Catch people doing things right.</li>
+                        <li><strong>Use data to drive improvement.</strong> Let trends tell you what to fix.</li>
+                        <li><strong>Be patient.</strong> Behavior change takes time.</li>
+                        <li><strong>Celebrate successes.</strong> Recognition reinforces the new behaviors.</li>
+                        <li><strong>Never stop improving.</strong> Add new behaviors, raise targets, stay engaged.</li>
+                    </ul>
+                </div>
+
+                <h3>D. Keys to Sustainability</h3>
+                <ul>
+                    <li><strong>Ongoing training:</strong> Annual refreshers for all observers</li>
+                    <li><strong>Rotating steering team:</strong> New members bring fresh energy</li>
+                    <li><strong>Regular communication:</strong> Monthly updates on progress and trends</li>
+                    <li><strong>Recognition program:</strong> Celebrating observers and teams</li>
+                    <li><strong>Continuous improvement:</strong> Updating behaviors based on incident data</li>
+                </ul>
+
+                <div class="quote-box">
+                    "Four years ago, safety was something management did to us. Now it's something we do together. That's the real success." - Union Representative
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Implementing Your Own Program -->
+        <div class="module-section">
+            <h2 class="module-title">7. Implementing Your Own Behavioral Safety Program</h2>
+            <div class="module-content">
+                <p>Based on this case study, here's a roadmap for implementing a behavioral safety program in your workplace.</p>
+
+                <h3>A. Getting Started</h3>
+                <ol>
+                    <li><strong>Secure leadership commitment:</strong> Ensure management understands and supports the long-term journey</li>
+                    <li><strong>Form a design team:</strong> Include workers, supervisors, and safety professionals</li>
+                    <li><strong>Analyze incident data:</strong> Identify the behaviors that contribute most to injuries</li>
+                    <li><strong>Define critical behaviors:</strong> Start with 8-12 observable, measurable behaviors</li>
+                    <li><strong>Develop observation tools:</strong> Simple cards or digital forms</li>
+                    <li><strong>Create training program:</strong> Observation skills, feedback techniques, data use</li>
+                    <li><strong>Pilot test:</strong> Start with one area, learn, adjust</li>
+                </ol>
+
+                <h3>B. Common Pitfalls to Avoid</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Pitfall</th>
+                        <th>Why It's a Problem</th>
+                        <th>How to Avoid</th>
+                    </tr>
+                    <tr>
+                        <td>Making it mandatory</td>
+                        <td>Creates resistance, undermines trust</td>
+                        <td>Voluntary participation, build enthusiasm through success</td>
+                    </tr>
+                    <tr>
+                        <td>Using data for discipline</td>
+                        <td>Destroys trust immediately</td>
+                        <td>Strict policy: no names, no punishment</td>
+                    </tr>
+                    <tr>
+                        <td>Focusing only on negatives</td>
+                        <td>Demoralizes workers</td>
+                        <td>Catch people doing things right, celebrate safe behaviors</td>
+                    </tr>
+                    <tr>
+                        <td>Too many behaviors</td>
+                        <td>Observers overwhelmed</td>
+                        <td>Start with 8-12 most critical behaviors</td>
+                    </tr>
+                    <tr>
+                        <td>No action on data</td>
+                        <td>Workers feel process is pointless</td>
+                        <td>Respond to trends, fix identified issues</td>
+                    </tr>
+                </table>
+
+                <h3>C. Metrics to Track</h3>
+                <ul>
+                    <li><strong>Number of observations:</strong> Weekly and monthly totals</li>
+                    <li><strong>Percentage safe:</strong> Overall and by behavior</li>
+                    <li><strong>Observer participation rate:</strong> Percentage of employees conducting observations</li>
+                    <li><strong>Behaviors with lowest scores:</strong> Target for improvement</li>
+                    <li><strong>Injury trends:</strong> Correlate with behavior data</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>80-95% of incidents caused by at-risk behaviors, not conditions</li>
+                        <li>ABC Model: Antecedent → Behavior → Consequence</li>
+                        <li>Positive, immediate consequences reinforce safe behavior</li>
+                        <li>Peer observations build trust and engagement</li>
+                        <li>Feedback must be immediate, specific, respectful, and non-punitive</li>
+                        <li>Four-year journey: Pilot → Rollout → Integration → Continuous improvement</li>
+                        <li>Results: TRIR 4.8 → 1.2, safe behavior 72% → 94%</li>
+                        <li>Critical success factors: leadership commitment, employee ownership, quality training, data use</li>
+                        <li>Trust is the foundation - never use data for discipline</li>
+                        <li>Start small, prove success, then expand</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>The behavioral safety program at this manufacturing plant demonstrates that focusing on what people actually do—and creating positive consequences for safe behavior—can transform safety performance. By engaging workers as observers and problem-solvers, the program built trust, improved communication, and created a culture where safety is truly everyone's responsibility.</p>
+                
+                <p>The key principles of behavioral safety are:</p>
+                <ul>
+                    <li><strong>Focus on behavior:</strong> What people do, not just what they know</li>
+                    <li><strong>Reinforce positively:</strong> Catch people doing things right</li>
+                    <li><strong>Use peers, not police:</strong> Observations by coworkers build trust</li>
+                    <li><strong>Data drives improvement:</strong> Let trends tell you what to fix</li>
+                    <li><strong>Be patient:</strong> Culture change takes years</li>
+                </ul>
+                
+                <p>Remember: Every at-risk behavior is a symptom of a system that can be improved. When workers take shortcuts, ask why—and fix the root cause rather than blaming the worker.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>ABC Model explains why people behave the way they do</li>
+                        <li>12 critical behaviors identified and tracked</li>
+                        <li>Peer observations increased from 0 to 450 per month</li>
+                        <li>Safe behavior increased from 72% to 94%</li>
+                        <li>TRIR reduced by 75% (4.8 → 1.2)</li>
+                        <li>Lost time injuries reduced by 83%</li>
+                        <li>Workers' comp costs reduced by 76%</li>
+                        <li>Trust and morale significantly improved</li>
+                        <li>Success factors: leadership, ownership, training, data</li>
+                        <li>Never use observation data for discipline</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Behavioral Safety Program case study.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="16-carbon-capture.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'case-5';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What percentage of workplace incidents are caused by at-risk behaviors?',
+                options: [
+                    '40-50%',
+                    '60-70%',
+                    '80-95%',
+                    '95-99%'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What does the "A" stand for in the ABC Model?',
+                options: [
+                    'Action',
+                    'Antecedent',
+                    'Analysis',
+                    'Assessment'
+                ],
+                correct: 1
+            },
+            {
+                question: 'How much did the plant reduce its TRIR over four years?',
+                options: [
+                    '4.8 to 2.4 (50% reduction)',
+                    '4.8 to 1.2 (75% reduction)',
+                    '4.8 to 0.8 (83% reduction)',
+                    '4.8 to 0.5 (90% reduction)'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What was the most critical factor in building trust for the program?',
+                options: [
+                    'Management bonuses tied to results',
+                    'Never using observation data for discipline',
+                    'Observing only new employees',
+                    'Weekly safety meetings'
+                ],
+                correct: 1
+            },
+            {
+                question: 'How many critical safety behaviors did the plant identify?',
+                options: [
+                    '6',
+                    '8',
+                    '12',
+                    '15'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
