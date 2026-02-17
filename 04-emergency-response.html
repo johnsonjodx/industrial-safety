@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 4: Emergency Response Procedures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .emergency-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .emergency-phase {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-width: 150px;
+            border-top: 4px solid #764ba2;
+        }
+
+        .phase-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .phase-label {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .phase-arrow {
+            font-size: 2em;
+            color: #666;
+        }
+
+        .evacuation-route {
+            background: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .assembly-point {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 20px auto;
+            font-weight: bold;
+            border: 5px solid gold;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .emergency-contacts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-number {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 4: Emergency Response Procedures</h1>
+            <div class="nav-buttons">
+                <a href="03-personal-protective-equipment.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="05-fire-safety.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Emergency Response Phases Diagram -->
+        <div class="emergency-diagram">
+            <div class="emergency-phase">
+                <div class="phase-icon">⚠️</div>
+                <div class="phase-label">Detection</div>
+                <small>Recognize emergency</small>
+            </div>
+            <div class="phase-arrow">→</div>
+            <div class="emergency-phase">
+                <div class="phase-icon">📢</div>
+                <div class="phase-label">Alert</div>
+                <small>Notify others</small>
+            </div>
+            <div class="phase-arrow">→</div>
+            <div class="emergency-phase">
+                <div class="phase-icon">🚶</div>
+                <div class="phase-label">Evacuate</div>
+                <small>Move to safety</small>
+            </div>
+            <div class="phase-arrow">→</div>
+            <div class="emergency-phase">
+                <div class="phase-icon">📍</div>
+                <div class="phase-label">Assembly</div>
+                <small>Account for all</small>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts -->
+        <div class="emergency-contacts">
+            <div class="contact-card">
+                <div>🚑 Medical Emergency</div>
+                <div class="contact-number">911</div>
+            </div>
+            <div class="contact-card">
+                <div>🔥 Fire Department</div>
+                <div class="contact-number">911</div>
+            </div>
+            <div class="contact-card">
+                <div>👮 Police</div>
+                <div class="contact-number">911</div>
+            </div>
+            <div class="contact-card">
+                <div>☣️ Hazmat</div>
+                <div class="contact-number">1-800-424-8802</div>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Emergency Response</h2>
+            <div class="module-content">
+                <p>Emergency response procedures are pre-planned actions designed to protect people, property, and the environment during unexpected events or disasters. In industrial settings, emergencies can range from fires and chemical spills to natural disasters and active shooter situations. The effectiveness of emergency response can mean the difference between life and death, minor damage and catastrophic loss.</p>
+                
+                <div class="info-box">
+                    <strong>Critical Fact:</strong> According to OSHA, workplaces with well-developed emergency action plans reduce injuries by up to 60% during emergencies. Every second counts when disaster strikes.
+                </div>
+
+                <p>Emergency response is not just about reacting to events—it's about being prepared. Organizations must anticipate potential emergencies, develop comprehensive plans, train employees, conduct regular drills, and continuously improve their response capabilities. This proactive approach ensures that when an emergency occurs, everyone knows their role and can act quickly and effectively.</p>
+                
+                <p>The principles of emergency response apply to all workplaces, from small offices to large industrial complexes. However, the specific procedures must be tailored to the unique hazards, layout, and resources of each facility. This module will cover the essential elements of emergency response, including planning, communication, evacuation, and specialized responses for different types of emergencies.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Emergency Action Plans -->
+        <div class="module-section">
+            <h2 class="module-title">1. Emergency Action Plans (EAP)</h2>
+            <div class="module-content">
+                <p>An Emergency Action Plan (EAP) is a written document required by OSHA that outlines the procedures employees must follow in emergencies. A well-designed EAP is the foundation of effective emergency response.</p>
+
+                <h3>A. Required Elements of an EAP</h3>
+                <p>OSHA standard 1910.38 requires the following elements in every Emergency Action Plan:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Element</th>
+                        <th>Description</th>
+                        <th>Why It Matters</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Emergency Escape Procedures</strong></td>
+                        <td>Clear routes and procedures for evacuation</td>
+                        <td>Workers must know how to get out quickly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Critical Operations</strong></td>
+                        <td>Procedures for employees who must remain to operate critical equipment</td>
+                        <td>Some systems need shutdown before evacuation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Employee Accounting</strong></td>
+                        <td>Methods to account for all employees after evacuation</td>
+                        <td>Ensures everyone made it out safely</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rescue and Medical Duties</strong></td>
+                        <td>Assignment of rescue and medical responsibilities</td>
+                        <td>Designated responders know their roles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Emergency Contacts</strong></td>
+                        <td>Names and contact information of responsible parties</td>
+                        <td>Quick communication with decision-makers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alarm Systems</strong></td>
+                        <td>Description of alarm systems and signals</td>
+                        <td>Workers must recognize emergency alerts</td>
+                    </tr>
+                </table>
+
+                <h3>B. Developing an EAP</h3>
+                <p>Creating an effective EAP involves several steps:</p>
+                
+                <ol>
+                    <li><strong>Conduct a vulnerability assessment:</strong> Identify potential emergencies based on workplace hazards</li>
+                    <li><strong>Involve employees:</strong> Get input from workers who know the facility best</li>
+                    <li><strong>Coordinate with external responders:</strong> Work with local fire, police, and emergency services</li>
+                    <li><strong>Develop clear procedures:</strong> Write step-by-step instructions for different scenarios</li>
+                    <li><strong>Create maps and diagrams:</strong> Show evacuation routes, assembly points, and emergency equipment</li>
+                    <li><strong>Review with all employees:</strong> Ensure everyone understands the plan</li>
+                    <li><strong>Update regularly:</strong> Revise when processes, layouts, or personnel change</li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>Important:</strong> An EAP that sits in a binder on a shelf is useless. The plan must be living document—reviewed, practiced, and updated regularly.
+                </div>
+
+                <h3>C. Emergency Response Team Roles</h3>
+                <p>Effective EAPs assign specific roles to trained employees:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Role</th>
+                        <th>Responsibilities</th>
+                        <th>Training Required</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Emergency Coordinator</strong></td>
+                        <td>Overall command, decision-making, external communication</td>
+                        <td>Incident command, emergency management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Floor Wardens</strong></td>
+                        <td>Direct evacuation, check areas, report to coordinator</td>
+                        <td>Evacuation procedures, employee accounting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>First Aid/CPR Team</strong></td>
+                        <td>Provide medical assistance until professionals arrive</td>
+                        <td>First aid, CPR, AED certification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fire Brigade</strong></td>
+                        <td>Fight incipient-stage fires (if trained and equipped)</td>
+                        <td>Fire extinguisher use, advanced firefighting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hazmat Team</strong></td>
+                        <td>Handle small chemical releases</td>
+                        <td>Hazmat awareness, operations level</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Searchers</strong></td>
+                        <td>Check areas for trapped or injured personnel</td>
+                        <td>Search techniques, buddy system</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Evacuation Procedures and Assembly -->
+        <div class="module-section">
+            <h2 class="module-title">2. Evacuation Procedures and Assembly</h2>
+            <div class="module-content">
+                <p>Evacuation is the most common emergency response. Proper planning ensures everyone can get out quickly and safely.</p>
+
+                <h3>A. Evacuation Routes and Exits</h3>
+                <p>OSHA standards require specific features for evacuation routes:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Specification</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Number of Exits</strong></td>
+                        <td>Minimum 2, more based on occupancy and layout</td>
+                        <td>Redundancy if one exit is blocked</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exit Width</strong></td>
+                        <td>Sufficient for occupant load (typically 28 inches minimum)</td>
+                        <td>Allow quick flow of people</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exit Doors</strong></td>
+                        <td>Side-hinged, open in direction of travel</td>
+                        <td>Prevent jamming from crowd pressure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exit Marking</strong></td>
+                        <td>Illuminated "EXIT" signs, visible from all areas</td>
+                        <td>Guide people even in low visibility</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Emergency Lighting</strong></td>
+                        <td>Battery backup lighting along egress paths</td>
+                        <td>Function during power failure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Path Width</strong></td>
+                        <td>Minimum 28 inches clear at all times</td>
+                        <td>No obstructions allowed</td>
+                    </tr>
+                </table>
+
+                <h3>B. Evacuation Procedures</h3>
+                <p>Clear procedures ensure orderly evacuation:</p>
+                
+                <ol>
+                    <li><strong>Immediate response when alarm sounds:</strong> Stop work immediately, don't gather belongings</li>
+                    <li><strong>Follow designated routes:</strong> Use primary route unless blocked, then use alternate</li>
+                    <li><strong>Assist others:</strong> Help those with disabilities or injuries</li>
+                    <li><strong>Close doors behind you:</strong> Contains fire/smoke</li>
+                    <li><strong>Proceed to assembly point:</strong> Don't stop until at designated area</li>
+                    <li><strong>Report to floor warden:</strong> Check in so accounting can begin</li>
+                    <li><strong>Stay at assembly point:</strong> Don't re-enter until authorized</li>
+                </ol>
+
+                <h3>C. Assembly Points</h3>
+                <p>The assembly point is where employees gather after evacuation. Proper assembly points are:</p>
+                
+                <div class="assembly-point">
+                    SAFE<br>ASSEMBLY<br>POINT
+                </div>
+                
+                <ul>
+                    <li><strong>Upwind and uphill</strong> from potential hazards</li>
+                    <li><strong>At safe distance</strong> from building (at least 500 feet for major incidents)</li>
+                    <li><strong>Clearly marked</strong> and well-lit</li>
+                    <li><strong>Accessible</strong> to emergency responders</li>
+                    <li><strong>Multiple assembly points</strong> for different scenarios</li>
+                </ul>
+
+                <h3>D. Employee Accounting</h3>
+                <p>Accounting for all personnel is critical. Methods include:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Method</th>
+                        <th>Process</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Head Count</strong></td>
+                        <td>Floor wardens count evacuees</td>
+                        <td>Quick, no technology needed</td>
+                        <td>Can miss people, counting errors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Roster Check</strong></td>
+                        <td>Check names against employee list</td>
+                        <td>Accurate identification</td>
+                        <td>Time-consuming, requires list</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Buddy System</strong></td>
+                        <td>Pairs check each other's presence</td>
+                        <td>Fast, builds teamwork</td>
+                        <td>Depends on buddy reliability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electronic Tracking</strong></td>
+                        <td>Badge swiping at assembly</td>
+                        <td>Instant, accurate</td>
+                        <td>Requires technology, power</td>
+                    </tr>
+                </table>
+
+                <div class="danger-box">
+                    <strong>NEVER re-enter a building:</strong> Once evacuated, no one should re-enter until declared safe by authorities. Many deaths occur when people go back in.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Specialized Emergency Responses -->
+        <div class="module-section">
+            <h2 class="module-title">3. Specialized Emergency Responses</h2>
+            <div class="module-content">
+                <p>Different emergencies require different response procedures. Here's how to handle specific situations:</p>
+
+                <h3>A. Fire Emergencies</h3>
+                <p>Remember R.A.C.E.:</p>
+                <ul>
+                    <li><strong>R</strong>escue anyone in immediate danger</li>
+                    <li><strong>A</strong>lert others and activate alarm</li>
+                    <li><strong>C</strong>onfine fire by closing doors</li>
+                    <li><strong>E</strong>vacuate to assembly point</li>
+                </ul>
+                
+                <p>Only attempt to fight fire if:</p>
+                <ul>
+                    <li>Fire is small and contained (trash can size)</li>
+                    <li>You have proper extinguisher and training</li>
+                    <li>You have clear exit behind you</li>
+                    <li>Alarm has been pulled and help is coming</li>
+                </ul>
+
+                <h3>B. Chemical Spills</h3>
+                <p>Follow the three C's:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Step</th>
+                        <th>Action</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Control</strong></td>
+                        <td>Stop the source if safe</td>
+                        <td>Close valves, upright containers, use spill kits</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contain</strong></td>
+                        <td>Prevent spread</td>
+                        <td>Use absorbents, dikes, drain covers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clean Up</strong></td>
+                        <td>Proper decontamination</td>
+                        <td>Only trained personnel, proper disposal</td>
+                    </tr>
+                </table>
+
+                <p><strong>For major spills:</strong></p>
+                <ul>
+                    <li>Evacuate immediately</li>
+                    <li>Call for trained Hazmat response</li>
+                    <li>Isolate area</li>
+                    <li>Provide information to responders (chemical identity, quantity)</li>
+                </ul>
+
+                <h3>C. Medical Emergencies</h3>
+                <p>Follow the CHECK-CALL-CARE sequence:</p>
+                
+                <ol>
+                    <li><strong>CHECK</strong> the scene for safety, then check the victim</li>
+                    <li><strong>CALL</strong> for emergency medical services (911)</li>
+                    <li><strong>CARE</strong> for the victim until help arrives</li>
+                </ol>
+
+                <h4>Basic First Aid Guidelines:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Situation</th>
+                        <th>Do</th>
+                        <th>Don't</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Bleeding</strong></td>
+                        <td>Apply direct pressure, elevate if possible</td>
+                        <td>Remove objects embedded in wound</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Burns</strong></td>
+                        <td>Cool with running water 10-15 minutes</td>
+                        <td>Apply ice, butter, or creams</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Exposure</strong></td>
+                        <td>Flush with water 15-20 minutes</td>
+                        <td>Delay flushing, rub area</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unconscious Victim</strong></td>
+                        <td>Check breathing, start CPR if needed</td>
+                        <td>Move unless in danger</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Broken Bones</strong></td>
+                        <td>Immobilize, support injury</td>
+                        <td>Move unnecessarily</td>
+                    </tr>
+                </table>
+
+                <h3>D. Natural Disasters</h3>
+                
+                <h4>Earthquake:</h4>
+                <ul>
+                    <li><strong>DROP</strong> to the ground</li>
+                    <li><strong>COVER</strong> under sturdy table/desk</li>
+                    <li><strong>HOLD ON</strong> until shaking stops</li>
+                    <li>After shaking, evacuate carefully (aftershocks)</li>
+                </ul>
+
+                <h4>Severe Weather (Tornado/Hurricane):</h4>
+                <ul>
+                    <li>Seek shelter in interior room, basement, or storm shelter</li>
+                    <li>Away from windows and exterior walls</li>
+                    <li>Monitor weather alerts</li>
+                </ul>
+
+                <h3>E. Active Shooter</h3>
+                <p>Follow RUN-HIDE-FIGHT protocol:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Option</th>
+                        <th>When</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td><strong>RUN</strong></td>
+                        <td>If safe escape path exists</td>
+                        <td>Leave belongings, help others if possible, prevent entry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HIDE</strong></td>
+                        <td>If escape not possible</td>
+                        <td>Lock doors, barricade, silence phones, hide behind cover</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FIGHT</strong></td>
+                        <td>As absolute last resort</td>
+                        <td>Improvise weapons, commit to action, act aggressively</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>When law enforcement arrives:</strong> Keep hands visible, follow commands immediately, don't run toward officers.
+                </div>
+
+                <h3>F. Power Outage</h3>
+                <ul>
+                    <li>Remain calm, stay in place if safe</li>
+                    <li>Use emergency lighting if available</li>
+                    <li>Shut down equipment to prevent surges</li>
+                    <li>Evacuate if prolonged and no emergency lighting</li>
+                    <li>Use flashlights, not candles (fire hazard)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4: Drills and Training -->
+        <div class="module-section">
+            <h2 class="module-title">4. Emergency Drills and Training</h2>
+            <div class="module-content">
+                <p>Plans are only effective if people know them. Regular drills and training are essential.</p>
+
+                <h3>A. Types of Drills</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Drill Type</th>
+                        <th>Description</th>
+                        <th>Frequency</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Fire Drill</strong></td>
+                        <td>Full evacuation exercise</td>
+                        <td>Annually minimum, quarterly recommended</td>
+                        <td>Practice evacuation routes and procedures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tabletop Exercise</strong></td>
+                        <td>Discussion-based scenario</td>
+                        <td>Annually</td>
+                        <td>Test decision-making and coordination</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Functional Drill</strong></td>
+                        <td>Test specific functions (e.g., Hazmat response)</td>
+                        <td>Semi-annually</td>
+                        <td>Practice specialized skills</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Full-Scale Exercise</strong></td>
+                        <td>Complete simulation with responders</td>
+                        <td>Every 1-3 years</td>
+                        <td>Test entire emergency response system</td>
+                    </tr>
+                </table>
+
+                <h3>B. Drill Evaluation</h3>
+                <p>After each drill, evaluate:</p>
+                <ul>
+                    <li>Evacuation time (target based on occupancy)</li>
+                    <li>Were routes clear and unobstructed?</li>
+                    <li>Did everyone hear the alarm?</li>
+                    <li>Were all personnel accounted for?</li>
+                    <li>Did special needs assistance work?</li>
+                    <li>What problems occurred?</li>
+                    <li>What improvements needed?</li>
+                </ul>
+
+                <h3>C. Training Requirements</h3>
+                <p>All employees need training on:</p>
+                <ul>
+                    <li>Emergency alarm signals and meanings</li>
+                    <li>Evacuation routes and procedures</li>
+                    <li>Assembly point locations</li>
+                    <li>Reporting procedures</li>
+                    <li>Special roles (if assigned)</li>
+                    <li>First aid and fire extinguisher basics</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Best Practice:</strong> Conduct drills at different times and days to test all shifts. Unannounced drills provide the most realistic assessment.
+                </div>
+
+                <h3>D. Continuous Improvement</h3>
+                <p>Use drill findings to improve:</p>
+                <ol>
+                    <li>Document problems and successes</li>
+                    <li>Conduct after-action review with all participants</li>
+                    <li>Identify root causes of issues</li>
+                    <li>Update EAP and procedures</li>
+                    <li>Communicate changes to all employees</li>
+                    <li>Retrain as needed</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Emergency response is not just about having a plan—it's about creating a culture of preparedness. When everyone knows what to do, panic is replaced by purposeful action, and lives are saved.</p>
+                
+                <p>The key principles of emergency response are:</p>
+                <ul>
+                    <li><strong>Preparation prevents panic</strong> - Regular training and drills build muscle memory</li>
+                    <li><strong>Clear communication saves lives</strong> - Alarms, announcements, and coordination are critical</li>
+                    <li><strong>Everyone has a role</strong> - From floor wardens to every employee</li>
+                    <li><strong>Practice makes perfect</strong> - Drills reveal weaknesses and build confidence</li>
+                    <li><strong>Continuous improvement</strong> - Learn from every drill and real event</li>
+                </ul>
+                
+                <p>Remember: In an emergency, the first few minutes are the most critical. A well-prepared workforce can make all the difference between a controlled response and a catastrophe.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Every workplace must have a written Emergency Action Plan (EAP) with required elements</li>
+                        <li>Evacuation routes must be clearly marked, unobstructed, and well-lit</li>
+                        <li>Assembly points must be at safe distances with accounting procedures</li>
+                        <li>Different emergencies (fire, chemical, medical, natural disasters) require different responses</li>
+                        <li>Regular drills and training are legally required and essential for effectiveness</li>
+                        <li>Never re-enter a building until authorities declare it safe</li>
+                        <li>Continuous improvement through drill evaluation strengthens emergency response</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Emergency Response Procedures module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="05-fire-safety.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-4';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What does R.A.C.E. stand for in fire response?',
+                options: [
+                    'Run, Alert, Call, Evacuate',
+                    'Rescue, Alert, Confine, Evacuate',
+                    'Remove, Alarm, Call, Exit',
+                    'React, Act, Call, Escape'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What is the minimum number of exits required in most workplaces?',
+                options: [
+                    '1',
+                    '2',
+                    '3',
+                    '4'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What should you NEVER do during a chemical spill?',
+                options: [
+                    'Evacuate the area',
+                    'Call for trained responders',
+                    'Re-enter the area to retrieve belongings',
+                    'Use absorbent materials if trained'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What is the correct action during an earthquake?',
+                options: [
+                    'Run outside immediately',
+                    'Stand in a doorway',
+                    'Drop, Cover, and Hold On',
+                    'Get near windows'
+                ],
+                correct: 2
+            },
+            {
+                question: 'How often should fire drills be conducted at minimum?',
+                options: [
+                    'Monthly',
+                    'Quarterly',
+                    'Annually',
+                    'Every 2 years'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
