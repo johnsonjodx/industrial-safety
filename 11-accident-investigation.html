@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 1: Industrial Accident Investigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .case-study-box {
+            background: #fff3cd;
+            border: 2px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .investigation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #764ba2;
+        }
+
+        .step-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .step-icon {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .evidence-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #2196F3;
+        }
+
+        .evidence-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #764ba2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        .root-cause-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .root-cause {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+        }
+
+        .root-cause.immediate {
+            border-top: 5px solid #f44336;
+        }
+
+        .root-cause.contributing {
+            border-top: 5px solid #ff9800;
+        }
+
+        .root-cause.root {
+            border-top: 5px solid #4CAF50;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Case Study 1: Industrial Accident Investigation</h1>
+            <div class="nav-buttons">
+                <a href="10-ergonomics.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="12-safety-culture.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Real Case Study Introduction -->
+        <div class="case-study-box">
+            <h3 style="color: #764ba2; margin-bottom: 15px;">🔍 Real-World Case Study: Chemical Plant Explosion</h3>
+            <p><strong>Location:</strong> Houston, Texas Chemical Processing Facility</p>
+            <p><strong>Date:</strong> March 15, 2023</p>
+            <p><strong>Injuries:</strong> 3 workers seriously injured, 12 treated for smoke inhalation</p>
+            <p><strong>Property Damage:</strong> $4.7 million</p>
+            <p>This case study examines a real industrial accident and walks through the investigation process to identify root causes and prevent recurrence.</p>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Accident Investigation</h2>
+            <div class="module-content">
+                <p>Accident investigation is a systematic process of determining the underlying causes of workplace incidents and developing corrective actions to prevent recurrence. It is not about finding someone to blame—it's about finding out what went wrong and how to fix it.</p>
+                
+                <div class="info-box">
+                    <strong>Critical Insight:</strong> For every serious injury or fatality, there are approximately 600 near-misses. Investigating near-misses provides opportunities to prevent major accidents before they happen.
+                </div>
+
+                <p>Effective accident investigation requires a structured approach, proper training, and a commitment to finding root causes rather than stopping at superficial explanations. This module uses a real case study to demonstrate the investigation process, from initial response through root cause analysis to corrective action implementation.</p>
+                
+                <p><strong>The Incident:</strong> A reactor vessel in a chemical processing facility exploded during a maintenance procedure, releasing toxic gases and causing a fire. Three workers suffered severe burns, and the facility was shut down for six months.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Initial Response and Scene Security -->
+        <div class="module-section">
+            <h2 class="module-title">1. Initial Response and Scene Security</h2>
+            <div class="module-content">
+                <p>The first hours after an accident are critical. Proper initial response preserves evidence and ensures safety.</p>
+
+                <h3>A. Emergency Response (First 30 Minutes)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:15 AM</div>
+                        <strong>Explosion occurs</strong> - Reactor vessel fails, releasing flammable gases that ignite
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:17 AM</div>
+                        <strong>Emergency alarm activated</strong> - Facility evacuation begins
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:20 AM</div>
+                        <strong>911 called</strong> - Fire department, EMS, and Hazmat teams dispatched
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:25 AM</div>
+                        <strong>First responders arrive</strong> - Scene secured, triage begins
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:45 AM</div>
+                        <strong>Fire contained</strong> - Area isolated, injured transported
+                    </div>
+                </div>
+
+                <h3>B. Securing the Scene</h3>
+                <p>Once emergency response is complete, the investigation team must secure the scene to preserve evidence:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Action</th>
+                        <th>Implementation in Case Study</th>
+                        <th>Why It Matters</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Establish perimeter</strong></td>
+                        <td>50-meter exclusion zone around reactor building</td>
+                        <td>Prevents evidence contamination or disturbance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Document initial conditions</strong></td>
+                        <td>Photographs taken from all angles before any cleanup</td>
+                        <td>Captures scene exactly as it was</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identify witnesses</strong></td>
+                        <td>List of 23 employees working in area at time</td>
+                        <td>Ensures all witnesses are interviewed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Preserve physical evidence</strong></td>
+                        <td>Reactor fragments, control room data, maintenance logs secured</td>
+                        <td>Critical for determining failure points</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secure documentation</strong></td>
+                        <td>All relevant procedures, training records, maintenance history collected</td>
+                        <td>Reveals systemic issues</td>
+                    </tr>
+                </table>
+
+                <h3>C. Investigation Team Formation</h3>
+                <p>The investigation team should include:</p>
+                <ul>
+                    <li><strong>Team Leader:</strong> Safety manager with investigation training</li>
+                    <li><strong>Technical Experts:</strong> Process engineer, maintenance supervisor, chemical engineer</li>
+                    <li><strong>Worker Representatives:</strong> Operators familiar with the equipment</li>
+                    <li><strong>External Experts:</strong> Independent consultant for objectivity</li>
+                    <li><strong>Management Representative:</strong> To ensure resources and authority</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> The scene must remain untouched until the investigation team has completed their initial documentation. Even well-intentioned cleanup can destroy evidence.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Evidence Collection -->
+        <div class="module-section">
+            <h2 class="module-title">2. Evidence Collection</h2>
+            <div class="module-content">
+                <p>Thorough evidence collection is the foundation of an effective investigation.</p>
+
+                <h3>A. Types of Evidence</h3>
+                <div class="evidence-grid">
+                    <div class="evidence-card">
+                        <div class="evidence-icon">📷</div>
+                        <h4>Physical Evidence</h4>
+                        <ul>
+                            <li>Equipment fragments</li>
+                            <li>Pressure gauges</li>
+                            <li>Valve positions</li>
+                            <li>Safety devices</li>
+                            <li>Product samples</li>
+                        </ul>
+                    </div>
+                    <div class="evidence-card">
+                        <div class="evidence-icon">📄</div>
+                        <h4>Documentary Evidence</h4>
+                        <ul>
+                            <li>Operating procedures</li>
+                            <li>Maintenance logs</li>
+                            <li>Training records</li>
+                            <li>Previous inspection reports</li>
+                            <li>Permits</li>
+                        </ul>
+                    </div>
+                    <div class="evidence-card">
+                        <div class="evidence-icon">👥</div>
+                        <h4>Testimonial Evidence</h4>
+                        <ul>
+                            <li>Witness interviews</li>
+                            <li>Operator statements</li>
+                            <li>Supervisor accounts</li>
+                            <li>Expert opinions</li>
+                        </ul>
+                    </div>
+                    <div class="evidence-card">
+                        <div class="evidence-icon">📊</div>
+                        <h4>Data Evidence</h4>
+                        <ul>
+                            <li>Process control data</li>
+                            <li>Alarm logs</li>
+                            <li>Video footage</li>
+                            <li>Maintenance records</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>B. Evidence Collected in the Case Study</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Evidence Type</th>
+                        <th>What Was Found</th>
+                        <th>Key Findings</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Physical</strong></td>
+                        <td>Reactor vessel fragments, pressure relief valve, gasket material</td>
+                        <td>Relief valve showed signs of previous leakage; gasket had deteriorated</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Documentary</strong></td>
+                        <td>Maintenance logs from past 2 years, SOPs, training records</td>
+                        <td>Maintenance on relief valve was 6 months overdue; procedure lacked critical steps</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Testimonial</strong></td>
+                        <td>Interviews with 12 operators, 3 supervisors, 2 maintenance workers</td>
+                        <td>Several operators reported "funny smells" in previous weeks; pressure gauge had been fluctuating</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data</strong></td>
+                        <td>Process control system logs, alarm history</td>
+                        <td>Pressure spikes recorded 3 times in week before incident; alarms were acknowledged but not acted upon</td>
+                    </tr>
+                </table>
+
+                <h3>C. Interview Techniques</h3>
+                <ul>
+                    <li><strong>Interview promptly:</strong> Memories fade quickly</li>
+                    <li><strong>Interview separately:</strong> Prevents groupthink and contamination</li>
+                    <li><strong>Use open-ended questions:</strong> "Tell me what you saw" not "Did you see X?"</li>
+                    <li><strong>Be non-judgmental:</strong> Focus on facts, not blame</li>
+                    <li><strong>Document accurately:</strong> Record or take detailed notes</li>
+                    <li><strong>Follow up:</strong> Return with additional questions as investigation progresses</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Sample Interview Questions:</h4>
+                    <ul>
+                        <li>"Walk me through what you were doing just before the incident."</li>
+                        <li>"What did you see, hear, or smell?"</li>
+                        <li>"Was there anything unusual about the equipment or process?"</li>
+                        <li>"Had you noticed any problems before today?"</li>
+                        <li>"What training had you received for this task?"</li>
+                        <li>"Is there anything you think we should know?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Timeline Development -->
+        <div class="module-section">
+            <h2 class="module-title">3. Timeline Development</h2>
+            <div class="module-content">
+                <p>Creating a detailed timeline helps investigators understand the sequence of events and identify contributing factors.</p>
+
+                <h3>A. Case Study Timeline</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>Event</th>
+                        <th>Evidence Source</th>
+                    </tr>
+                    <tr>
+                        <td><strong>January 15</strong></td>
+                        <td>Annual maintenance performed on reactor system</td>
+                        <td>Maintenance logs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>February 3</strong></td>
+                        <td>Pressure relief valve scheduled for testing - NOT completed</td>
+                        <td>Work order system</td>
+                    </tr>
+                    <tr>
+                        <td><strong>February 10 - March 10</strong></td>
+                        <td>Multiple reports of "chemical odor" in reactor area</td>
+                        <td>Operator interviews</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 12</strong></td>
+                        <td>Pressure gauge noted to be "fluctuating" by night shift</td>
+                        <td>Shift log</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 14, 11:00 PM</strong></td>
+                        <td>Process control system recorded first pressure spike</td>
+                        <td>Data logs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 15, 2:00 AM</strong></td>
+                        <td>Second pressure spike - alarm acknowledged but no action</td>
+                        <td>Alarm history</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 15, 6:00 AM</strong></td>
+                        <td>Day shift operator notices unusual vibration</td>
+                        <td>Witness interview</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 15, 10:00 AM</strong></td>
+                        <td>Maintenance begins work on nearby equipment</td>
+                        <td>Work orders</td>
+                    </tr>
+                    <tr>
+                        <td><strong>March 15, 10:15 AM</strong></td>
+                        <td><strong>EXPLOSION</strong></td>
+                        <td>Multiple sources</td>
+                    </tr>
+                </table>
+
+                <h3>B. Timeline Analysis</h3>
+                <p>The timeline reveals several critical points:</p>
+                <ul>
+                    <li>Failed maintenance (relief valve not tested) - 6 weeks before incident</li>
+                    <li>Early warning signs (odors, gauge fluctuations) - weeks before</li>
+                    <li>Process upsets (pressure spikes) - 12 hours before</li>
+                    <li>Final opportunity to prevent - alarms ignored 8 hours before</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Key Insight:</strong> The incident wasn't a sudden, unpredictable event. There were multiple warning signs over several weeks that, if recognized and acted upon, could have prevented the explosion.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Root Cause Analysis -->
+        <div class="module-section">
+            <h2 class="module-title">4. Root Cause Analysis</h2>
+            <div class="module-content">
+                <p>Root cause analysis digs beyond the immediate cause to find the underlying system failures that allowed the incident to occur.</p>
+
+                <h3>A. The 5 Whys Analysis</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Why did the explosion occur?</strong></td>
+                        <td>Pressure built up in the reactor until it failed catastrophically</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Why did pressure build up?</strong></td>
+                        <td>The pressure relief valve failed to open</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Why did the relief valve fail?</strong></td>
+                        <td>It was corroded and stuck closed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Why was it corroded?</strong></td>
+                        <td>It hadn't been inspected or maintained for 18 months</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Why wasn't it maintained?</strong></td>
+                        <td>The maintenance management system didn't track relief valve testing requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Why wasn't the system tracking it?</strong></td>
+                        <td>Relief valves weren't included in the preventive maintenance program - a system design flaw</td>
+                    </tr>
+                </table>
+
+                <h3>B. Causal Factor Tree</h3>
+                <div class="root-cause-diagram">
+                    <div class="root-cause immediate">
+                        <strong>Immediate Causes</strong>
+                        <p>• Relief valve failed<br>• Pressure built up<br>• Maintenance work nearby</p>
+                    </div>
+                    <div class="root-cause contributing">
+                        <strong>Contributing Causes</strong>
+                        <p>• Missed maintenance<br>• Ignored alarms<br>• Unreported odors<br>• Pressure fluctuations ignored</p>
+                    </div>
+                    <div class="root-cause root">
+                        <strong>Root Causes</strong>
+                        <p>• No PM system for relief valves<br>• Inadequate alarm response procedure<br>• Poor safety culture - warnings ignored<br>• Insufficient operator training</p>
+                    </div>
+                </div>
+
+                <h3>C. Classification of Causes</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Cause Level</th>
+                        <th>Definition</th>
+                        <th>Case Study Examples</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Immediate Causes</strong></td>
+                        <td>The direct physical events that led to the incident</td>
+                        <td>Relief valve failure, pressure buildup</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contributing Causes</strong></td>
+                        <td>Conditions or actions that made the incident more likely</td>
+                        <td>Missed maintenance, ignored alarms, unreported odors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Root Causes</strong></td>
+                        <td>Underlying management system failures</td>
+                        <td>No PM program for relief valves, inadequate procedures, poor safety culture</td>
+                    </tr>
+                </table>
+
+                <h3>D. Root Causes Identified in Case Study</h3>
+                <ol>
+                    <li><strong>Maintenance Management System Failure:</strong> Relief valves were not included in the preventive maintenance database. No tracking system ensured they were tested on schedule.</li>
+                    <li><strong>Inadequate Alarm Management:</strong> Alarms were acknowledged but no procedure required investigation or escalation. Operators were not trained on alarm response.</li>
+                    <li><strong>Weak Safety Culture:</strong> Workers reported odors and gauge fluctuations but no action was taken. They felt their concerns were not valued.</li>
+                    <li><strong>Incomplete Procedures:</strong> Operating procedures did not include troubleshooting steps for pressure fluctuations or response to unusual odors.</li>
+                    <li><strong>Training Deficiencies:</strong> Operators were not trained to recognize early warning signs of reactor overpressure.</li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> Stopping at immediate causes (like "operator error") without finding root causes guarantees the same incident will happen again, possibly to someone else.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Corrective Actions -->
+        <div class="module-section">
+            <h2 class="module-title">5. Corrective Actions and Prevention</h2>
+            <div class="module-content">
+                <p>Corrective actions must address root causes, not just symptoms.</p>
+
+                <h3>A. Hierarchy of Corrective Actions</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Priority</th>
+                        <th>Action Type</th>
+                        <th>Examples from Case Study</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Engineering Controls</td>
+                        <td>• Install redundant pressure relief system<br>• Add high-pressure interlock to shut down reactor<br>• Upgrade alarm system with prioritization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Administrative Controls</td>
+                        <td>• Revise maintenance procedures to include all relief devices<br>• Develop alarm response procedures<br>• Create near-miss reporting system</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Training</td>
+                        <td>• Train operators on early warning signs<br>• Train supervisors on investigation techniques<br>• Train maintenance on relief valve inspection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>PPE</td>
+                        <td>• Provide enhanced chemical protective equipment (least effective, doesn't prevent recurrence)</td>
+                    </tr>
+                </table>
+
+                <h3>B. Specific Corrective Actions Implemented</h3>
+                <ul>
+                    <li><strong>Engineering:</strong> Installed redundant pressure relief system with independent monitoring</li>
+                    <li><strong>Engineering:</strong> Added high-pressure shutdown interlock (automatically stops process at 90% of design pressure)</li>
+                    <li><strong>Engineering:</strong> Upgraded alarm system with tiered priorities - critical alarms require acknowledgment and investigation</li>
+                    <li><strong>Administrative:</strong> Created comprehensive preventive maintenance database tracking all safety-critical devices</li>
+                    <li><strong>Administrative:</strong> Developed alarm response procedures requiring specific actions for each alarm type</li>
+                    <li><strong>Administrative:</strong> Implemented anonymous near-miss reporting system with feedback loop</li>
+                    <li><strong>Cultural:</strong> Monthly safety meetings where workers can raise concerns directly to management</li>
+                    <li><strong>Training:</strong> Annual refresher on hazard recognition and reporting requirements</li>
+                </ul>
+
+                <h3>C. Corrective Action Tracking</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Action</th>
+                        <th>Responsible</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Verification</th>
+                    </tr>
+                    <tr>
+                        <td>Install redundant relief system</td>
+                        <td>Engineering Manager</td>
+                        <td>6/30/23</td>
+                        <td>Complete</td>
+                        <td>Tested, certified</td>
+                    </tr>
+                    <tr>
+                        <td>Update PM database</td>
+                        <td>Maintenance Manager</td>
+                        <td>5/15/23</td>
+                        <td>Complete</td>
+                        <td>Audit shows all devices included</td>
+                    </tr>
+                    <tr>
+                        <td>Develop alarm procedures</td>
+                        <td>Operations Manager</td>
+                        <td>4/30/23</td>
+                        <td>Complete</td>
+                        <td>Procedures in place, training done</td>
+                    </tr>
+                    <tr>
+                        <td>Near-miss reporting system</td>
+                        <td>Safety Manager</td>
+                        <td>5/31/23</td>
+                        <td>Complete</td>
+                        <td>12 reports in first month</td>
+                    </tr>
+                </table>
+
+                <h3>D. Verification of Effectiveness</h3>
+                <p>Corrective actions must be verified to ensure they actually prevent recurrence:</p>
+                <ul>
+                    <li><strong>Testing:</strong> New relief systems tested under simulated conditions</li>
+                    <li><strong>Audits:</strong> Regular audits of maintenance tracking system</li>
+                    <li><strong>Drills:</strong> Alarm response drills conducted quarterly</li>
+                    <li><strong>Metrics:</strong> Tracking near-miss reports, alarm response times</li>
+                    <li><strong>Review:</strong> Annual review of corrective action effectiveness</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Investigate to find root causes, not to assign blame</li>
+                        <li>Preserve the scene and collect all evidence before cleanup</li>
+                        <li>Interview witnesses promptly and separately</li>
+                        <li>Create a timeline to understand sequence of events</li>
+                        <li>Use tools like 5 Whys to dig beyond immediate causes</li>
+                        <li>Root causes are always system failures, not individual mistakes</li>
+                        <li>Corrective actions must address root causes</li>
+                        <li>Track and verify effectiveness of all actions</li>
+                        <li>Share lessons learned to prevent recurrence elsewhere</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Lessons Learned and Reporting -->
+        <div class="module-section">
+            <h2 class="module-title">6. Lessons Learned and Reporting</h2>
+            <div class="module-content">
+                <p>The final step is sharing findings so others can learn and prevent similar incidents.</p>
+
+                <h3>A. Investigation Report Components</h3>
+                <ul>
+                    <li><strong>Executive Summary:</strong> Brief overview of incident, causes, and actions</li>
+                    <li><strong>Background:</strong> Facility, equipment, personnel involved</li>
+                    <li><strong>Incident Description:</strong> What happened, when, where</li>
+                    <li><strong>Immediate Response:</strong> Emergency actions taken</li>
+                    <li><strong>Evidence Collected:</strong> Physical, documentary, testimonial, data</li>
+                    <li><strong>Timeline:</strong> Chronological sequence of events</li>
+                    <li><strong>Analysis:</strong> Root cause analysis findings</li>
+                    <li><strong>Conclusions:</strong> Immediate, contributing, and root causes</li>
+                    <li><strong>Corrective Actions:</strong> What was done and by when</li>
+                    <li><strong>Lessons Learned:</strong> What others can learn</li>
+                </ul>
+
+                <h3>B. Lessons Learned from Case Study</h3>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Maintenance matters:</strong> Safety-critical equipment must be included in PM programs</li>
+                        <li><strong>Alarms require action:</strong> Acknowledging without investigating is dangerous</li>
+                        <li><strong>Listen to workers:</strong> Operators noticed odors and fluctuations - their concerns should have been investigated</li>
+                        <li><strong>Redundancy saves lives:</strong> Single relief valve with no backup created single point of failure</li>
+                        <li><strong>System design prevents errors:</strong> Automatic shutdown would have prevented explosion even if operators missed warnings</li>
+                        <li><strong>Culture eats process for lunch:</strong> Procedures don't work if workers don't feel safe reporting concerns</li>
+                    </ul>
+                </div>
+
+                <h3>C. Sharing Findings</h3>
+                <ul>
+                    <li><strong>Within facility:</strong> Safety meetings, bulletin boards, email</li>
+                    <li><strong>Across company:</strong> Other facilities with similar processes</li>
+                    <li><strong>Industry-wide:</strong> Trade associations, safety conferences, regulatory submissions</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Remember:</strong> An investigation that doesn't lead to change is just an exercise. The goal is preventing the next incident, not filing a report.
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Accident investigation is not about finding who to blame—it's about finding what failed in the system so it can be fixed. This case study demonstrates that major incidents rarely have a single cause. They result from multiple failures—maintenance, procedures, training, culture—that line up like holes in a slice of Swiss cheese.</p>
+                
+                <p>The key principles of accident investigation are:</p>
+                <ul>
+                    <li><strong>Preserve evidence</strong> - The scene tells a story</li>
+                    <li><strong>Interview thoroughly</strong> - Workers know more than anyone</li>
+                    <li><strong>Find root causes</strong> - Don't stop at "human error"</li>
+                    <li><strong>Fix the system</strong> - Individual blame doesn't prevent recurrence</li>
+                    <li><strong>Share lessons</strong> - Help others avoid the same fate</li>
+                </ul>
+                
+                <p>Remember: Every incident is an opportunity to learn and improve. The goal is not to have zero investigations—it's to have zero recurrence.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Secure the scene immediately - evidence degrades quickly</li>
+                        <li>Collect physical, documentary, testimonial, and data evidence</li>
+                        <li>Interview witnesses promptly, separately, with open-ended questions</li>
+                        <li>Create a timeline to understand sequence and identify gaps</li>
+                        <li>Use 5 Whys to dig from immediate to root causes</li>
+                        <li>Root causes are always system failures, not individual mistakes</li>
+                        <li>Corrective actions must address root causes</li>
+                        <li>Track and verify effectiveness of all actions</li>
+                        <li>Share lessons learned widely</li>
+                        <li>60% of serious incidents had warning signs that were missed or ignored</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Industrial Accident Investigation case study.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="12-safety-culture.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'case-1';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What is the primary purpose of accident investigation?',
+                options: [
+                    'To assign blame to those responsible',
+                    'To determine root causes and prevent recurrence',
+                    'To satisfy regulatory requirements only',
+                    'To document for insurance purposes'
+                ],
+                correct: 1
+            },
+            {
+                question: 'According to the module, for every serious injury, how many near-misses typically occur?',
+                options: [
+                    '10',
+                    '60',
+                    '600',
+                    '6000'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What should be done first after an incident is controlled?',
+                options: [
+                    'Begin cleanup',
+                    'Interview witnesses',
+                    'Secure the scene',
+                    'Contact insurance'
+                ],
+                correct: 2
+            },
+            {
+                question: 'In the case study, what was the root cause of the relief valve failure?',
+                options: [
+                    'Operator error',
+                    'Manufacturing defect',
+                    'No PM system tracking relief valves',
+                    'Pressure spike'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What percentage of serious incidents had warning signs that were missed or ignored?',
+                options: [
+                    '20%',
+                    '40%',
+                    '60%',
+                    '80%'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
