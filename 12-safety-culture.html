@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 2: Safety Culture Transformation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .case-study-box {
+            background: #fff3cd;
+            border: 2px solid #ff9800;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .culture-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stage-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+        }
+
+        .stage-card.pathological { border-color: #f44336; }
+        .stage-card.reactive { border-color: #ff9800; }
+        .stage-card.calculative { border-color: #ffeb3b; }
+        .stage-card.proactive { border-color: #2196F3; }
+        .stage-card.generative { border-color: #4CAF50; }
+
+        .stage-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .transformation-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .timeline-milestone {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #764ba2;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .milestone-date {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        .milestone-metric {
+            background: #e8f5e9;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 5px solid #764ba2;
+        }
+
+        .pillar-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .metric-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .metric-before {
+            text-align: center;
+            padding: 20px;
+            background: #ffebee;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .metric-after {
+            text-align: center;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .metric-arrow {
+            font-size: 2em;
+            color: #764ba2;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .quote-box {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #555;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Case Study 2: Safety Culture Transformation</h1>
+            <div class="nav-buttons">
+                <a href="11-accident-investigation.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="13-emergency-case-study.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Real Case Study Introduction -->
+        <div class="case-study-box">
+            <h3 style="color: #764ba2; margin-bottom: 15px;">🔄 Real-World Case Study: Manufacturing Plant Turnaround</h3>
+            <p><strong>Company:</strong> Midwest Manufacturing Solutions (600 employees)</p>
+            <p><strong>Industry:</strong> Heavy equipment manufacturing</p>
+            <p><strong>Timeframe:</strong> 2019-2023 (4-year transformation)</p>
+            <p><strong>Initial State:</strong> High injury rates, low morale, union-management conflict</p>
+            <p><strong>Final State:</strong> Industry-leading safety performance, engaged workforce</p>
+            <p>This case study examines how a struggling manufacturing plant transformed its safety culture from reactive to generative, achieving remarkable improvements in safety performance and business outcomes.</p>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Safety Culture</h2>
+            <div class="module-content">
+                <p>Safety culture is the shared values, beliefs, attitudes, and practices regarding safety within an organization. It's often described as "how we do things around here" and reflects the true priority of safety, regardless of what's written in policy manuals.</p>
+                
+                <div class="info-box">
+                    <strong>Critical Insight:</strong> Organizations with strong safety cultures have 80% fewer accidents than those with weak cultures. Safety culture is the single biggest predictor of safety performance.
+                </div>
+
+                <p>The plant in this case study had all the right policies—written safety programs, training requirements, PPE rules—but injuries kept happening. The problem wasn't the programs; it was the culture. Workers didn't report hazards because they feared retaliation. Supervisors prioritized production over safety. Management saw safety as a cost, not an investment.</p>
+                
+                <p>This module follows their four-year journey from a pathological culture where safety was ignored to a generative culture where safety was truly "how we do business."</p>
+            </div>
+        </div>
+
+        <!-- Section 1: The Five Stages of Safety Culture -->
+        <div class="module-section">
+            <h2 class="module-title">1. The Five Stages of Safety Culture</h2>
+            <div class="module-content">
+                <p>Safety culture evolves through distinct stages. Understanding where your organization stands is the first step toward improvement.</p>
+
+                <h3>A. Patrick Hudson's Safety Culture Ladder</h3>
+                
+                <div class="culture-stages">
+                    <div class="stage-card pathological">
+                        <div class="stage-icon">👁️‍🗨️</div>
+                        <h4>Pathological</h4>
+                        <p>"Who cares as long as we're not caught"</p>
+                        <small>Safety is ignored, problems hidden</small>
+                    </div>
+                    <div class="stage-card reactive">
+                        <div class="stage-icon">🔄</div>
+                        <h4>Reactive</h4>
+                        <p>"We do a lot every time we have an accident"</p>
+                        <small>Safety only after incidents</small>
+                    </div>
+                    <div class="stage-card calculative">
+                        <div class="stage-icon">📊</div>
+                        <h4>Calculative</h4>
+                        <p>"We have systems in place to manage hazards"</p>
+                        <small>Safety by the numbers, compliance focus</small>
+                    </div>
+                    <div class="stage-card proactive">
+                        <div class="stage-icon">🔮</div>
+                        <h4>Proactive</h4>
+                        <p>"We work on problems we still find"</p>
+                        <small>Anticipating and preventing</small>
+                    </div>
+                    <div class="stage-card generative">
+                        <div class="stage-icon">🌟</div>
+                        <h4>Generative</h4>
+                        <p>"Safety is how we do business around here"</p>
+                        <small>Integrated into everything</small>
+                    </div>
+                </div>
+
+                <h3>B. Where They Started: Pathological Culture</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Indicator</th>
+                        <th>Plant Situation (2019)</th>
+                        <th>Evidence</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Hazard Reporting</strong></td>
+                        <td>Almost no near-miss or hazard reports</td>
+                        <td>Only 3 reports in entire year; workers admitted they "didn't bother"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Management Focus</strong></td>
+                        <td>Production at all costs</td>
+                        <td>Supervisors openly prioritized output over safety; safety meetings cancelled for production</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Incident Investigation</strong></td>
+                        <td>Blame-focused, find who messed up</td>
+                        <td>Reports focused on worker error; no root cause analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Worker Attitudes</strong></td>
+                        <td>Fear, distrust, cynicism</td>
+                        <td>Union surveys showed 85% didn't trust management on safety</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Metrics</strong></td>
+                        <td>TRIR 5.2 (industry average 3.1)</td>
+                        <td>Double the industry average; 3 serious injuries in past year</td>
+                    </tr>
+                </table>
+
+                <div class="quote-box">
+                    "I've been here 20 years. I've seen safety programs come and go. Nothing changes. Why would I report a hazard when nothing gets fixed and the supervisor just gets mad?" - Plant worker, 2019 survey
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: The Transformation Journey -->
+        <div class="module-section">
+            <h2 class="module-title">2. The Four-Year Transformation Journey</h2>
+            <div class="module-content">
+                <p>The transformation didn't happen overnight. It required sustained commitment and a systematic approach.</p>
+
+                <h3>A. Transformation Timeline</h3>
+                
+                <div class="transformation-timeline">
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">Q1 2020 - The Wake-Up Call</div>
+                        <p>A near-fatal injury finally got management's attention. The new plant manager, hired from outside, conducted listening tours and discovered the depth of cultural problems.</p>
+                        <div class="milestone-metric">🔴 TRIR: 5.2 | Reports: 3/year</div>
+                    </div>
+                    
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">Q2 2020 - Leadership Commitment</div>
+                        <p>New safety policy announced: "Safety is never compromised for production." Production bonuses tied to safety metrics. Safety committee reformed with union representation.</p>
+                        <div class="milestone-metric">📋 Safety observations: 12/month</div>
+                    </div>
+                    
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">Q3-Q4 2020 - Building Trust</div>
+                        <p>Anonymous hazard reporting system launched. Every report received a response within 48 hours. Quick fixes implemented visibly. Near-miss reports increased 10x.</p>
+                        <div class="milestone-metric">📈 Reports: 47 in Q4 (from 3 in all of 2019)</div>
+                    </div>
+                    
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">2021 - Systems and Engagement</div>
+                        <p>Behavioral safety program launched with worker-designed observations. Safety committees empowered to approve spending on fixes. Monthly safety celebrations.</p>
+                        <div class="milestone-metric">🟡 TRIR: 3.8 | Reports: 200+</div>
+                    </div>
+                    
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">2022 - Proactive Culture Emerges</div>
+                        <p>Workers began identifying hazards before incidents. Pre-task safety briefings became routine. Safety suggestions increased 300%.</p>
+                        <div class="milestone-metric">🟢 TRIR: 2.1 | Below industry average</div>
+                    </div>
+                    
+                    <div class="timeline-milestone">
+                        <div class="milestone-date">2023 - Generative Culture</div>
+                        <p>Safety fully integrated into all processes. New hires trained in culture. Plant became benchmark for other facilities. Union-management partnership recognized industry-wide.</p>
+                        <div class="milestone-metric">🟢 TRIR: 0.8 | Reports: 800+</div>
+                    </div>
+                </div>
+
+                <h3>B. Before and After Comparison</h3>
+                
+                <div class="metric-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">5.2</div>
+                        <div>TRIR (2019)</div>
+                        <small>Industry avg: 3.1</small>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">0.8</div>
+                        <div>TRIR (2023)</div>
+                        <small>Industry avg: 3.1</small>
+                    </div>
+                </div>
+
+                <div class="metric-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">3</div>
+                        <div>Hazard Reports (2019)</div>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">847</div>
+                        <div>Hazard Reports (2023)</div>
+                    </div>
+                </div>
+
+                <div class="metric-comparison">
+                    <div class="metric-before">
+                        <div class="metric-value">15%</div>
+                        <div>Worker Trust in Management</div>
+                    </div>
+                    <div class="metric-arrow">→</div>
+                    <div class="metric-after">
+                        <div class="metric-value">82%</div>
+                        <div>Worker Trust in Management</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The Four Pillars of Transformation -->
+        <div class="module-section">
+            <h2 class="module-title">3. The Four Pillars of Transformation</h2>
+            <div class="module-content">
+                <p>The plant's success was built on four interconnected pillars that reinforced each other.</p>
+
+                <div class="pillar-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">👥</div>
+                        <h4>Leadership Commitment</h4>
+                        <p>Visible, consistent, authentic</p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>CEO visited plant monthly</li>
+                            <li>Managers led safety walks</li>
+                            <li>Production stopped for safety</li>
+                            <li>Bonuses tied to safety metrics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🤝</div>
+                        <h4>Worker Engagement</h4>
+                        <p>Empowered, valued, involved</p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>Union-management partnership</li>
+                            <li>Worker-led safety committees</li>
+                            <li>Anonymous reporting system</li>
+                            <li>48-hour response commitment</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">📋</div>
+                        <h4>Systems & Processes</h4>
+                        <p>Integrated, not separate</p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>Pre-task planning required</li>
+                            <li>Leading indicators tracked</li>
+                            <li>Hazard database with tracking</li>
+                            <li>Root cause analysis training</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">📚</div>
+                        <h4>Learning & Improvement</h4>
+                        <p>Share, adapt, improve</p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>Daily safety huddles</li>
+                            <li>Lessons shared across shifts</li>
+                            <li>External benchmarking</li>
+                            <li>Celebrated successes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>A. Leadership Actions That Made a Difference</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Action</th>
+                        <th>Implementation</th>
+                        <th>Impact</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Rounds</strong></td>
+                        <td>Managers conducted weekly safety walks, talking to workers about hazards</td>
+                        <td>Workers saw genuine interest; raised concerns they'd hidden before</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stopping Production</strong></td>
+                        <td>When serious hazards found, production stopped immediately - celebrated, not punished</td>
+                        <td>Message that safety truly came first; workers empowered to stop work</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visible Follow-up</strong></td>
+                        <td>Every hazard report received response; fixes communicated to whole plant</td>
+                        <td>Trust built that reporting made a difference</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Personal Stories</strong></td>
+                        <td>Leaders shared their own safety experiences and vulnerabilities</td>
+                        <td>Humanized leadership, built connection</td>
+                    </tr>
+                </table>
+
+                <h3>B. Worker Engagement Strategies</h3>
+                <ul>
+                    <li><strong>Joint Safety Committees:</strong> Equal union-management representation, empowered to approve spending up to $10,000 without higher approval</li>
+                    <li><strong>Peer Observations:</strong> Workers observed each other and provided feedback - non-punitive, learning-focused</li>
+                    <li><strong>Safety Suggestion Program:</strong> Monthly recognition for best suggestions, implemented quickly</li>
+                    <li><strong>Safety Champions:</strong> Worker volunteers trained to mentor peers and lead safety initiatives</li>
+                </ul>
+
+                <div class="quote-box">
+                    "Now when I report something, it gets fixed. They tell me what they did, and I see it. I actually feel like they care whether I go home safe." - Plant worker, 2023 survey
+                </div>
+
+                <h3>C. Metrics That Matter</h3>
+                <p>The plant shifted from lagging indicators only (TRIR, lost time) to a balanced scorecard including leading indicators:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Leading Indicators (Proactive)</th>
+                        <th>Lagging Indicators (Reactive)</th>
+                    </tr>
+                    <tr>
+                        <td>Hazard reports submitted</td>
+                        <td>Total Recordable Incident Rate</td>
+                    </tr>
+                    <tr>
+                        <td>% of hazards closed within 48 hours</td>
+                        <td>Lost Time Injury Frequency</td>
+                    </tr>
+                    <tr>
+                        <td>Pre-task safety briefings completed</td>
+                        <td>Workers' compensation costs</td>
+                    </tr>
+                    <tr>
+                        <td>Safety observation cards completed</td>
+                        <td>Days away from work</td>
+                    </tr>
+                    <tr>
+                        <td>Safety meeting attendance</td>
+                        <td>Severity rate</td>
+                    </tr>
+                    <tr>
+                        <td>Training completion rates</td>
+                        <td>OSHA recordables</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: Overcoming Challenges -->
+        <div class="module-section">
+            <h2 class="module-title">4. Overcoming Challenges</h2>
+            <div class="module-content">
+                <p>The transformation wasn't smooth. The plant faced significant obstacles that had to be overcome.</p>
+
+                <h3>A. Major Challenges and Solutions</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Challenge</th>
+                        <th>What Happened</th>
+                        <th>How They Overcame It</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Initial Skepticism</strong></td>
+                        <td>Workers had seen "flavor of the month" programs before; didn't believe change was real</td>
+                        <td>Consistent follow-through over 18 months; early wins celebrated; management stayed the course</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supervisor Resistance</strong></td>
+                        <td>Front-line supervisors felt threatened by worker empowerment; continued pressuring for production</td>
+                        <td>Separate training for supervisors; changed performance metrics; replaced those who couldn't adapt</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Budget Constraints</strong></td>
+                        <td>Some hazard fixes required significant investment</td>
+                        <td>Created capital fund for safety projects; showed ROI through injury cost avoidance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Union Skepticism</strong></td>
+                        <td>Union leaders initially saw program as management manipulation</td>
+                        <td>Joint ownership of committees; union leaders became champions after seeing results</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sustaining Momentum</strong></td>
+                        <td>After initial improvements, risk of complacency</td>
+                        <td>Set new goals; benchmarked externally; celebrated milestones; never declared "mission accomplished"</td>
+                    </tr>
+                </table>
+
+                <h3>B. Critical Success Factors</h3>
+                <ul>
+                    <li><strong>Consistency:</strong> The message never changed over four years</li>
+                    <li><strong>Authenticity:</strong> Leaders genuinely believed in the change</li>
+                    <li><strong>Patience:</strong> Culture change took years, not months</li>
+                    <li><strong>Worker Voice:</strong> Real power, not token participation</li>
+                    <li><strong>Systems Thinking:</strong> Changes reinforced each other</li>
+                    <li><strong>Celebration:</strong> Recognized progress, not just perfection</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Lesson:</strong> The biggest obstacle to culture change is often middle management. Supervisors need support, training, and accountability to embrace new ways of working.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Results and Lessons Learned -->
+        <div class="module-section">
+            <h2 class="module-title">5. Results and Lessons Learned</h2>
+            <div class="module-content">
+                <p>The transformation produced remarkable results across multiple dimensions.</p>
+
+                <h3>A. Quantitative Results</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>2019 (Before)</th>
+                        <th>2023 (After)</th>
+                        <th>Improvement</th>
+                    </tr>
+                    <tr>
+                        <td>Total Recordable Incident Rate</td>
+                        <td>5.2</td>
+                        <td>0.8</td>
+                        <td>85% reduction</td>
+                    </tr>
+                    <tr>
+                        <td>Lost Time Injuries</td>
+                        <td>8 per year</td>
+                        <td>0 per year</td>
+                        <td>100% reduction</td>
+                    </tr>
+                    <tr>
+                        <td>Hazard/Near-Miss Reports</td>
+                        <td>3 per year</td>
+                        <td>847 per year</td>
+                        <td>28,000% increase</td>
+                    </tr>
+                    <tr>
+                        <td>Workers' Comp Costs</td>
+                        <td>$1.2M/year</td>
+                        <td>$180K/year</td>
+                        <td>85% reduction</td>
+                    </tr>
+                    <tr>
+                        <td>Productivity</td>
+                        <td>Baseline</td>
+                        <td>+15%</td>
+                        <td>Increased</td>
+                    </tr>
+                    <tr>
+                        <td>Employee Turnover</td>
+                        <td>22%</td>
+                        <td>8%</td>
+                        <td>64% reduction</td>
+                    </tr>
+                </table>
+
+                <h3>B. Qualitative Results</h3>
+                <ul>
+                    <li><strong>Trust:</strong> Union-management relationship transformed from adversarial to partnership</li>
+                    <li><strong>Morale:</strong> Employee engagement scores increased from 32% to 78%</li>
+                    <li><strong>Innovation:</strong> Safety suggestions led to process improvements that increased efficiency</li>
+                    <li><strong>Reputation:</strong> Plant became showcase for company; visitors from other facilities came to learn</li>
+                    <li><strong>Pride:</strong> Workers expressed pride in their workplace for first time in decades</li>
+                </ul>
+
+                <h3>C. Lessons Learned</h3>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Culture change starts at the top but lives at the bottom.</strong> Leadership commitment is essential, but the change must reach every worker.</li>
+                        <li><strong>Trust is earned in drops and lost in buckets.</strong> Every broken promise set progress back months.</li>
+                        <li><strong>Systems matter, but relationships matter more.</strong> Perfect programs fail without trust and engagement.</li>
+                        <li><strong>Leading indicators predict, lagging indicators prove.</strong> You can't manage by looking in the rearview mirror.</li>
+                        <li><strong>Culture change is not a project with an end date.</strong> It's a continuous journey that requires ongoing attention.</li>
+                        <li><strong>The best ideas come from the floor.</strong> Workers know the hazards and the solutions—if you create the conditions for them to share.</li>
+                        <li><strong>Celebrate progress, not perfection.</strong> Recognizing improvement reinforces the new culture.</li>
+                    </ul>
+                </div>
+
+                <div class="quote-box">
+                    "We used to think safety was about rules and discipline. Now we know it's about relationships and respect. The rules still matter, but they work because people want to follow them, not because they're afraid not to." - Plant Manager
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Applying the Lessons -->
+        <div class="module-section">
+            <h2 class="module-title">6. Applying the Lessons to Your Workplace</h2>
+            <div class="module-content">
+                <p>Every organization can begin the journey toward a generative safety culture. Here's how to start.</p>
+
+                <h3>A. Where Are You Now?</h3>
+                <p>Assess your current culture honestly:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Stage</th>
+                        <th>Signs You're Here</th>
+                        <th>Next Steps</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Pathological</strong></td>
+                        <td>No hazard reporting, blame-focused, production trumps safety</td>
+                        <td>Start with leadership commitment; stop blaming workers for incidents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reactive</strong></td>
+                        <td>You respond to incidents but don't prevent them</td>
+                        <td>Begin tracking leading indicators; start investigating near-misses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calculative</strong></td>
+                        <td>You have systems but they're seen as bureaucracy</td>
+                        <td>Engage workers in system design; simplify procedures; build trust</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Proactive</strong></td>
+                        <td>You anticipate and prevent; workers involved</td>
+                        <td>Share learning widely; benchmark; push decision-making to workers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generative</strong></td>
+                        <td>Safety is truly how you do business</td>
+                        <td>Mentor others; continuous improvement; stay humble</td>
+                    </tr>
+                </table>
+
+                <h3>B. First Steps</h3>
+                <ol>
+                    <li><strong>Assess honestly:</strong> Use surveys, interviews, and observation to understand your current culture</li>
+                    <li><strong>Get leadership commitment:</strong> Ensure executives understand this is a multi-year journey</li>
+                    <li><strong>Listen to workers:</strong> Conduct listening tours without judgment or defense</li>
+                    <li><strong>Pick one thing and follow through:</strong> Choose one visible issue and fix it completely</li>
+                    <li><strong>Communicate constantly:</strong> Share what you're learning, what you're fixing, what's working</li>
+                    <li><strong>Measure what matters:</strong> Start tracking leading indicators</li>
+                    <li><strong>Celebrate early wins:</strong> Recognize progress to build momentum</li>
+                </ol>
+
+                <div class="info-box">
+                    <strong>Remember:</strong> The journey to generative culture takes years. Don't be discouraged by setbacks. Every step forward, no matter how small, is progress.
+                </div>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Safety culture exists on a spectrum from pathological to generative</li>
+                        <li>Strong cultures have 80% fewer accidents</li>
+                        <li>Transformation requires 3-5 years of sustained effort</li>
+                        <li>Four pillars: leadership, engagement, systems, learning</li>
+                        <li>Trust is essential and easily lost</li>
+                        <li>Leading indicators predict future performance</li>
+                        <li>Workers must have real power, not token participation</li>
+                        <li>Celebrate progress; never declare "mission accomplished"</li>
+                        <li>Culture change is a journey, not a destination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>The transformation of Midwest Manufacturing Solutions demonstrates that even deeply entrenched negative cultures can change. It took four years of consistent, authentic effort, but the results speak for themselves: 85% fewer injuries, zero lost time incidents, millions in cost savings, and a workforce that actually believes management cares about their safety.</p>
+                
+                <p>The key principles of culture transformation are:</p>
+                <ul>
+                    <li><strong>Leadership must lead</strong> - Not just talk, but act consistently</li>
+                    <li><strong>Workers must be empowered</strong> - Real power, not tokenism</li>
+                    <li><strong>Systems must support culture</strong> - Not undermine it</li>
+                    <li><strong>Trust takes time</strong> - Be patient and persistent</li>
+                    <li><strong>Celebrate progress</strong> - Recognize every step forward</li>
+                </ul>
+                
+                <p>Remember: Safety culture isn't about programs or policies. It's about people—how they treat each other, whether they trust each other, and whether they believe that their safety truly matters. When you get that right, everything else follows.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Five stages: Pathological → Reactive → Calculative → Proactive → Generative</li>
+                        <li>Plant went from TRIR 5.2 to 0.8 in 4 years</li>
+                        <li>Hazard reports increased from 3 to 847 per year</li>
+                        <li>Worker trust increased from 15% to 82%</li>
+                        <li>Four pillars: Leadership, Engagement, Systems, Learning</li>
+                        <li>Leading indicators predict; lagging indicators prove</li>
+                        <li>Supervisors are often the biggest challenge</li>
+                        <li>Trust is earned in drops and lost in buckets</li>
+                        <li>Culture change requires 3-5 years of sustained effort</li>
+                        <li>Strong safety cultures have 80% fewer accidents</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Safety Culture Transformation case study.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="13-emergency-case-study.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'case-2';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What are the five stages of safety culture in order?',
+                options: [
+                    'Reactive, Pathological, Calculative, Proactive, Generative',
+                    'Pathological, Reactive, Calculative, Proactive, Generative',
+                    'Generative, Proactive, Calculative, Reactive, Pathological',
+                    'Calculative, Reactive, Pathological, Proactive, Generative'
+                ],
+                correct: 1
+            },
+            {
+                question: 'How much did the plant reduce its TRIR over four years?',
+                options: [
+                    '50% reduction (5.2 to 2.6)',
+                    '75% reduction (5.2 to 1.3)',
+                    '85% reduction (5.2 to 0.8)',
+                    '90% reduction (5.2 to 0.5)'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What was the biggest increase in hazard reporting?',
+                options: [
+                    '3 to 100 reports per year',
+                    '3 to 847 reports per year',
+                    '3 to 500 reports per year',
+                    '3 to 1,200 reports per year'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What percentage of accidents do strong safety cultures prevent?',
+                options: [
+                    '50%',
+                    '60%',
+                    '70%',
+                    '80%'
+                ],
+                correct: 3
+            },
+            {
+                question: 'What was identified as the biggest obstacle to culture change?',
+                options: [
+                    'Front-line workers',
+                    'Upper management',
+                    'Middle management (supervisors)',
+                    'Union leadership'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
