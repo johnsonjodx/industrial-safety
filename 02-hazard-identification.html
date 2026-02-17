@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 2: Hazard Identification & Risk Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .matrix-header {
+            background: #764ba2;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .matrix-cell {
+            background: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .matrix-cell.high {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .matrix-cell.medium {
+            background: #ffd93d;
+        }
+
+        .matrix-cell.low {
+            background: #6bcf7f;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 2: Hazard Identification & Risk Assessment</h1>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="03-personal-protective-equipment.html" class="nav-btn">Next Topic →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction</h2>
+            <div class="module-content">
+                <p>Hazard identification and risk assessment form the foundation of any effective safety management system. Before hazards can be controlled, they must first be recognized and understood. This systematic process allows organizations to identify potential sources of harm, evaluate their likelihood and severity, and prioritize actions to reduce risk to acceptable levels.</p>
+                
+                <div class="info-box">
+                    <strong>Key Insight:</strong> For every serious injury or fatality, there are approximately 600 near-misses and 30 property damage incidents. Identifying and addressing hazards during the near-miss stage prevents more serious events.
+                </div>
+
+                <p>The importance of thorough hazard identification cannot be overstated. According to safety incident investigations, the root cause of most accidents can be traced back to hazards that were either not identified or were identified but inadequately controlled. A comprehensive hazard identification program serves as the early warning system that prevents incidents before they occur.</p>
+                
+                <p>Risk assessment takes hazard identification a step further by evaluating the probability and potential severity of harm. This allows organizations to allocate resources effectively, focusing on the most significant risks first. The process is not a one-time event but an ongoing cycle that must adapt to changing workplace conditions, new equipment, and lessons learned from incidents and near-misses.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Types of Workplace Hazards -->
+        <div class="module-section">
+            <h2 class="module-title">1. Types of Workplace Hazards</h2>
+            <div class="module-content">
+                <p>Workplace hazards can be categorized into several main types, each requiring different identification methods and control strategies. Understanding these categories helps safety professionals conduct thorough assessments and select appropriate controls.</p>
+
+                <h3>A. Physical Hazards</h3>
+                <p>Physical hazards are environmental factors that can cause harm without necessarily touching the worker. These are often the most visible hazards in industrial settings.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Hazard Type</th>
+                        <th>Examples</th>
+                        <th>Potential Health Effects</th>
+                        <th>Typical Industries</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Noise</strong></td>
+                        <td>Machinery, tools, compressors, manufacturing equipment</td>
+                        <td>Hearing loss, tinnitus, stress, communication interference</td>
+                        <td>Manufacturing, construction, mining</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Radiation</strong></td>
+                        <td>Welding arcs, X-rays, microwaves, radioactive sources</td>
+                        <td>Burns, cancer, eye damage, radiation sickness</td>
+                        <td>Healthcare, welding, nuclear, research</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vibration</strong></td>
+                        <td>Jackhammers, grinders, chainsaws, vehicles</td>
+                        <td>Hand-arm vibration syndrome, back pain, circulatory issues</td>
+                        <td>Construction, mining, forestry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperature Extremes</strong></td>
+                        <td>Furnaces, freezers, outdoor work, foundries</td>
+                        <td>Heat stress, hypothermia, burns, frostbite</td>
+                        <td>Foundries, cold storage, construction, agriculture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lighting</strong></td>
+                        <td>Poor illumination, glare, flickering lights</td>
+                        <td>Eye strain, headaches, accidents, falls</td>
+                        <td>All industries</td>
+                    </tr>
+                </table>
+
+                <h3>B. Chemical Hazards</h3>
+                <p>Chemical hazards involve exposure to substances that can cause adverse health effects. They can exist as solids, liquids, gases, vapors, fumes, or mists. The effects may be acute (immediate) or chronic (long-term).</p>
+                
+                <ul>
+                    <li><strong>Toxic substances:</strong> Poisons that can cause acute or chronic health effects (lead, mercury, pesticides)</li>
+                    <li><strong>Corrosives:</strong> Acids and bases that destroy living tissue (sulfuric acid, sodium hydroxide)</li>
+                    <li><strong>Flammables:</strong> Materials that can easily catch fire (gasoline, solvents, propane)</li>
+                    <li><strong>Reactives:</strong> Substances that can explode or release toxic gases when exposed to air, water, or other chemicals (peroxides, certain metals)</li>
+                    <li><strong>Carcinogens:</strong> Substances that can cause cancer (asbestos, benzene, formaldehyde)</li>
+                    <li><strong>Asphyxiants:</strong> Gases that displace oxygen (carbon dioxide, nitrogen, methane)</li>
+                    <li><strong>Sensitizers:</strong> Substances that cause allergic reactions after repeated exposure (isocyanates, certain metals)</li>
+                </ul>
+
+                <h3>C. Biological Hazards</h3>
+                <p>Biological hazards come from living organisms and are particularly common in healthcare, laboratory, and certain industrial settings.</p>
+                
+                <ul>
+                    <li><strong>Bacteria:</strong> Legionella, Salmonella, E. coli, tuberculosis</li>
+                    <li><strong>Viruses:</strong> Hepatitis B and C, HIV, COVID-19, influenza</li>
+                    <li><strong>Fungi and mold:</strong> Aspergillus, Stachybotrys (toxic mold)</li>
+                    <li><strong>Bloodborne pathogens:</strong> Present in human blood and other bodily fluids</li>
+                    <li><strong>Animal and insect bites:</strong> Venomous creatures, disease vectors</li>
+                    <li><strong>Plant toxins:</strong> Poison ivy, poison oak, toxic plants</li>
+                </ul>
+
+                <h3>D. Ergonomic Hazards</h3>
+                <p>Ergonomic hazards occur when work tasks, equipment, or environment do not match human capabilities, leading to musculoskeletal disorders and repetitive strain injuries.</p>
+                
+                <ul>
+                    <li><strong>Repetitive motions:</strong> Assembly line work, data entry, constant lifting</li>
+                    <li><strong>Awkward postures:</strong> Working in confined spaces, overhead work, twisting</li>
+                    <li><strong>Forceful exertions:</strong> Lifting heavy objects, pushing/pulling loads</li>
+                    <li><strong>Static positions:</strong> Standing for long periods, sitting without movement</li>
+                    <li><strong>Improper workstation setup:</strong> Poor desk ergonomics, tool placement</li>
+                    <li><strong>Heavy lifting:</strong> Manual material handling without mechanical assistance</li>
+                </ul>
+
+                <h3>E. Safety Hazards</h3>
+                <p>These are unsafe conditions that can cause immediate injury, often through slips, trips, falls, or contact with equipment.</p>
+                
+                <ul>
+                    <li><strong>Slippery floors:</strong> Wet surfaces, oil spills, polished floors</li>
+                    <li><strong>Unguarded machinery:</strong> Moving parts without proper guards</li>
+                    <li><strong>Electrical hazards:</strong> Exposed wiring, overloaded circuits, improper grounding</li>
+                    <li><strong>Confined spaces:</strong> Tanks, silos, pits with limited entry/exit</li>
+                    <li><strong>Working at heights:</strong> Ladders, scaffolding, roofs without fall protection</li>
+                    <li><strong>Moving vehicles:</strong> Forklifts, trucks, cranes in work areas</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaway:</h4>
+                    <p>Most workplaces contain multiple hazard types simultaneously. A thorough hazard identification program uses multiple methods to ensure all categories are addressed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Hazard Identification Methods -->
+        <div class="module-section">
+            <h2 class="module-title">2. Hazard Identification Methods</h2>
+            <div class="module-content">
+                <p>Effective hazard identification requires systematic approaches using multiple methods. No single method captures all hazards, so a combination of techniques provides the most comprehensive assessment.</p>
+
+                <h3>A. Workplace Inspections</h3>
+                <p>Regular, structured inspections are the backbone of hazard identification. Effective inspections include:</p>
+                
+                <ul>
+                    <li><strong>Frequency:</strong> Daily, weekly, monthly based on risk level (high-risk areas inspected more frequently)</li>
+                    <li><strong>Checklists:</strong> Standardized tools ensure consistency and prevent overlooking common hazards</li>
+                    <li><strong>Team approach:</strong> Include supervisors, workers, and safety professionals for different perspectives</li>
+                    <li><strong>Documentation:</strong> Record findings, photograph hazards, and track corrective actions to completion</li>
+                    <li><strong>Pre-work inspections:</strong> Workers inspect their own areas before starting tasks</li>
+                </ul>
+
+                <h3>B. Job Safety Analysis (JSA)</h3>
+                <p>JSA breaks each job into steps, identifies hazards associated with each step, and develops controls. The process involves:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Step</th>
+                        <th>Description</th>
+                        <th>Example (Changing a Light Bulb)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Select the job</strong></td>
+                        <td>Prioritize high-risk tasks, frequent tasks, or tasks with incident history</td>
+                        <td>Changing light bulbs in warehouse (frequent task, working at height)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Break down the job</strong></td>
+                        <td>List each step in sequence, being specific but not too detailed</td>
+                        <td>• Get ladder<br>• Position ladder<br>• Climb ladder<br>• Remove old bulb<br>• Install new bulb<br>• Descend ladder</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Identify hazards</strong></td>
+                        <td>Determine potential incidents for each step</td>
+                        <td>• Ladder slipping<br>• Falling from height<br>• Electrical shock<br>• Dropping bulb (glass hazard)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Develop controls</strong></td>
+                        <td>Specify safe procedures and required PPE</td>
+                        <td>• Use ladder with non-slip feet<br>• Maintain three-point contact<br>• Turn off power at breaker<br>• Wear safety glasses</td>
+                    </tr>
+                </table>
+
+                <h3>C. Incident Investigation</h3>
+                <p>Every incident and near-miss provides learning opportunities. Investigation should focus on root causes, not blame. Key steps include:</p>
+                
+                <ol>
+                    <li><strong>Secure the scene</strong> - Preserve evidence and ensure no further danger</li>
+                    <li><strong>Gather evidence</strong> - Photographs, measurements, equipment condition, documentation</li>
+                    <li><strong>Interview witnesses</strong> - Conduct separately, ask open-ended questions</li>
+                    <li><strong>Analyze sequence of events</strong> - Create timeline of what happened</li>
+                    <li><strong>Identify root causes</strong> - Use tools like "5 Whys" or fishbone diagrams to find underlying causes</li>
+                    <li><strong>Develop corrective actions</strong> - Address root causes, not just symptoms</li>
+                    <li><strong>Share lessons learned</strong> - Communicate findings to prevent recurrence elsewhere</li>
+                </ol>
+
+                <h3>D. Safety Audits</h3>
+                <p>Comprehensive audits evaluate the entire safety management system, including:</p>
+                
+                <ul>
+                    <li><strong>Program documentation:</strong> Policies, procedures, training records, maintenance logs</li>
+                    <li><strong>Training records:</strong> Who has been trained, when, and on what topics</li>
+                    <li><strong>Equipment maintenance:</strong> Inspection records, repair history, testing documentation</li>
+                    <li><strong>Worker interviews:</strong> Assess knowledge, attitudes, and perceptions about safety</li>
+                    <li><strong>Workplace observations:</strong> See if procedures are actually followed</li>
+                </ul>
+
+                <h3>E. Additional Hazard Identification Tools</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Tool</th>
+                        <th>Description</th>
+                        <th>Best Used For</th>
+                    </tr>
+                    <tr>
+                        <td><strong>What-If Analysis</strong></td>
+                        <td>Brainstorming potential scenarios ("What if the pump fails?")</td>
+                        <td>Process hazards, new operations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HAZOP</strong></td>
+                        <td>Systematic study of process deviations using guide words</td>
+                        <td>Chemical processes, complex systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FMEA</strong></td>
+                        <td>Failure mode and effects analysis</td>
+                        <td>Equipment reliability, maintenance planning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Checklists</strong></td>
+                        <td>Predefined lists of potential hazards</td>
+                        <td>Regular inspections, specific equipment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flowcharts</strong></td>
+                        <td>Process mapping to identify hazard points</td>
+                        <td>Understanding complex processes</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Important:</strong> The goal is not just to complete paperwork but to actually identify hazards. Choose methods appropriate for your workplace and involve workers who know the jobs best.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Risk Assessment and Prioritization -->
+        <div class="module-section">
+            <h2 class="module-title">3. Risk Assessment and Prioritization</h2>
+            <div class="module-content">
+                <p>Once hazards are identified, they must be evaluated to determine risk level and prioritize actions. Risk is typically defined as:</p>
+                <p style="font-size: 1.3em; text-align: center; margin: 20px 0;"><strong>Risk = Severity × Probability</strong></p>
+
+                <h3>A. Risk Assessment Matrix</h3>
+                <p>A common tool for evaluating and prioritizing risks. Severity and probability are rated on scales, and their product determines risk level.</p>
+                
+                <h4>Severity Rating:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Rating</th>
+                        <th>Level</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Catastrophic</td>
+                        <td>Fatality, permanent total disability, major property damage (>$1M)</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Major</td>
+                        <td>Serious injury (hospitalization), partial disability, significant property damage</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Moderate</td>
+                        <td>Medical treatment injury, lost time, moderate property damage</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Minor</td>
+                        <td>First aid only, minor property damage</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Negligible</td>
+                        <td>No injury, minimal property damage</td>
+                    </tr>
+                </table>
+
+                <h4>Probability Rating:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Rating</th>
+                        <th>Level</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Frequent</td>
+                        <td>Likely to occur repeatedly (daily/weekly)</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Likely</td>
+                        <td>Will occur several times (monthly)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Occasional</td>
+                        <td>Likely to occur sometime (yearly)</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Remote</td>
+                        <td>Unlikely but possible (once every few years)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Improbable</td>
+                        <td>So unlikely it may never happen</td>
+                    </tr>
+                </table>
+
+                <h4>Risk Matrix (Severity × Probability):</h4>
+                <div style="overflow-x: auto;">
+                    <table class="learning-table">
+                        <tr>
+                            <th>Probability \ Severity</th>
+                            <th>Catastrophic (5)</th>
+                            <th>Major (4)</th>
+                            <th>Moderate (3)</th>
+                            <th>Minor (2)</th>
+                            <th>Negligible (1)</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Frequent (5)</strong></td>
+                            <td style="background: #ff6b6b; color: white;">25</td>
+                            <td style="background: #ff6b6b; color: white;">20</td>
+                            <td style="background: #ffa06b;">15</td>
+                            <td style="background: #ffd93d;">10</td>
+                            <td style="background: #6bcf7f;">5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Likely (4)</strong></td>
+                            <td style="background: #ff6b6b; color: white;">20</td>
+                            <td style="background: #ffa06b;">16</td>
+                            <td style="background: #ffd93d;">12</td>
+                            <td style="background: #6bcf7f;">8</td>
+                            <td style="background: #6bcf7f;">4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Occasional (3)</strong></td>
+                            <td style="background: #ffa06b;">15</td>
+                            <td style="background: #ffd93d;">12</td>
+                            <td style="background: #6bcf7f;">9</td>
+                            <td style="background: #6bcf7f;">6</td>
+                            <td style="background: #6bcf7f;">3</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Remote (2)</strong></td>
+                            <td style="background: #ffd93d;">10</td>
+                            <td style="background: #6bcf7f;">8</td>
+                            <td style="background: #6bcf7f;">6</td>
+                            <td style="background: #6bcf7f;">4</td>
+                            <td style="background: #6bcf7f;">2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Improbable (1)</strong></td>
+                            <td style="background: #6bcf7f;">5</td>
+                            <td style="background: #6bcf7f;">4</td>
+                            <td style="background: #6bcf7f;">3</td>
+                            <td style="background: #6bcf7f;">2</td>
+                            <td style="background: #6bcf7f;">1</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Risk Prioritization:</h4>
+                <ul>
+                    <li><strong style="color: #ff6b6b;">High Risk (15-25):</strong> Immediate action required - stop activity if necessary, senior management attention, detailed action plan</li>
+                    <li><strong style="color: #ffa06b;">Medium Risk (8-14):</strong> Prompt action needed - plan and implement controls, specific responsibility assigned</li>
+                    <li><strong style="color: #6bcf7f;">Low Risk (1-7):</strong> Monitor and manage through routine procedures, but don't ignore</li>
+                </ul>
+
+                <h3>B. Hierarchy of Controls Application</h3>
+                <p>For each significant risk, apply the hierarchy of controls to select appropriate measures:</p>
+                
+                <ol>
+                    <li><strong>Elimination:</strong> Remove the hazard completely (most effective)</li>
+                    <li><strong>Substitution:</strong> Replace with something safer</li>
+                    <li><strong>Engineering:</strong> Isolate people from hazard</li>
+                    <li><strong>Administrative:</strong> Change how people work</li>
+                    <li><strong>PPE:</strong> Protect worker with equipment (least effective)</li>
+                </ol>
+
+                <h3>C. Risk Assessment Documentation</h3>
+                <p>Proper documentation should include:</p>
+                
+                <ul>
+                    <li>Date of assessment</li>
+                    <li>Location/activity assessed</li>
+                    <li>Hazards identified</li>
+                    <li>Initial risk rating</li>
+                    <li>Controls selected</li>
+                    <li>Residual risk rating (after controls)</li>
+                    <li>Person responsible for implementation</li>
+                    <li>Target completion date</li>
+                    <li>Review date</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Remember:</strong> A risk assessment is only valuable if it leads to action. Always assign responsibility and timelines for implementing controls, and verify that controls remain effective over time.
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Hazard identification and risk assessment are not one-time events but ongoing processes. As workplaces change, new equipment is introduced, and new processes are developed, new hazards emerge. Organizations must establish systems that continuously identify and assess risks, ensuring that controls remain effective and that new hazards are promptly addressed.</p>
+                
+                <p>The ultimate goal is not just to create paperwork but to develop a deep understanding of workplace risks and take effective action. When done properly, hazard identification and risk assessment become embedded in daily operations - workers naturally assess risks before starting tasks, supervisors routinely discuss hazards during safety meetings, and management regularly reviews risk data to allocate resources effectively.</p>
+                
+                <p>This proactive approach, where hazards are identified and controlled before they cause harm, is the hallmark of world-class safety programs. It transforms safety from a reactive discipline (responding to incidents) to a predictive one (preventing incidents before they occur).</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Hazards exist in multiple forms - physical, chemical, biological, ergonomic, and safety</li>
+                        <li>Multiple identification methods (inspections, JSA, incident investigation, audits) provide comprehensive hazard recognition</li>
+                        <li>Risk = Severity × Probability helps prioritize actions based on potential impact</li>
+                        <li>The risk matrix provides a visual way to categorize and prioritize risks</li>
+                        <li>Apply the hierarchy of controls to select appropriate risk reduction measures (Elimination → Substitution → Engineering → Administrative → PPE)</li>
+                        <li>Documentation and follow-up ensure hazards are actually controlled</li>
+                        <li>Risk assessment must be an ongoing process, not a one-time event</li>
+                    </ul>
+                </div>
+
+                <p>Now that you've completed the learning material, test your understanding with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed this module. You can proceed to the next topic or review the material.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="03-personal-protective-equipment.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-2';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'Which of the following is a physical hazard?',
+                options: [
+                    'Bacteria',
+                    'Noise',
+                    'Solvent fumes',
+                    'Repetitive motion'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What does JSA stand for?',
+                options: [
+                    'Job Safety Analysis',
+                    'Joint Safety Assessment',
+                    'Judicial Safety Action',
+                    'Job Security Audit'
+                ],
+                correct: 0
+            },
+            {
+                question: 'How is risk typically calculated?',
+                options: [
+                    'Severity + Probability',
+                    'Severity × Probability',
+                    'Severity ÷ Probability',
+                    'Severity - Probability'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What risk score range indicates immediate action is required (High Risk)?',
+                options: [
+                    '1-7',
+                    '8-14',
+                    '15-25',
+                    '25-35'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which hazard identification method involves breaking jobs into steps?',
+                options: [
+                    'Safety audit',
+                    'Workplace inspection',
+                    'Job Safety Analysis',
+                    'Incident investigation'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+            // Trigger storage event for main page
+            if (window.opener) {
+                window.opener.localStorage.setItem(`progress_${topicId}`, completed);
+            }
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
