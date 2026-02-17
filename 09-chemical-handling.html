@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 9: Chemical Handling & Storage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .hazmat-symbols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .symbol-card {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #f44336;
+        }
+
+        .symbol-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .symbol-title {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .nfpa-diamond {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .diamond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 2px;
+            background: #333;
+            padding: 2px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .diamond-cell {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .diamond-red {
+            background: #f44336;
+            color: white;
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .diamond-blue {
+            background: #2196F3;
+            color: white;
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .diamond-yellow {
+            background: #ffeb3b;
+            color: black;
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .diamond-white {
+            background: white;
+            color: black;
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .compatibility-table {
+            font-size: 0.9em;
+        }
+
+        .compatible {
+            background: #d4edda;
+            color: #155724;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .incompatible {
+            background: #f8d7da;
+            color: #721c24;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .caution {
+            background: #fff3cd;
+            color: #856404;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .spill-kit {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .spill-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff9800;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 9: Chemical Handling & Storage</h1>
+            <div class="nav-buttons">
+                <a href="08-confined-space.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="10-ergonomics.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Hazmat Symbols -->
+        <div class="hazmat-symbols">
+            <div class="symbol-card">
+                <div class="symbol-icon">🔥</div>
+                <div class="symbol-title">Flammable</div>
+                <small>Catches fire easily</small>
+            </div>
+            <div class="symbol-card">
+                <div class="symbol-icon">☠️</div>
+                <div class="symbol-title">Toxic</div>
+                <small>Poisonous</small>
+            </div>
+            <div class="symbol-card">
+                <div class="symbol-icon">💀</div>
+                <div class="symbol-title">Corrosive</div>
+                <small>Burns skin/metal</small>
+            </div>
+            <div class="symbol-card">
+                <div class="symbol-icon">⚡</div>
+                <div class="symbol-title">Oxidizer</div>
+                <small>Speeds fire</small>
+            </div>
+            <div class="symbol-card">
+                <div class="symbol-icon">💥</div>
+                <div class="symbol-title">Explosive</div>
+                <small>May explode</small>
+            </div>
+            <div class="symbol-card">
+                <div class="symbol-icon">⚠️</div>
+                <div class="symbol-title">Health Hazard</div>
+                <small>Long-term effects</small>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Chemical Safety</h2>
+            <div class="module-content">
+                <p>Chemicals are essential to modern industry, but they also present serious hazards. From simple cleaning products to complex industrial compounds, chemicals can cause fires, explosions, acute poisoning, chronic illness, and environmental damage. Understanding how to handle, store, and respond to chemical incidents is critical for worker safety.</p>
+                
+                <div class="info-box">
+                    <strong>Critical Fact:</strong> According to OSHA, over 190,000 workers are exposed to hazardous chemicals annually, and thousands develop work-related illnesses from chemical exposure. Most chemical incidents are preventable with proper handling and storage.
+                </div>
+
+                <p>Chemical safety encompasses understanding chemical properties, proper storage and segregation, safe handling procedures, personal protective equipment, emergency response, and regulatory compliance. This module covers the essential knowledge needed to work safely with chemicals in industrial settings.</p>
+                
+                <p>Whether you're a chemical operator, maintenance worker, or supervisor, understanding these principles is essential for protecting yourself, your coworkers, and the environment.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Chemical Hazard Communication -->
+        <div class="module-section">
+            <h2 class="module-title">1. Chemical Hazard Communication</h2>
+            <div class="module-content">
+                <p>The first step in chemical safety is understanding what you're working with. OSHA's Hazard Communication Standard (HCS) ensures that information about chemical hazards is communicated to workers.</p>
+
+                <h3>A. Safety Data Sheets (SDS)</h3>
+                <p>The SDS is a detailed document that provides comprehensive information about a chemical. OSHA requires 16 specific sections:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Section</th>
+                        <th>Content</th>
+                        <th>Why It Matters</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Identification</strong></td>
+                        <td>Product identifier, manufacturer, recommended use, emergency phone</td>
+                        <td>Know what chemical and who to contact</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Hazard Identification</strong></td>
+                        <td>GHS classifications, hazard pictograms, signal words, hazard statements</td>
+                        <td>Immediate understanding of primary hazards</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Composition</strong></td>
+                        <td>Chemical ingredients and concentrations</td>
+                        <td>Know exactly what's in the product</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. First Aid Measures</strong></td>
+                        <td>Emergency procedures for exposure</td>
+                        <td>Critical for rapid response to incidents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Firefighting Measures</strong></td>
+                        <td>Suitable extinguishing methods, hazards from combustion</td>
+                        <td>Essential for fire response</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Accidental Release Measures</strong></td>
+                        <td>Spill response, containment, cleanup</td>
+                        <td>Spill control procedures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Handling and Storage</strong></td>
+                        <td>Safe handling practices, incompatibilities, storage requirements</td>
+                        <td>Prevention of incidents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8. Exposure Controls/PPE</strong></td>
+                        <td>Exposure limits, engineering controls, required PPE</td>
+                        <td>Worker protection requirements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9. Physical/Chemical Properties</strong></td>
+                        <td>Appearance, odor, pH, flash point, vapor pressure, etc.</td>
+                        <td>Understanding how chemical behaves</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10. Stability/Reactivity</strong></td>
+                        <td>Chemical stability, incompatible materials, hazardous reactions</td>
+                        <td>Critical for safe storage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>11. Toxicological Information</strong></td>
+                        <td>Health effects, routes of entry, symptoms</td>
+                        <td>Understanding health hazards</td>
+                    </tr>
+                    <tr>
+                        <td><strong>12-15. Ecological/Disposal</strong></td>
+                        <td>Environmental impact, disposal considerations, transport info</td>
+                        <td>Environmental protection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>16. Other Information</strong></td>
+                        <td>Revision date, additional data</td>
+                        <td>Ensuring information is current</td>
+                    </tr>
+                </table>
+
+                <h3>B. GHS Pictograms</h3>
+                <p>The Globally Harmonized System (GHS) uses standardized pictograms to convey hazards at a glance:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Pictogram</th>
+                        <th>Hazard Class</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td>🔥 Flame</td>
+                        <td>Flammables, self-reactives, pyrophorics</td>
+                        <td>Gasoline, acetone, ethanol</td>
+                    </tr>
+                    <tr>
+                        <td>☠️ Skull & Crossbones</td>
+                        <td>Acute toxicity (severe)</td>
+                        <td>Cyanide, pesticides, mercury</td>
+                    </tr>
+                    <tr>
+                        <td>💀 Corrosion</td>
+                        <td>Skin corrosion, eye damage, corrosive to metals</td>
+                        <td>Sulfuric acid, sodium hydroxide</td>
+                    </tr>
+                    <tr>
+                        <td>⚡ Flame Over Circle</td>
+                        <td>Oxidizers</td>
+                        <td>Hydrogen peroxide, nitric acid</td>
+                    </tr>
+                    <tr>
+                        <td>💥 Exploding Bomb</td>
+                        <td>Explosives, self-reactives, organic peroxides</td>
+                        <td>Dynamite, peroxides</td>
+                    </tr>
+                    <tr>
+                        <td>⚠️ Health Hazard</td>
+                        <td>Carcinogens, reproductive toxins, target organ toxins</td>
+                        <td>Benzene, asbestos, lead</td>
+                    </tr>
+                    <tr>
+                        <td>❗ Exclamation Mark</td>
+                        <td>Irritant, skin sensitizer, acute toxicity (mild)</td>
+                        <td>Bleach, ammonia</td>
+                    </tr>
+                    <tr>
+                        <td>🌳 Environment</td>
+                        <td>Aquatic toxicity</td>
+                        <td>Pesticides, oil</td>
+                    </tr>
+                    <tr>
+                        <td>🧪 Gas Cylinder</td>
+                        <td>Gases under pressure</td>
+                        <td>Oxygen, nitrogen, propane</td>
+                    </tr>
+                </table>
+
+                <h3>C. NFPA 704 Diamond</h3>
+                <p>The NFPA diamond provides quick hazard information for emergency responders:</p>
+                
+                <div class="nfpa-diamond">
+                    <div class="diamond-grid">
+                        <div class="diamond-cell"></div>
+                        <div class="diamond-cell diamond-red">4</div>
+                        <div class="diamond-cell"></div>
+                        <div class="diamond-cell diamond-blue">3</div>
+                        <div class="diamond-cell"></div>
+                        <div class="diamond-cell diamond-yellow">2</div>
+                        <div class="diamond-cell"></div>
+                        <div class="diamond-cell diamond-white">W</div>
+                        <div class="diamond-cell"></div>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Blue (Left):</strong> Health Hazard (0-4) | <strong>Red (Top):</strong> Flammability (0-4) | <strong>Yellow (Right):</strong> Reactivity (0-4) | <strong>White (Bottom):</strong> Special Hazards (W, OX, etc.)</p>
+                </div>
+
+                <table class="learning-table">
+                    <tr>
+                        <th>Rating</th>
+                        <th>Health (Blue)</th>
+                        <th>Flammability (Red)</th>
+                        <th>Reactivity (Yellow)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Deadly - even brief exposure</td>
+                        <td>Extremely flammable - vaporizes quickly</td>
+                        <td>May detonate - readily explosive</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Extreme hazard - serious injury</td>
+                        <td>Ignites at normal temperatures</td>
+                        <td>May detonate with heat/shock</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Hazardous - intense exposure required</td>
+                        <td>Ignites with moderate heat</td>
+                        <td>Unstable - violent chemical change</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Slightly hazardous - irritation possible</td>
+                        <td>Must preheat to ignite</td>
+                        <td>Normally stable - high temperature unstable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>0</strong></td>
+                        <td>Minimal hazard - no significant risk</td>
+                        <td>Will not burn</td>
+                        <td>Stable - not reactive with water</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Chemical Storage and Segregation -->
+        <div class="module-section">
+            <h2 class="module-title">2. Chemical Storage and Segregation</h2>
+            <div class="module-content">
+                <p>Proper chemical storage prevents dangerous reactions, contains spills, and protects workers. The most important rule: incompatible chemicals must be stored separately.</p>
+
+                <h3>A. Chemical Compatibility</h3>
+                <p>Some chemicals react violently when mixed. This compatibility chart shows basic segregation requirements:</p>
+                
+                <table class="learning-table compatibility-table">
+                    <tr>
+                        <th>Chemical Group</th>
+                        <th>Incompatible With</th>
+                        <th>Reaction Hazard</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Acids</strong></td>
+                        <td>Bases, cyanides, sulfides, oxidizers</td>
+                        <td>Heat, toxic gas, violent reaction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bases</strong></td>
+                        <td>Acids, metals, explosives</td>
+                        <td>Heat, violent reaction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oxidizers</strong></td>
+                        <td>Organics, flammables, reducing agents</td>
+                        <td>Fire, explosion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flammables</strong></td>
+                        <td>Oxidizers, ignition sources</td>
+                        <td>Fire, explosion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Water-Reactive</strong></td>
+                        <td>Water, moisture</td>
+                        <td>Flammable gas, heat, explosion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cyanides/Sulfides</strong></td>
+                        <td>Acids</td>
+                        <td>Toxic gas (HCN, H2S)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peroxides</strong></td>
+                        <td>Organics, metals, reducing agents</td>
+                        <td>Explosion</td>
+                    </tr>
+                </table>
+
+                <h4>Detailed Segregation Requirements:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Chemical Type</th>
+                        <th>Storage Requirement</th>
+                        <th>Keep Away From</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Flammable Liquids</strong></td>
+                        <td>Approved flammable cabinet, away from exits, ignition sources</td>
+                        <td>Oxidizers, heat, sparks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Corrosives (Acids)</strong></td>
+                        <td>Acid cabinet, separate from bases, on low shelves</td>
+                        <td>Bases, cyanides, metals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Corrosives (Bases)</strong></td>
+                        <td>Base cabinet, separate from acids</td>
+                        <td>Acids, metals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oxidizers</strong></td>
+                        <td>Separate cabinet, away from organics</td>
+                        <td>Flammables, organics, reducing agents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Toxics</strong></td>
+                        <td>Locked cabinet, ventilated, labeled</td>
+                        <td>Incompatible chemicals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Water-Reactive</strong></td>
+                        <td>Dry area, away from sprinklers, water sources</td>
+                        <td>Water, moisture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pyrophorics</strong></td>
+                        <td>Inert atmosphere, airtight containers</td>
+                        <td>Air, moisture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peroxide-Formers</strong></td>
+                        <td>Date received and opened, test regularly, dispose before expiration</td>
+                        <td>Heat, light, friction</td>
+                    </tr>
+                </table>
+
+                <h3>B. Storage Container Requirements</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Container Type</th>
+                        <th>Best For</th>
+                        <th>Limitations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Glass</strong></td>
+                        <td>Acids, organics, pure compounds</td>
+                        <td>Breakable, not for strong bases (etching)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polyethylene (HDPE)</strong></td>
+                        <td>Bases, acids (except oxidizing), aqueous solutions</td>
+                        <td>Some solvents attack, limited temperature</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stainless Steel</strong></td>
+                        <td>Flammables, solvents, bulk storage</td>
+                        <td>Corroded by chlorides, acids</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Teflon (PTFE)</strong></td>
+                        <td>High-purity, highly corrosive, HF</td>
+                        <td>Expensive, limited sizes</td>
+                    </tr>
+                </table>
+
+                <h3>C. Storage Area Requirements</h3>
+                <ul>
+                    <li><strong>Ventilation:</strong> At least 6 air changes per hour, preferably local exhaust</li>
+                    <li><strong>Temperature:</strong> Controlled, typically 60-80°F, avoid temperature extremes</li>
+                    <li><strong>Lighting:</strong> Adequate to read labels, explosion-proof if flammables present</li>
+                    <li><strong>Secondary Containment:</strong> Trays or berms to contain spills (110% of largest container)</li>
+                    <li><strong>Spill Control:</strong> Spill kits readily available, neutralizers for common chemicals</li>
+                    <li><strong>Fire Protection:</strong> Appropriate extinguishers, sprinklers if compatible</li>
+                    <li><strong>Security:</strong> Locked access for toxics, controlled entry</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> Never store chemicals alphabetically without considering compatibility. This can place incompatible chemicals (like acids and bases) next to each other.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Safe Handling Practices -->
+        <div class="module-section">
+            <h2 class="module-title">3. Safe Chemical Handling Practices</h2>
+            <div class="module-content">
+                <p>Proper handling procedures prevent chemical exposures and incidents.</p>
+
+                <h3>A. Engineering Controls</h3>
+                <ul>
+                    <li><strong>Fume Hoods:</strong> Use for all volatile chemicals, ensure proper airflow (80-120 ft/min)</li>
+                    <li><strong>Local Exhaust Ventilation:</strong> Capture contaminants at source</li>
+                    <li><strong>Glove Boxes:</strong> For highly toxic or air-reactive materials</li>
+                    <li><strong>Eyewash and Safety Showers:</strong> Within 10 seconds (55 feet) of chemical handling areas</li>
+                    <li><strong>Spill Containment:</strong> Secondary containment for liquid chemicals</li>
+                </ul>
+
+                <h3>B. PPE for Chemical Handling</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>PPE Item</th>
+                        <th>When Required</th>
+                        <th>Selection Criteria</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Goggles</strong></td>
+                        <td>Any splash risk, liquids, powders</td>
+                        <td>Indirect vent, splash-proof, anti-fog</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Face Shield</strong></td>
+                        <td>Large volumes, high splash risk, pressurized systems</td>
+                        <td>Wear over goggles, full face protection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Gloves</strong></td>
+                        <td>Always when handling chemicals</td>
+                        <td>Chemical-specific resistance, double glove for toxics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Apron</strong></td>
+                        <td>Large volumes, splash risk</td>
+                        <td>Nitrile, neoprene, PVC - chemical specific</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lab Coat/Coveralls</strong></td>
+                        <td>Always in chemical areas</td>
+                        <td>Flame-resistant for flammables, disposable for toxics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical Boots</strong></td>
+                        <td>Large volumes, floor contamination risk</td>
+                        <td>Chemical-resistant, steel toe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Respirator</strong></td>
+                        <td>When ventilation inadequate, airborne hazards</td>
+                        <td>Cartridge type based on chemical, fit-tested</td>
+                    </tr>
+                </table>
+
+                <h3>C. Safe Handling Procedures</h3>
+                
+                <h4>Do's:</h4>
+                <ul>
+                    <li>Read SDS before working with new chemicals</li>
+                    <li>Use smallest necessary quantity</li>
+                    <li>Label all containers with contents, hazards, date</li>
+                    <li>Use secondary containment for transport</li>
+                    <li>Add acid to water (never water to acid)</li>
+                    <li>Ground and bond flammable liquid transfers</li>
+                    <li>Work in fume hood for volatile chemicals</li>
+                    <li>Wash hands after handling chemicals</li>
+                </ul>
+
+                <h4>Don'ts:</h4>
+                <ul>
+                    <li>Never smell or taste chemicals</li>
+                    <li>Never pipette by mouth</li>
+                    <li>Never leave containers open</li>
+                    <li>Never return unused chemical to original container</li>
+                    <li>Never eat, drink, or apply cosmetics in chemical areas</li>
+                    <li>Never use damaged containers</li>
+                </ul>
+
+                <h3>D. Transfer and Dispensing</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Chemical Type</th>
+                        <th>Transfer Method</th>
+                        <th>Special Precautions</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Flammable Liquids</strong></td>
+                        <td>Approved safety can, grounded container</td>
+                        <td>Bonding and grounding, no plastic funnels</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Corrosives</strong></td>
+                        <td>Chemical pump, slow pour with funnel</td>
+                        <td>Splash protection, neutralizer nearby</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Highly Toxic</strong></td>
+                        <td>Closed system, glove box, ventilated enclosure</td>
+                        <td>Double gloves, buddy system, medical surveillance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compressed Gases</strong></td>
+                        <td>Regulator, secured cylinder</td>
+                        <td>Never lubricate, check for leaks</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: Chemical Spill Response -->
+        <div class="module-section">
+            <h2 class="module-title">4. Chemical Spill Response</h2>
+            <div class="module-content">
+                <p>Knowing how to respond to chemical spills can prevent injuries and environmental damage.</p>
+
+                <h3>A. Spill Kit Contents</h3>
+                <div class="spill-kit">
+                    <div class="spill-item">
+                        <strong>Absorbents</strong>
+                        <small>Pads, pillows, universal, oil-only, chemical-specific</small>
+                    </div>
+                    <div class="spill-item">
+                        <strong>Neutralizers</strong>
+                        <small>Acid/base neutralizers, spill control powders</small>
+                    </div>
+                    <div class="spill-item">
+                        <strong>PPE</strong>
+                        <small>Gloves, goggles, aprons, boots</small>
+                    </div>
+                    <div class="spill-item">
+                        <strong>Containment</strong>
+                        <small>Drain covers, booms, berms</small>
+                    </div>
+                    <div class="spill-item">
+                        <strong>Tools</strong>
+                        <small>Scoops, brushes, dustpans, bags</small>
+                    </div>
+                    <div class="spill-item">
+                        <strong>Cleanup</strong>
+                        <small>Disposal bags, labels, wipes</small>
+                    </div>
+                </div>
+
+                <h3>B. Spill Response Procedures</h3>
+                
+                <h4>Small Spill (Incidental):</h4>
+                <ol>
+                    <li>Alert people in area</li>
+                    <li>Don appropriate PPE</li>
+                    <li>Confine/contain spill</li>
+                    <li>Absorb with appropriate material</li>
+                    <li>Collect and dispose as hazardous waste</li>
+                    <li>Decontaminate area</li>
+                </ol>
+
+                <h4>Large Spill (Emergency):</h4>
+                <ol>
+                    <li>Evacuate area immediately</li>
+                    <li>Alert others - pull alarm if necessary</li>
+                    <li>Call for trained responders (emergency number)</li>
+                    <li>Isolate area - close doors</li>
+                    <li>Provide information to responders (chemical, quantity, location)</li>
+                    <li>Do not attempt cleanup without training</li>
+                </ol>
+
+                <h3>C. Chemical Exposure Response</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Exposure Type</th>
+                        <th>Immediate Action</th>
+                        <th>Follow-up</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Skin Contact</strong></td>
+                        <td>Remove contaminated clothing, flush with water 15 minutes</td>
+                        <td>Seek medical attention, provide SDS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eye Contact</strong></td>
+                        <td>Flush at eyewash 15 minutes, hold eyelids open</td>
+                        <td>Emergency medical evaluation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inhalation</strong></td>
+                        <td>Move to fresh air, administer oxygen if trained</td>
+                        <td>Medical evaluation, monitor for delayed effects</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ingestion</strong></td>
+                        <td>Do not induce vomiting unless directed, rinse mouth</td>
+                        <td>Call poison control, provide SDS to medical staff</td>
+                    </tr>
+                </table>
+
+                <div class="danger-box">
+                    <strong>NEVER:</strong> Attempt to clean up a large spill, unknown chemical, or spill in a confined space without proper training and equipment. Evacuate and call for help.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Chemical Waste Management -->
+        <div class="module-section">
+            <h2 class="module-title">5. Chemical Waste Management</h2>
+            <div class="module-content">
+                <p>Proper waste handling protects workers, the public, and the environment while ensuring regulatory compliance.</p>
+
+                <h3>A. Waste Determination</h3>
+                <ul>
+                    <li><strong>Ignitable:</strong> Flash point < 140°F (60°C)</li>
+                    <li><strong>Corrosive:</strong> pH ≤ 2 or ≥ 12.5</li>
+                    <li><strong>Reactive:</strong> Unstable, reacts violently with water, generates toxic gases</li>
+                    <li><strong>Toxic:</strong> Contains specific contaminants above regulatory levels</li>
+                </ul>
+
+                <h3>B. Waste Storage Requirements</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Specification</th>
+                        <th>Reason</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Compatible Containers</strong></td>
+                        <td>Chemical-resistant, no leaks, appropriate material</td>
+                        <td>Prevent container failure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Labeling</strong></td>
+                        <td>"Hazardous Waste", contents, accumulation start date</td>
+                        <td>Identify waste, track time limits</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Closed Containers</strong></td>
+                        <td>Tightly sealed except when adding waste</td>
+                        <td>Prevent evaporation, spills</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secondary Containment</strong></td>
+                        <td>Berms, trays capable of containing leaks</td>
+                        <td>Contain spills</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Incompatible Separation</strong></td>
+                        <td>Separate incompatible wastes (acids/bases, oxidizers/organics)</td>
+                        <td>Prevent reactions</td>
+                    </tr>
+                </table>
+
+                <h3>C. Waste Accumulation Time Limits</h3>
+                <ul>
+                    <li><strong>Large Quantity Generators:</strong> 90 days</li>
+                    <li><strong>Small Quantity Generators:</strong> 180 days</li>
+                    <li><strong>Satellite Accumulation:</strong> 55 gallons at or near point of generation</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Never:</strong> Pour chemicals down drains, evaporate in fume hoods, or mix incompatible wastes. These practices are illegal and dangerous.
+                </div>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Always read SDS before working with chemicals</li>
+                        <li>Use GHS pictograms and NFPA diamonds to identify hazards at a glance</li>
+                        <li>Store incompatible chemicals separately - never alphabetically</li>
+                        <li>Use appropriate PPE based on chemical hazards</li>
+                        <li>Ground and bond flammable liquid transfers</li>
+                        <li>Know your spill response procedures - small vs. large spills</li>
+                        <li>Eyewash and safety shower must be within 10 seconds</li>
+                        <li>Never pour chemicals down drains</li>
+                        <li>Label all waste containers properly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Chemical safety is about respect - respect for the materials we work with and their potential to cause harm. Every chemical, from the most benign to the most hazardous, deserves proper handling, storage, and disposal.</p>
+                
+                <p>The key principles of chemical safety are:</p>
+                <ul>
+                    <li><strong>Know your chemical</strong> - Read the SDS before you start</li>
+                    <li><strong>Respect incompatibilities</strong> - Store chemicals by hazard class, not alphabetically</li>
+                    <li><strong>Use engineering controls</strong> - Fume hoods, ventilation, secondary containment</li>
+                    <li><strong>Wear appropriate PPE</strong> - It's your last line of defense</li>
+                    <li><strong>Have a plan</strong> - Know what to do before a spill occurs</li>
+                </ul>
+                
+                <p>Remember: Complacency is the enemy of chemical safety. The chemical you've handled a hundred times can still hurt you if you let your guard down.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>SDS has 16 sections - know where to find critical information</li>
+                        <li>GHS pictograms provide immediate hazard recognition</li>
+                        <li>NFPA 704 diamond gives emergency response information</li>
+                        <li>Incompatible chemicals must be stored separately</li>
+                        <li>Acids and bases react violently - never store together</li>
+                        <li>Oxidizers and flammables cause fires - keep apart</li>
+                        <li>Always add acid to water, never water to acid</li>
+                        <li>Ground and bond flammable liquid transfers</li>
+                        <li>Eyewash and shower must be within 10 seconds</li>
+                        <li>Small spills you can handle; large spills evacuate</li>
+                        <li>Never pour chemicals down drains</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Chemical Handling & Storage module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="10-ergonomics.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-9';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'How many sections are in a Safety Data Sheet (SDS)?',
+                options: [
+                    '12',
+                    '14',
+                    '16',
+                    '18'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which chemicals should NEVER be stored together?',
+                options: [
+                    'Acids and bases',
+                    'Flammables and water',
+                    'Toxics and corrosives',
+                    'Oxidizers and inerts'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What is the correct way to mix acid and water?',
+                options: [
+                    'Add water to acid slowly',
+                    'Add acid to water slowly',
+                    'Mix simultaneously',
+                    'Order doesn\'t matter'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What does the red section of the NFPA diamond represent?',
+                options: [
+                    'Health hazard',
+                    'Flammability',
+                    'Reactivity',
+                    'Special hazards'
+                ],
+                correct: 1
+            },
+            {
+                question: 'How long should you flush eyes exposed to chemicals?',
+                options: [
+                    '5 minutes',
+                    '10 minutes',
+                    '15 minutes',
+                    '30 minutes'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
