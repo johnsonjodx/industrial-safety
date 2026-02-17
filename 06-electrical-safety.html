@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 6: Electrical Safety</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .electrical-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .electrical-icon {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+
+        .icon-large {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .icon-label {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .arc-flash {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .lockout-tagout-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .loto-step {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid #f44336;
+        }
+
+        .step-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 6: Electrical Safety</h1>
+            <div class="nav-buttons">
+                <a href="05-fire-safety.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="07-machine-guarding.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Electrical Safety Diagram -->
+        <div class="electrical-diagram">
+            <div class="electrical-icon">
+                <div class="icon-large">⚡</div>
+                <div class="icon-label">Voltage</div>
+                <small>Electrical Pressure</small>
+            </div>
+            <div class="electrical-icon">
+                <div class="icon-large">📊</div>
+                <div class="icon-label">Current</div>
+                <small>Flow of Electrons</small>
+            </div>
+            <div class="electrical-icon">
+                <div class="icon-large">🛡️</div>
+                <div class="icon-label">Resistance</div>
+                <small>Opposition to Flow</small>
+            </div>
+            <div class="electrical-icon">
+                <div class="icon-large">🔌</div>
+                <div class="icon-label">Grounding</div>
+                <small>Safe Path</small>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Electrical Safety</h2>
+            <div class="module-content">
+                <p>Electricity is an invisible hazard that we interact with constantly in industrial environments. Unlike physical hazards that can be seen, electrical dangers often give no warning until it's too late. Every year, workplace electrical incidents cause hundreds of fatalities and thousands of severe injuries, including burns, electrocutions, and falls resulting from shocks.</p>
+                
+                <div class="info-box">
+                    <strong>Alarming Statistic:</strong> According to OSHA, electrical hazards cause an average of 350 fatalities and over 2,000 workplace injuries annually in the United States. Most of these incidents are preventable with proper training and precautions.
+                </div>
+
+                <p>Electrical safety encompasses understanding how electricity works, recognizing hazards, using proper protective measures, and knowing emergency procedures. This module will cover the fundamental principles of electrical safety, including the effects of electricity on the human body, common workplace hazards, lockout/tagout procedures, personal protective equipment, and emergency response.</p>
+                
+                <p>Whether you work directly with electrical equipment or simply use electrically powered tools, understanding these principles is essential for your safety and the safety of those around you.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Understanding Electrical Hazards -->
+        <div class="module-section">
+            <h2 class="module-title">1. Understanding Electrical Hazards</h2>
+            <div class="module-content">
+                <p>To protect against electrical hazards, you must first understand how electricity can harm the body and what conditions create risk.</p>
+
+                <h3>A. Effects of Electricity on the Human Body</h3>
+                <p>The severity of electrical shock depends on several factors: current path, voltage, current amount, duration of contact, and individual factors.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Current (mA)</th>
+                        <th>Effect on Human Body</th>
+                        <th>Typical Outcome</th>
+                    </tr>
+                    <tr>
+                        <td><strong>0.5 - 1 mA</strong></td>
+                        <td>Perception threshold</td>
+                        <td>Mild tingling sensation, no injury</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 - 5 mA</strong></td>
+                        <td>Mild shock</td>
+                        <td>Startling but usually safe, can cause falls</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5 - 10 mA</strong></td>
+                        <td>Painful shock</td>
+                        <td>Loss of muscle control possible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10 - 20 mA</strong></td>
+                        <td>"Let-go" range</td>
+                        <td>Muscles contract, may be unable to release grip</td>
+                    </tr>
+                    <tr>
+                        <td><strong>20 - 50 mA</strong></td>
+                        <td>Severe shock</td>
+                        <td>Respiratory paralysis possible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>50 - 100 mA</strong></td>
+                        <td>Ventricular fibrillation</td>
+                        <td>Heart rhythm disrupted, potentially fatal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Over 100 mA</strong></td>
+                        <td>Cardiac arrest</td>
+                        <td>Often fatal without immediate intervention</td>
+                    </tr>
+                </table>
+
+                <h3>B. Primary Electrical Hazards</h3>
+                
+                <h4>1. Electric Shock</h4>
+                <p>Occurs when the body becomes part of the electrical circuit. Severity depends on:</p>
+                <ul>
+                    <li><strong>Current path:</strong> Hand-to-hand or hand-to-foot path crosses the heart, most dangerous</li>
+                    <li><strong>Duration:</strong> Longer contact means more damage</li>
+                    <li><strong>Contact area:</strong> Larger contact area reduces resistance</li>
+                    <li><strong>Moisture:</strong> Wet skin reduces resistance significantly</li>
+                </ul>
+
+                <h4>2. Arc Flash</h4>
+                <div class="arc-flash">
+                    <strong>⚠️ ARC FLASH HAZARD ⚠️</strong>
+                    <p>An arc flash is a dangerous release of energy caused by an electrical arc. Temperatures can reach 35,000°F—hotter than the surface of the sun. Arc flashes can cause:</p>
+                    <ul>
+                        <li>Severe burns (third degree)</li>
+                        <li>Blindness from intense light</li>
+                        <li>Hearing damage from pressure wave</li>
+                        <li>Shrapnel injuries from vaporized metal</li>
+                        <li>Blast pressure that can throw workers</li>
+                    </ul>
+                </div>
+
+                <h4>3. Arc Blast</h4>
+                <p>The explosive expansion of metal and air caused by an arc flash. The blast can:</p>
+                <ul>
+                    <li>Create pressures exceeding 2,000 lbs/sq ft</li>
+                    <li>Throw workers across rooms</li>
+                    <li>Damage hearing permanently</li>
+                    <li>Cause traumatic injuries from debris</li>
+                </ul>
+
+                <h4>4. Fire and Explosion</h4>
+                <p>Electrical faults are a leading cause of industrial fires. Overloaded circuits, damaged insulation, and faulty equipment can ignite surrounding materials.</p>
+
+                <h3>C. Common Electrical Hazards in the Workplace</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Hazard</th>
+                        <th>Description</th>
+                        <th>Typical Locations</th>
+                        <th>Prevention</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Damaged Cords</strong></td>
+                        <td>Frayed, cut, or pinched insulation exposing conductors</td>
+                        <td>High-traffic areas, near machinery</td>
+                        <td>Regular inspection, replace damaged cords</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Overloaded Circuits</strong></td>
+                        <td>Too many devices on one circuit, exceeding ampacity</td>
+                        <td>Offices, break rooms, temporary power</td>
+                        <td>Load calculations, avoid daisy-chaining</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wet Conditions</strong></td>
+                        <td>Water or moisture near electrical equipment</td>
+                        <td>Outdoors, washdown areas, leaks</td>
+                        <td>GFCI protection, watertight enclosures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Improper Grounding</strong></td>
+                        <td>Missing or defective ground path</td>
+                        <td>Older buildings, temporary wiring</td>
+                        <td>Ground fault protection, verify grounding</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exposed Live Parts</strong></td>
+                        <td>Removed covers, open panels, missing insulation</td>
+                        <td>Electrical rooms, maintenance areas</td>
+                        <td>Keep covers in place, lock panels</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Improper Use of Equipment</strong></td>
+                        <td>Using equipment beyond rating, bypassing guards</td>
+                        <td>Throughout facility</td>
+                        <td>Training, proper equipment selection</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Lockout/Tagout (LOTO) Procedures -->
+        <div class="module-section">
+            <h2 class="module-title">2. Lockout/Tagout (LOTO) Procedures</h2>
+            <div class="module-content">
+                <p>Lockout/Tagout (LOTO) refers to procedures used to ensure that dangerous machines are properly shut off and cannot be started again before maintenance or service work is completed. Failure to control hazardous energy accounts for approximately 10% of serious accidents in many industries.</p>
+
+                <div class="warning-box">
+                    <strong>OSHA Standard 1910.147:</strong> The Control of Hazardous Energy (Lockout/Tagout) standard requires employers to establish programs and procedures for affixing appropriate lockout devices or tagout devices to energy-isolating devices, and to otherwise disable machines or equipment to prevent unexpected energization.
+                </div>
+
+                <h3>A. The 8-Step Lockout/Tagout Procedure</h3>
+                
+                <div class="lockout-tagout-steps">
+                    <div class="loto-step">
+                        <div class="step-number">1</div>
+                        <strong>NOTIFY</strong>
+                        <small>Notify affected employees</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">2</div>
+                        <strong>SHUT DOWN</strong>
+                        <small>Shut down equipment normally</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">3</div>
+                        <strong>ISOLATE</strong>
+                        <small>Isolate all energy sources</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">4</div>
+                        <strong>LOCK & TAG</strong>
+                        <small>Apply locks and tags</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">5</div>
+                        <strong>RELEASE</strong>
+                        <small>Release stored energy</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">6</div>
+                        <strong>VERIFY</strong>
+                        <small>Verify isolation</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">7</div>
+                        <strong>PERFORM</strong>
+                        <small>Perform maintenance</small>
+                    </div>
+                    <div class="loto-step">
+                        <div class="step-number">8</div>
+                        <strong>REMOVE</strong>
+                        <small>Remove locks, restore energy</small>
+                    </div>
+                </div>
+
+                <h4>Detailed LOTO Steps:</h4>
+                <ol>
+                    <li><strong>NOTIFY all affected employees</strong> that maintenance will be performed and equipment will be shut down.</li>
+                    <li><strong>SHUT DOWN the equipment</strong> using normal stopping procedures.</li>
+                    <li><strong>ISOLATE the equipment</strong> from all energy sources (electrical, mechanical, hydraulic, pneumatic, chemical, thermal, etc.).</li>
+                    <li><strong>APPLY lockout/tagout devices</strong> to each energy-isolating device. Each authorized employee applies their personal lock.</li>
+                    <li><strong>RELEASE or block stored energy</strong> (capacitors, springs, elevated parts, pressurized fluids).</li>
+                    <li><strong>VERIFY isolation</strong> by attempting to start the equipment (with operator in safe position). Test for voltage, pressure, etc.</li>
+                    <li><strong>PERFORM the maintenance</strong> or service work.</li>
+                    <li><strong>REMOVE lockout/tagout devices</strong> after inspecting the area, ensuring all employees are clear, and notifying affected employees.</li>
+                </ol>
+
+                <h3>B. Types of Hazardous Energy</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Energy Type</th>
+                        <th>Examples</th>
+                        <th>Isolation Method</th>
+                        <th>Stored Energy Consideration</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrical</strong></td>
+                        <td>Power lines, batteries, capacitors, generators</td>
+                        <td>Circuit breakers, disconnects, pull fuses</td>
+                        <td>Capacitors can store charge after disconnection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mechanical</strong></td>
+                        <td>Rotating parts, flywheels, moving mechanisms</td>
+                        <td>Block, chock, disengage</td>
+                        <td>Inertia keeps parts moving after power off</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hydraulic</strong></td>
+                        <td>Pressurized fluids, cylinders, accumulators</td>
+                        <td>Valve isolation, bleed lines</td>
+                        <td>Accumulators store pressurized fluid</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pneumatic</strong></td>
+                        <td>Compressed air systems, actuators</td>
+                        <td>Valve isolation, bleed pressure</td>
+                        <td>Tanks and lines hold pressure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical</strong></td>
+                        <td>Pressurized or hazardous materials</td>
+                        <td>Valve isolation, purge lines</td>
+                        <td>Residual chemicals in pipes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thermal</strong></td>
+                        <td>Hot surfaces, cryogenic liquids</td>
+                        <td>Allow cooling/warming, PPE</td>
+                        <td>Heat remains after shutdown</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gravity</strong></td>
+                        <td>Elevated parts, suspended loads</td>
+                        <td>Block, support, lower</td>
+                        <td>Potential energy from height</td>
+                    </tr>
+                </table>
+
+                <h3>C. Lockout Devices and Tags</h3>
+                <ul>
+                    <li><strong>Locks:</strong> Each authorized employee has their own lock with unique key. No master keys that bypass individual locks.</li>
+                    <li><strong>Tags:</strong> Warn that equipment cannot be operated. Must be durable, standardized, and include warning.</li>
+                    <li><strong>Group Lockout:</strong> Multiple employees use a hasp to attach multiple locks to one isolation point.</li>
+                    <li><strong>Shift Changes:</strong> Formal procedures for transferring locks between shifts.</li>
+                </ul>
+
+                <div class="danger-box">
+                    <strong>NEVER:</strong> Remove someone else's lock, attempt to operate locked-out equipment, or bypass LOTO procedures. These actions cause deaths every year.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Electrical PPE and Safe Work Practices -->
+        <div class="module-section">
+            <h2 class="module-title">3. Electrical PPE and Safe Work Practices</h2>
+            <div class="module-content">
+                <p>When working on or near electrical equipment, appropriate personal protective equipment and safe practices are essential.</p>
+
+                <h3>A. Electrical PPE Requirements</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>PPE Type</th>
+                        <th>Protection</th>
+                        <th>Requirements</th>
+                        <th>Standards</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Insulated Gloves</strong></td>
+                        <td>Shock protection</td>
+                        <td>Class rated by voltage, air tested before use</td>
+                        <td>ASTM D120, OSHA 1910.137</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Arc-Rated Clothing</strong></td>
+                        <td>Arc flash protection</td>
+                        <td>FR clothing with arc rating (ATPV or EBT)</td>
+                        <td>NFPA 70E, ASTM F1506</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Face Shields</strong></td>
+                        <td>Arc flash, flying debris</td>
+                        <td>Arc-rated face shield with hood for high energy</td>
+                        <td>NFPA 70E</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Glasses</strong></td>
+                        <td>Impact, debris</td>
+                        <td>Z87 rated, side shields</td>
+                        <td>ANSI Z87.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insulated Tools</strong></td>
+                        <td>Shock protection</td>
+                        <td>Rated for voltage, regularly inspected</td>
+                        <td>ASTM F1505, IEC 60900</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dielectric Footwear</strong></td>
+                        <td>Insulation from ground</td>
+                        <td>EH rated, no conductive parts</td>
+                        <td>ASTM F2413</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voltage Detectors</strong></td>
+                        <td>Verify absence of voltage</td>
+                        <td>Tested before and after use</td>
+                        <td>NFPA 70E</td>
+                    </tr>
+                </table>
+
+                <h4>Glove Classes by Voltage:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Class</th>
+                        <th>Maximum Use Voltage (AC)</th>
+                        <th>Maximum Use Voltage (DC)</th>
+                        <th>Typical Application</th>
+                    </tr>
+                    <tr>
+                        <td><strong>00</strong></td>
+                        <td>500 V</td>
+                        <td>750 V</td>
+                        <td>Low voltage, electronics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>0</strong></td>
+                        <td>1,000 V</td>
+                        <td>1,500 V</td>
+                        <td>General industrial, 480V systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>7,500 V</td>
+                        <td>11,250 V</td>
+                        <td>Medium voltage switchgear</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>17,000 V</td>
+                        <td>25,500 V</td>
+                        <td>High voltage distribution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>26,500 V</td>
+                        <td>39,750 V</td>
+                        <td>Utility, transmission</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>36,000 V</td>
+                        <td>54,000 V</td>
+                        <td>Extra high voltage</td>
+                    </tr>
+                </table>
+
+                <h3>B. Safe Work Practices</h3>
+                
+                <h4>Before Starting Work:</h4>
+                <ul>
+                    <li>Perform hazard assessment</li>
+                    <li>Establish an electrically safe work condition</li>
+                    <li>Verify absence of voltage with tested tester</li>
+                    <li>Apply lockout/tagout</li>
+                    <li>Establish approach boundaries</li>
+                </ul>
+
+                <h4>NFPA 70E Approach Boundaries:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Boundary</th>
+                        <th>Definition</th>
+                        <th>Requirement</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Limited Approach</strong></td>
+                        <td>Distance from exposed live parts where shock hazard exists</td>
+                        <td>Qualified persons only, unqualified must be escorted</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Restricted Approach</strong></td>
+                        <td>Distance where increased risk of shock exists</td>
+                        <td>Qualified persons only, appropriate PPE required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prohibited Approach</strong></td>
+                        <td>Distance considered same as contact with live part</td>
+                        <td>Must treat as energized, full PPE, specific work plan</td>
+                    </tr>
+                </table>
+
+                <h3>C. Ground Fault Circuit Interrupters (GFCIs)</h3>
+                <p>GFCIs protect against ground faults by quickly cutting power when imbalance is detected. They are required for:</p>
+                <ul>
+                    <li>All 15A and 20A, 125V receptacles in bathrooms, rooftops, outdoors</li>
+                    <li>Construction sites (all temporary wiring)</li>
+                    <li>Wet or damp locations</li>
+                    <li>Anywhere water may be present</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>GFCI Response Time:</strong> GFCIs trip in as little as 1/40th of a second when they detect a ground fault as low as 4-6 milliamps, fast enough to prevent electrocution.
+                </div>
+
+                <h3>D. Extension Cord Safety</h3>
+                <ul>
+                    <li>Never use cords with damaged insulation</li>
+                    <li>Don't run cords through walls, ceilings, or floors</li>
+                    <li>Don't fasten cords with staples or hang from nails</li>
+                    <li>Use correct gauge for load (longer runs need heavier wire)</li>
+                    <li>Never use indoor cords outdoors</li>
+                    <li>Don't overload cords or daisy-chain power strips</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4: Emergency Response for Electrical Incidents -->
+        <div class="module-section">
+            <h2 class="module-title">4. Emergency Response for Electrical Incidents</h2>
+            <div class="module-content">
+                <p>Knowing how to respond to electrical emergencies can save lives. The wrong response can make the situation worse.</p>
+
+                <h3>A. Electrical Shock Emergency</h3>
+                
+                <h4>DO:</h4>
+                <ol>
+                    <li><strong>Turn off power</strong> if possible (circuit breaker, disconnect switch)</li>
+                    <li><strong>Call for emergency medical help</strong> (911) immediately</li>
+                    <li><strong>If power cannot be turned off, use non-conductive material</strong> (wooden broom, dry rope, rubber mat) to separate victim from source</li>
+                    <li><strong>Check for breathing and pulse</strong> once victim is clear</li>
+                    <li><strong>Begin CPR</strong> if trained and victim is unresponsive/not breathing</li>
+                    <li><strong>Treat burns</strong> with cool water and sterile dressings</li>
+                </ol>
+
+                <h4>DON'T:</h4>
+                <ul>
+                    <li>Touch victim while still in contact with power source</li>
+                    <li>Use anything conductive (metal, wet items) to move victim</li>
+                    <li>Delay calling for help</li>
+                    <li>Apply ice directly to burns</li>
+                </ul>
+
+                <div class="danger-box">
+                    <strong>REMEMBER:</strong> The rescuer's safety comes first. Don't become a second victim. Ensure power is off or victim is clear before touching.
+                </div>
+
+                <h3>B. Arc Flash Emergency</h3>
+                <ul>
+                    <li>Call for emergency medical help immediately</li>
+                    <li>If victim is on fire, use stop-drop-roll or fire blanket</li>
+                    <li>Cool burns with cool (not cold) running water for 10-15 minutes</li>
+                    <li>Cover burns with clean, dry cloth</li>
+                    <li>Watch for signs of shock (pale, clammy, rapid pulse)</li>
+                    <li>Do not remove clothing stuck to burns</li>
+                    <li>Do not apply ointments or creams</li>
+                </ul>
+
+                <h3>C. Electrical Fire Response</h3>
+                <ul>
+                    <li>First priority: de-energize if possible and safe</li>
+                    <li>Use only Class C fire extinguishers (CO2 or dry chemical)</li>
+                    <li>NEVER use water on electrical fires</li>
+                    <li>If fire is large, evacuate and call fire department</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Electricity is an invisible hazard - treat all circuits as live until verified de-energized</li>
+                        <li>Lockout/Tagout is required by law and saves lives</li>
+                        <li>Use proper PPE rated for the voltage and arc flash potential</li>
+                        <li>GFCIs prevent electrocution in wet locations</li>
+                        <li>Never touch shock victims until power is off</li>
+                        <li>Only Class C extinguishers on electrical fires</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Electrical safety is not just about following rules—it's about understanding that electricity demands respect. The invisible nature of electrical hazards makes them particularly dangerous because there's often no warning before a catastrophic incident.</p>
+                
+                <p>The key principles of electrical safety are:</p>
+                <ul>
+                    <li><strong>Treat everything as live</strong> until verified de-energized</li>
+                    <li><strong>Lockout/Tagout is non-negotiable</strong> - it's the law and it saves lives</li>
+                    <li><strong>Use the right PPE</strong> for the voltage and arc flash hazard</li>
+                    <li><strong>Know your boundaries</strong> - stay outside the limited approach boundary unless qualified</li>
+                    <li><strong>GFCIs are life-savers</strong> - use them in wet locations</li>
+                    <li><strong>Never be a second victim</strong> - ensure power is off before rescuing</li>
+                </ul>
+                
+                <p>Remember: There's no such thing as a minor electrical incident. Even "small" shocks can cause falls, heart rhythm disturbances, or delayed effects. Prevention is always better than response.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Current as low as 50 mA can cause ventricular fibrillation</li>
+                        <li>Arc flashes reach 35,000°F - hotter than the sun's surface</li>
+                        <li>Lockout/Tagout requires 8 specific steps</li>
+                        <li>Five main energy types: electrical, mechanical, hydraulic, pneumatic, chemical</li>
+                        <li>Glove classes (00-4) determine maximum use voltage</li>
+                        <li>NFPA 70E defines approach boundaries: Limited, Restricted, Prohibited</li>
+                        <li>Never touch a shock victim until power is secured</li>
+                        <li>Only Class C extinguishers on electrical fires</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Electrical Safety module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="07-machine-guarding.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-6';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What current range can cause ventricular fibrillation?',
+                options: [
+                    '1-5 mA',
+                    '5-10 mA',
+                    '10-20 mA',
+                    '50-100 mA'
+                ],
+                correct: 3
+            },
+            {
+                question: 'What is the first step in the Lockout/Tagout procedure?',
+                options: [
+                    'Isolate energy sources',
+                    'Apply lock and tag',
+                    'Notify affected employees',
+                    'Verify isolation'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What temperature can an arc flash reach?',
+                options: [
+                    '5,000°F',
+                    '15,000°F',
+                    '35,000°F',
+                    '50,000°F'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which class of glove is rated for up to 1,000 volts?',
+                options: [
+                    'Class 00',
+                    'Class 0',
+                    'Class 1',
+                    'Class 2'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What type of fire extinguisher should be used on electrical fires?',
+                options: [
+                    'Class A (Water)',
+                    'Class B (Foam)',
+                    'Class C (CO2 or Dry Chemical)',
+                    'Class K (Wet Chemical)'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
