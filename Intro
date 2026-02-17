@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 1: Introduction to Industrial Safety</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 1: Introduction to Industrial Safety</h1>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="topic-core-2.html" class="nav-btn">Next Topic →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction</h2>
+            <div class="module-content">
+                <p>Industrial safety is a critical discipline that focuses on the prevention of accidents, injuries, and occupational illnesses in workplace environments. It encompasses a wide range of practices, policies, and procedures designed to protect workers, equipment, and the environment from harm. The importance of industrial safety cannot be overstated - according to the International Labour Organization, approximately 2.78 million workers die each year from occupational accidents and work-related diseases, with an additional 374 million non-fatal injuries annually.</p>
+                
+                <div class="info-box">
+                    <strong>Did You Know?</strong> Companies with strong safety cultures experience up to 80% fewer accidents and save an average of $40,000 per incident in direct and indirect costs.
+                </div>
+
+                <p>The evolution of industrial safety has come a long way from the early days of the Industrial Revolution when workplace injuries were considered an acceptable cost of doing business. Today, safety is recognized as a fundamental right of every worker and a key component of operational excellence. Modern industrial safety programs are built on the understanding that all accidents are preventable and that safety should be integrated into every aspect of work, from design to execution.</p>
+                
+                <p>The financial impact of workplace injuries extends beyond direct medical costs. Companies face indirect costs such as production downtime, equipment damage, training replacement workers, and increased insurance premiums. The moral imperative to protect human life, combined with the economic benefits, makes industrial safety a win-win investment for any organization.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: The Pillars of Industrial Safety -->
+        <div class="module-section">
+            <h2 class="module-title">1. The Pillars of Industrial Safety</h2>
+            <div class="module-content">
+                <p>Industrial safety rests on three fundamental pillars that work together to create a comprehensive safety system. Understanding these pillars is essential for developing effective safety programs.</p>
+
+                <h3>A. Engineering Controls</h3>
+                <p>Engineering controls are physical modifications to facilities, equipment, or processes that reduce or eliminate hazards. These are considered the most effective type of control because they protect workers without requiring active participation. When properly designed and implemented, engineering controls work automatically to keep workers safe.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Control Type</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Effectiveness</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Elimination</strong></td>
+                        <td>Remove the hazard completely from the workplace</td>
+                        <td>• Eliminating a hazardous chemical from a process<br>• Removing a dangerous machine</td>
+                        <td>Highest (100% effective)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Substitution</strong></td>
+                        <td>Replace a hazardous substance or process with a safer alternative</td>
+                        <td>• Using water-based instead of solvent-based paints<br>• Replacing asbestos insulation with fiberglass</td>
+                        <td>Very High (80-95% effective)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Engineering Controls</strong></td>
+                        <td>Physical changes that isolate workers from hazards</td>
+                        <td>• Machine guards<br>• Ventilation systems<br>• Noise enclosures</td>
+                        <td>High (70-90% effective)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Administrative Controls</strong></td>
+                        <td>Changes in work procedures and policies</td>
+                        <td>• Safety training<br>• Job rotation<br>• Warning signs</td>
+                        <td>Medium (40-60% effective)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Personal Protective Equipment</strong></td>
+                        <td>Equipment worn by workers to protect against hazards</td>
+                        <td>• Hard hats<br>• Safety glasses<br>• Respirators</td>
+                        <td>Lowest (20-50% effective)</td>
+                    </tr>
+                </table>
+
+                <h3>B. Administrative Controls</h3>
+                <p>Administrative controls involve changes in how people work, including safety procedures, training, warning signs, and work scheduling. While less effective than engineering controls because they rely on human behavior, they are essential for addressing hazards that cannot be engineered away. Key administrative controls include:</p>
+                
+                <ul>
+                    <li><strong>Standard Operating Procedures (SOPs):</strong> Written instructions for safe task performance</li>
+                    <li><strong>Safety Training Programs:</strong> Initial and refresher training on hazard recognition and safe practices</li>
+                    <li><strong>Job Rotation:</strong> Rotating workers through different tasks to reduce repetitive strain and exposure duration</li>
+                    <li><strong>Lockout/Tagout Procedures:</strong> Systematic control of hazardous energy during maintenance</li>
+                    <li><strong>Permit Systems:</strong> Formal authorization for high-risk activities like hot work or confined space entry</li>
+                </ul>
+
+                <h3>C. Safety Culture and Human Factors</h3>
+                <p>Safety culture refers to the shared values, beliefs, and practices regarding safety within an organization. A positive safety culture is characterized by:</p>
+                
+                <ul>
+                    <li><strong>Leadership Commitment:</strong> Management demonstrates visible commitment to safety through actions, resource allocation, and personal involvement</li>
+                    <li><strong>Employee Involvement:</strong> Workers at all levels participate in safety decisions and feel empowered to report hazards without fear</li>
+                    <li><strong>Open Communication:</strong> Safety concerns can be raised and discussed freely</li>
+                    <li><strong>Continuous Learning:</strong> Accidents and near-misses are investigated to prevent recurrence</li>
+                    <li><strong>Accountability:</strong> Everyone understands their safety responsibilities</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaway:</h4>
+                    <p>The most effective safety programs use a combination of all three pillars, with engineering controls as the foundation, administrative controls as support, and a strong safety culture as the binding element that ensures everything works together effectively.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Safety Regulations and Standards -->
+        <div class="module-section">
+            <h2 class="module-title">2. Safety Regulations and Standards</h2>
+            <div class="module-content">
+                <p>The regulatory framework for industrial safety provides the legal backbone for workplace protection. Understanding these regulations is essential for compliance and for building effective safety programs.</p>
+
+                <h3>A. OSHA (Occupational Safety and Health Administration)</h3>
+                <p>Created in 1970 under the Occupational Safety and Health Act, OSHA's mission is to "assure safe and healthful working conditions for working men and women." Key OSHA standards include:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Standard</th>
+                        <th>Number</th>
+                        <th>Description</th>
+                        <th>Application</th>
+                    </tr>
+                    <tr>
+                        <td>General Industry</td>
+                        <td>29 CFR 1910</td>
+                        <td>Covers most workplace safety requirements</td>
+                        <td>Manufacturing, warehouses, offices</td>
+                    </tr>
+                    <tr>
+                        <td>Construction</td>
+                        <td>29 CFR 1926</td>
+                        <td>Specific requirements for construction sites</td>
+                        <td>Building, renovation, demolition</td>
+                    </tr>
+                    <tr>
+                        <td>Hazard Communication</td>
+                        <td>1910.1200</td>
+                        <td>Chemical labeling, Safety Data Sheets, training</td>
+                        <td>Any workplace with chemicals</td>
+                    </tr>
+                    <tr>
+                        <td>Lockout/Tagout</td>
+                        <td>1910.147</td>
+                        <td>Control of hazardous energy</td>
+                        <td>Maintenance activities</td>
+                    </tr>
+                    <tr>
+                        <td>Confined Spaces</td>
+                        <td>1910.146</td>
+                        <td>Entry requirements for confined spaces</td>
+                        <td>Tanks, vessels, pits</td>
+                    </tr>
+                    <tr>
+                        <td>Respiratory Protection</td>
+                        <td>1910.134</td>
+                        <td>Selection, fit testing, and use of respirators</td>
+                        <td>Workplaces with airborne hazards</td>
+                    </tr>
+                </table>
+
+                <h3>B. International Standards</h3>
+                <p>Beyond OSHA, other important standards and organizations include:</p>
+                
+                <ul>
+                    <li><strong>ISO 45001:</strong> International standard for occupational health and safety management systems</li>
+                    <li><strong>ILO (International Labour Organization):</strong> Sets global labor standards and provides guidance</li>
+                    <li><strong>EU Directives:</strong> Framework Directive 89/391/EEC and specific directives for various hazards</li>
+                    <li><strong>National Standards:</strong> HSE in UK, Safe Work Australia, CSA in Canada</li>
+                </ul>
+
+                <h3>C. Industry-Specific Standards</h3>
+                <p>Many industries have additional specific standards:</p>
+                
+                <ul>
+                    <li><strong>ANSI (American National Standards Institute):</strong> Consensus standards for equipment and practices</li>
+                    <li><strong>NFPA (National Fire Protection Association):</strong> Fire and electrical safety standards</li>
+                    <li><strong>API (American Petroleum Institute):</strong> Standards for oil and gas industry</li>
+                    <li><strong>ASME (American Society of Mechanical Engineers):</strong> Boiler and pressure vessel safety</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Important Note:</strong> Compliance with regulations is the minimum acceptable standard. World-class safety programs go beyond compliance to achieve excellence through continuous improvement and best practices.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Safety Management Systems -->
+        <div class="module-section">
+            <h2 class="module-title">3. Safety Management Systems and Continuous Improvement</h2>
+            <div class="module-content">
+                <p>A safety management system provides the framework for systematically managing safety risks and continuously improving performance. The most widely adopted model is based on the Plan-Do-Check-Act (PDCA) cycle.</p>
+
+                <h3>A. The PDCA Cycle in Safety Management</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Phase</th>
+                        <th>Activities</th>
+                        <th>Outcomes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>PLAN</strong></td>
+                        <td>
+                            • Hazard identification<br>
+                            • Risk assessment<br>
+                            • Set safety objectives<br>
+                            • Develop procedures<br>
+                            • Allocate resources
+                        </td>
+                        <td>
+                            • Risk register<br>
+                            • Safety policies<br>
+                            • Training plans<br>
+                            • Emergency plans
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>DO</strong></td>
+                        <td>
+                            • Implement controls<br>
+                            • Conduct training<br>
+                            • Communicate procedures<br>
+                            • Operate safely
+                        </td>
+                        <td>
+                            • Trained workers<br>
+                            • Installed controls<br>
+                            • Safety communications<br>
+                            • Safe operations
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>CHECK</strong></td>
+                        <td>
+                            • Inspections<br>
+                            • Audits<br>
+                            • Incident investigations<br>
+                            • Monitor leading indicators
+                        </td>
+                        <td>
+                            • Inspection reports<br>
+                            • Audit findings<br>
+                            • Incident data<br>
+                            • Performance metrics
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>ACT</strong></td>
+                        <td>
+                            • Corrective actions<br>
+                            • Preventive actions<br>
+                            • Update procedures<br>
+                            • Management review
+                        </td>
+                        <td>
+                            • Implemented improvements<br>
+                            • Updated systems<br>
+                            • Lessons learned<br>
+                            • Continuous improvement
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>B. Leading vs. Lagging Indicators</h3>
+                <p>Effective safety management uses both types of indicators:</p>
+                
+                <ul>
+                    <li><strong>Lagging Indicators (Reactive):</strong> Measure past performance
+                        <ul>
+                            <li>Total Recordable Incident Rate (TRIR)</li>
+                            <li>Lost Time Injury Frequency (LTIF)</li>
+                            <li>Days Away, Restricted, or Transferred (DART) rate</li>
+                            <li>Workers' compensation costs</li>
+                        </ul>
+                    </li>
+                    <li><strong>Leading Indicators (Proactive):</strong> Predict future performance
+                        <ul>
+                            <li>Safety training completion rates</li>
+                            <li>Number of hazard reports submitted</li>
+                            <li>Safety meeting attendance</li>
+                            <li>Preventive maintenance completion</li>
+                            <li>Near-miss reporting rates</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Best Practice:</strong> World-class safety programs focus heavily on leading indicators. By measuring and managing proactive safety activities, they prevent incidents before they occur.
+                </div>
+
+                <h3>C. Building a Safety Culture</h3>
+                <p>Safety culture evolves through several stages:</p>
+                
+                <ol>
+                    <li><strong>Pathological:</strong> "Who cares as long as we're not caught"</li>
+                    <li><strong>Reactive:</strong> "Safety is important - we do a lot every time we have an accident"</li>
+                    <li><strong>Calculative:</strong> "We have systems in place to manage all hazards"</li>
+                    <li><strong>Proactive:</strong> "We work on problems that we still find"</li>
+                    <li><strong>Generative:</strong> "Safety is how we do business around here"</li>
+                </ol>
+
+                <p>Moving through these stages requires sustained effort, leadership commitment, and genuine employee engagement. Organizations with generative safety cultures have significantly better safety performance and often outperform their competitors in other business metrics as well.</p>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Industrial safety is not a destination but a journey of continuous improvement. The foundations laid in this introduction - understanding the pillars of safety, regulatory requirements, and safety management systems - provide the framework for all subsequent learning. As we progress through more specific topics, remember that every safety principle ultimately serves the same goal: ensuring that every worker returns home safely at the end of each day.</p>
+                
+                <p>The most successful safety programs recognize that safety is not separate from production but integral to it. When safety is viewed as a value rather than a priority, it becomes non-negotiable and embedded in every decision and action. This mindset shift, from compliance to commitment, from cost to investment, and from requirement to value, is what distinguishes truly safe organizations.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Industrial safety protects workers, reduces costs, and improves productivity</li>
+                        <li>The hierarchy of controls guides effective hazard management (Elimination → Substitution → Engineering → Administrative → PPE)</li>
+                        <li>Regulatory compliance is the foundation, not the ceiling - world-class safety goes beyond compliance</li>
+                        <li>Safety management systems using the PDCA cycle enable continuous improvement</li>
+                        <li>Both leading and lagging indicators are needed for comprehensive safety measurement</li>
+                        <li>Safety culture determines the success of safety programs - it must be actively developed</li>
+                        <li>Continuous improvement is essential for sustained safety performance</li>
+                    </ul>
+                </div>
+
+                <p>Now that you've completed the learning material, test your understanding with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed this module. You can proceed to the next topic or review the material.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="topic-core-2.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-1';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What is the most effective control in the hierarchy of controls?',
+                options: [
+                    'Personal Protective Equipment',
+                    'Engineering Controls',
+                    'Elimination',
+                    'Administrative Controls'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which OSHA standard covers Hazard Communication?',
+                options: [
+                    '1910.147 (Lockout/Tagout)',
+                    '1910.1200 (Hazard Communication)',
+                    '1910.146 (Confined Spaces)',
+                    '1910.134 (Respiratory Protection)'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What are leading indicators in safety management?',
+                options: [
+                    'Measures of past incidents like injury rates',
+                    'Proactive measures that predict future performance',
+                    'Workers\' compensation costs',
+                    'Lost time injury frequency'
+                ],
+                correct: 1
+            },
+            {
+                question: 'According to ILO, approximately how many workers die annually from occupational accidents?',
+                options: [
+                    '278,000',
+                    '2.78 million',
+                    '27.8 million',
+                    '278 million'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What characterizes a generative safety culture?',
+                options: [
+                    'Safety is managed only after accidents',
+                    'Safety is how we do business around here',
+                    'Safety is just for compliance',
+                    'Safety is someone else\'s responsibility'
+                ],
+                correct: 1
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+            // Trigger storage event for main page
+            window.opener?.localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
