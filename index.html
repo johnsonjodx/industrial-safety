@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Safety Learning Hub - Main Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+            position: relative;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .overall-progress {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid #764ba2;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .topic-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(118, 75, 162, 0.2);
+            border-color: #764ba2;
+        }
+
+        .topic-card.completed {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-color: #4CAF50;
+        }
+
+        .topic-card.completed::before {
+            background: #4CAF50;
+            transform: scaleX(1);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .topic-number {
+            background: #764ba2;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .topic-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .topic-category {
+            background: #f0f0f0;
+            color: #666;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .topic-duration {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .topic-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .topic-progress {
+            margin: 15px 0;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .topic-progress-bar {
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .topic-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .topic-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .completion-badge {
+            color: #4CAF50;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Certificate Section */
+        .certificate-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .certificate-title {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .certificate-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .certificate-preview.show {
+            display: block;
+        }
+
+        .certificate-content {
+            border: 15px solid gold;
+            padding: 40px;
+            background: white;
+        }
+
+        .cert-logo {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .cert-title {
+            font-size: 2.5em;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .cert-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            border-top: 2px solid gold;
+            border-bottom: 2px solid gold;
+            padding: 10px 30px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .cert-name {
+            font-size: 2.8em;
+            color: #333;
+            margin: 30px 0;
+            padding: 20px;
+            border-bottom: 3px dashed gold;
+            border-top: 3px dashed gold;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .completed-list {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .completed-list h3 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .completed-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .completed-item {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .completed-item strong {
+            color: #764ba2;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .completed-item small {
+            color: #666;
+        }
+
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid gold;
+        }
+
+        .signature-box {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 250px;
+            height: 2px;
+            background: #333;
+            margin: 10px 0;
+        }
+
+        .creative-signature {
+            font-family: 'Brush Script MT', ' cursive', 'Lucida Handwriting', 'cursive';
+            font-size: 2.2em;
+            color: #764ba2;
+            margin: 5px 0;
+            transform: rotate(-2deg);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .signature-title {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .cert-date {
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+
+        .certificate-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .cert-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cert-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .cert-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .view-cert-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .reset-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .reset-btn:hover {
+            background: #ff6b81;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cert-footer {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .signature-line {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Industrial Safety Learning Hub</h1>
+            <div class="subtitle">Professional Industrial Safety Education Platform</div>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number" id="totalTopics">21</div>
+                <div class="stat-label">Total Topics</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="completedTopics">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="totalHours">0</div>
+                <div class="stat-label">Learning Hours</div>
+            </div>
+        </div>
+
+        <div class="overall-progress">
+            <h3>📊 Overall Learning Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="overallProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <div id="topicsContainer"></div>
+
+        <!-- Certificate Section -->
+        <div class="certificate-section">
+            <h2 class="certificate-title">🏆 Certificate of Completion</h2>
+            <p>View your certificate anytime - it shows all topics you've completed</p>
+            
+            <div class="certificate-buttons">
+                <button class="cert-btn" onclick="showCertificate()">🎓 View My Certificate</button>
+                <button class="cert-btn view-cert-btn" onclick="hideCertificate()" id="hideCertBtn" style="display: none;">📋 Hide Certificate</button>
+            </div>
+            
+            <!-- Certificate Preview -->
+            <div class="certificate-preview" id="certificatePreview">
+                <div class="certificate-content">
+                    <div style="text-align: center;">
+                        <div class="cert-logo">🏭</div>
+                        <div class="cert-title">Industrial Safety Institute</div>
+                        <div class="cert-subtitle">Certificate of Completion</div>
+                    </div>
+
+                    <div style="text-align: center; margin: 30px 0;">
+                        <div style="font-size: 1.2em; color: #666;">This is to certify that</div>
+                        <div class="cert-name" id="userName">[Your Name]</div>
+                        <div style="font-size: 1.2em; color: #555; margin: 20px 0;">
+                            has successfully completed the following topics in the<br>
+                            <strong>Industrial Safety Professional Development Program</strong>
+                        </div>
+                    </div>
+
+                    <!-- Completed Topics List -->
+                    <div class="completed-list">
+                        <h3>📋 Completed Topics</h3>
+                        <div class="completed-items" id="completedTopicsList"></div>
+                    </div>
+
+                    <div class="cert-date" id="completionDate">
+                        Completion Date: <span></span>
+                    </div>
+
+                    <div class="cert-footer">
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            <div class="creative-signature">Johnson Ruhiu</div>
+                            <div class="signature-title">Director of Safety</div>
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            <div style="font-family: 'Brush Script MT', cursive; font-size: 2em; color: #666; margin: 5px 0;">Training Team</div>
+                            <div class="signature-title">Training Coordinator</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="reset-btn" onclick="resetProgress()">🔄 Reset All Progress</button>
+        </div>
+    </div>
+
+    <script>
+        // Topics data with your exact filenames
+        const categories = {
+            'Core Safety Units': [
+                { num: '01', id: 'core-1', title: 'Introduction to Industrial Safety', file: '01-intro-industrial-safety.html', duration: 30 },
+                { num: '02', id: 'core-2', title: 'Hazard Identification & Risk Assessment', file: '02-hazard-identification.html', duration: 30 },
+                { num: '03', id: 'core-3', title: 'Personal Protective Equipment (PPE)', file: '03-personal-protective-equipment.html', duration: 30 },
+                { num: '04', id: 'core-4', title: 'Emergency Response Procedures', file: '04-emergency-response.html', duration: 30 },
+                { num: '05', id: 'core-5', title: 'Fire Safety & Prevention', file: '05-fire-safety.html', duration: 30 },
+                { num: '06', id: 'core-6', title: 'Electrical Safety', file: '06-electrical-safety.html', duration: 30 },
+                { num: '07', id: 'core-7', title: 'Machine Guarding & Equipment Safety', file: '07-machine-guarding.html', duration: 30 },
+                { num: '08', id: 'core-8', title: 'Confined Space Entry', file: '08-confined-space.html', duration: 30 },
+                { num: '09', id: 'core-9', title: 'Chemical Handling & Storage', file: '09-chemical-handling.html', duration: 30 },
+                { num: '10', id: 'core-10', title: 'Workplace Ergonomics', file: '10-ergonomics.html', duration: 30 }
+            ],
+            'Case Studies': [
+                { num: '11', id: 'case-1', title: 'Industrial Accident Investigation', file: '11-accident-investigation.html', duration: 30 },
+                { num: '12', id: 'case-2', title: 'Safety Culture Transformation', file: '12-safety-culture.html', duration: 30 },
+                { num: '13', id: 'case-3', title: 'Emergency Response Case Study', file: '13-emergency-case-study.html', duration: 30 },
+                { num: '14', id: 'case-4', title: 'Process Safety Management', file: '14-process-safety.html', duration: 30 },
+                { num: '15', id: 'case-5', title: 'Behavioral Safety Program', file: '15-behavioral-safety.html', duration: 30 }
+            ],
+            'Specialized Industries': [
+                { num: '16', id: 'ccs', title: 'Carbon Capture & Storage Safety', file: '16-carbon-capture.html', duration: 30 },
+                { num: '17', id: 'nuclear', title: 'Nuclear Industry Safety', file: '17-nuclear-safety.html', duration: 30 },
+                { num: '18', id: 'refinery', title: 'Petroleum Refinery Safety', file: '18-refinery-safety.html', duration: 30 },
+                { num: '19', id: 'food', title: 'Food Industry Safety', file: '19-food-industry.html', duration: 30 },
+                { num: '20', id: 'chemical', title: 'Chemical Manufacturing Safety', file: '20-chemical-industry.html', duration: 30 },
+                { num: '21', id: 'pharma', title: 'Pharmaceutical Safety', file: '21-pharma-safety.html', duration: 30 }
+            ]
+        };
+
+        // Topic descriptions
+        const descriptions = {
+            'core-1': 'Learn the fundamental principles of industrial safety, including the hierarchy of controls, safety culture, and regulatory framework.',
+            'core-2': 'Master systematic approaches to identifying workplace hazards and evaluating risks using proven assessment methods.',
+            'core-3': 'Understand the selection, use, and maintenance of personal protective equipment for various workplace hazards.',
+            'core-4': 'Develop comprehensive emergency response procedures for fires, chemical spills, medical emergencies, and natural disasters.',
+            'core-5': 'Study fire prevention strategies, fire extinguisher types, and proper response techniques for fire emergencies.',
+            'core-6': 'Learn safe work practices around electrical equipment, lockout/tagout procedures, and arc flash protection.',
+            'core-7': 'Understand machine safeguarding methods, equipment guarding requirements, and safe operation procedures.',
+            'core-8': 'Master confined space entry procedures, atmospheric testing, and rescue planning requirements.',
+            'core-9': 'Learn safe chemical handling, storage requirements, and proper use of Safety Data Sheets (SDS).',
+            'core-10': 'Study ergonomic principles to prevent workplace injuries and optimize workstation design.',
+            'case-1': 'Analyze real industrial accidents to understand root causes and preventive measures.',
+            'case-2': 'Examine successful safety culture transformations in various industries.',
+            'case-3': 'Learn from effective emergency response operations in actual industrial incidents.',
+            'case-4': 'Study process safety management implementation strategies and best practices.',
+            'case-5': 'Explore behavioral-based safety programs and their impact on safety performance.',
+            'ccs': 'Specialized safety protocols for carbon capture facilities, CO2 handling, and storage monitoring.',
+            'nuclear': 'Comprehensive coverage of radiation protection, containment protocols, and nuclear safety systems.',
+            'refinery': 'Process safety, fire prevention, and hazardous material handling in petroleum refineries.',
+            'food': 'Food safety, HACCP principles, and worker protection in food processing environments.',
+            'chemical': 'Chemical hazard classification, storage compatibility, and exposure control strategies.',
+            'pharma': 'Clean room protocols, potent compound handling, and contamination control in pharmaceutical manufacturing.'
+        };
+
+        // Load progress from localStorage
+        function loadProgress() {
+            for (const category in categories) {
+                categories[category].forEach(topic => {
+                    const saved = localStorage.getItem(`progress_${topic.id}`);
+                    topic.completed = saved === 'true';
+                    topic.progress = topic.completed ? 100 : 0;
+                });
+            }
+        }
+
+        // Save progress
+        function saveProgress() {
+            // Just trigger update
+            updateStats();
+            renderTopics();
+        }
+
+        // Update statistics
+        function updateStats() {
+            let totalTopics = 0;
+            let completedTopics = 0;
+            let totalHours = 0;
+
+            for (const category in categories) {
+                categories[category].forEach(topic => {
+                    totalTopics++;
+                    if (topic.completed) {
+                        completedTopics++;
+                        totalHours += topic.duration;
+                    }
+                });
+            }
+
+            const progressPercent = (completedTopics / totalTopics) * 100;
+
+            document.getElementById('completedTopics').textContent = completedTopics;
+            document.getElementById('totalHours').textContent = totalHours;
+            
+            const progressBar = document.getElementById('overallProgressBar');
+            progressBar.style.width = progressPercent + '%';
+            progressBar.textContent = Math.round(progressPercent) + '%';
+        }
+
+        // Render topics
+        function renderTopics() {
+            const container = document.getElementById('topicsContainer');
+            let html = '';
+
+            for (const [categoryName, topics] of Object.entries(categories)) {
+                html += `<div class="category-section">`;
+                html += `<h2 class="category-title">${categoryName}</h2>`;
+                html += `<div class="topics-grid">`;
+
+                topics.forEach(topic => {
+                    html += `
+                        <div class="topic-card ${topic.completed ? 'completed' : ''}">
+                            <div class="topic-header">
+                                <span class="topic-number">Topic ${topic.num}</span>
+                                <span class="topic-title">${topic.title}</span>
+                            </div>
+                            <div class="topic-category" style="margin-bottom: 10px;">${categoryName}</div>
+                            <div class="topic-duration">
+                                <span>⏱️ ${topic.duration} minutes</span>
+                            </div>
+                            <div class="topic-description">
+                                ${descriptions[topic.id] || 'Comprehensive industrial safety training module.'}
+                            </div>
+                            <div class="topic-progress">
+                                <div class="progress-text">
+                                    <span>Progress</span>
+                                    <span>${topic.completed ? '100%' : '0%'}</span>
+                                </div>
+                                <div class="topic-progress-bar">
+                                    <div class="topic-progress-fill" style="width: ${topic.completed ? '100%' : '0%'}"></div>
+                                </div>
+                            </div>
+                            <div class="topic-footer">
+                                <a href="${topic.file}" class="start-btn">${topic.completed ? 'Review Topic' : 'Start Learning'}</a>
+                                ${topic.completed ? '<span class="completion-badge">✓ Completed</span>' : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // Show certificate
+        function showCertificate() {
+            const certificate = document.getElementById('certificatePreview');
+            const hideBtn = document.getElementById('hideCertBtn');
+            const completedTopics = [];
+            
+            // Get all completed topics
+            for (const category in categories) {
+                categories[category].forEach(topic => {
+                    if (topic.completed) {
+                        completedTopics.push(topic);
+                    }
+                });
+            }
+            
+            if (completedTopics.length === 0) {
+                alert('Complete at least one topic to view your certificate!');
+                return;
+            }
+            
+            // Ask for name
+            const name = prompt('Please enter your name for the certificate:', 'Your Name');
+            if (name) {
+                document.getElementById('userName').textContent = name;
+            }
+            
+            // Update date
+            document.getElementById('completionDate').innerHTML = `Completion Date: ${new Date().toLocaleDateString()}`;
+            
+            // Generate completed topics list
+            const topicsList = document.getElementById('completedTopicsList');
+            let topicsHtml = '';
+            
+            completedTopics.sort((a, b) => parseInt(a.num) - parseInt(b.num));
+            
+            completedTopics.forEach(topic => {
+                topicsHtml += `
+                    <div class="completed-item">
+                        <strong>${topic.num}. ${topic.title}</strong>
+                        <small>${topic.category}</small>
+                    </div>
+                `;
+            });
+            
+            topicsList.innerHTML = topicsHtml;
+            
+            // Show certificate and hide button
+            certificate.classList.add('show');
+            hideBtn.style.display = 'inline-block';
+        }
+
+        // Hide certificate
+        function hideCertificate() {
+            document.getElementById('certificatePreview').classList.remove('show');
+            document.getElementById('hideCertBtn').style.display = 'none';
+        }
+
+        // Reset all progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+                for (const category in categories) {
+                    categories[category].forEach(topic => {
+                        localStorage.removeItem(`progress_${topic.id}`);
+                        topic.completed = false;
+                        topic.progress = 0;
+                    });
+                }
+                updateStats();
+                renderTopics();
+                hideCertificate();
+                alert('All progress has been reset.');
+            }
+        }
+
+        // Listen for storage events (updates from topic pages)
+        window.addEventListener('storage', function(e) {
+            if (e.key && e.key.startsWith('progress_')) {
+                loadProgress();
+                updateStats();
+                renderTopics();
+            }
+        });
+
+        // Initialize
+        loadProgress();
+        renderTopics();
+        updateStats();
+    </script>
+</body>
+</html>
