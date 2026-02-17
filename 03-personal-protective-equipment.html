@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 3: Personal Protective Equipment (PPE)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .ppe-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .ppe-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-width: 120px;
+        }
+
+        .ppe-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .ppe-label {
+            font-weight: bold;
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 3: Personal Protective Equipment (PPE)</h1>
+            <div class="nav-buttons">
+                <a href="02-hazard-identification.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="04-emergency-response.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- PPE Visual Diagram -->
+        <div class="ppe-diagram">
+            <div class="ppe-item">
+                <div class="ppe-icon">⛑️</div>
+                <div class="ppe-label">Head Protection</div>
+                <small>Hard Hats</small>
+            </div>
+            <div class="ppe-item">
+                <div class="ppe-icon">👓</div>
+                <div class="ppe-label">Eye Protection</div>
+                <small>Safety Glasses</small>
+            </div>
+            <div class="ppe-item">
+                <div class="ppe-icon">👂</div>
+                <div class="ppe-label">Hearing Protection</div>
+                <small>Earplugs/Muffs</small>
+            </div>
+            <div class="ppe-item">
+                <div class="ppe-icon">😷</div>
+                <div class="ppe-label">Respiratory</div>
+                <small>Masks/Respirators</small>
+            </div>
+            <div class="ppe-item">
+                <div class="ppe-icon">🧤</div>
+                <div class="ppe-label">Hand Protection</div>
+                <small>Gloves</small>
+            </div>
+            <div class="ppe-item">
+                <div class="ppe-icon">👞</div>
+                <div class="ppe-label">Foot Protection</div>
+                <small>Safety Shoes</small>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to PPE</h2>
+            <div class="module-content">
+                <p>Personal Protective Equipment (PPE) refers to protective clothing, helmets, goggles, and other garments or equipment designed to protect the wearer's body from injury or infection. In the hierarchy of controls, PPE is considered the <strong>last line of defense</strong> against workplace hazards. While engineering controls and administrative controls should always be the primary methods of protecting workers, PPE remains essential when these measures are not feasible or do not provide sufficient protection.</p>
+                
+                <div class="info-box">
+                    <strong>Did You Know?</strong> According to OSHA, proper PPE selection and use can prevent over 50% of workplace injuries. However, PPE must be properly selected, fitted, maintained, and workers must be trained in its use.
+                </div>
+
+                <p>The importance of PPE cannot be overstated. In industries such as construction, manufacturing, healthcare, and chemical processing, PPE can mean the difference between a minor incident and a life-altering injury or fatality. This module will provide comprehensive coverage of PPE types, selection criteria, proper use, maintenance, and training requirements.</p>
+                
+                <p>PPE programs must be comprehensive and systematic. Simply providing equipment is not enough. A complete PPE program includes hazard assessment, proper equipment selection, fit testing (for certain types), user training, maintenance procedures, and regular program evaluation. Employers have both a legal and moral obligation to provide appropriate PPE and ensure it is used correctly.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Types of PPE and Their Applications -->
+        <div class="module-section">
+            <h2 class="module-title">1. Types of PPE and Their Applications</h2>
+            <div class="module-content">
+                <p>PPE is categorized by the part of the body it protects and the type of hazard it addresses. Understanding the different types and their specific applications is essential for proper selection.</p>
+
+                <h3>A. Head Protection</h3>
+                <p>Head protection, primarily hard hats, protects against impact from falling objects, bumps against fixed objects, and electrical hazards.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Applications</th>
+                        <th>Standards</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Type I Hard Hats</strong></td>
+                        <td>Protect against impact to the top of the head</td>
+                        <td>General construction, manufacturing, warehousing</td>
+                        <td>ANSI Z89.1-2014</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type II Hard Hats</strong></td>
+                        <td>Protect against impact to top and sides of head</td>
+                        <td>Confined spaces, areas with lateral impact hazards</td>
+                        <td>ANSI Z89.1-2014</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class G (General)</strong></td>
+                        <td>Protect against impact and low-voltage electrical (2,200V)</td>
+                        <td>General industrial use</td>
+                        <td>ANSI/ISEA Z89.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class E (Electrical)</strong></td>
+                        <td>Protect against impact and high-voltage electrical (20,000V)</td>
+                        <td>Electrical work, utility work</td>
+                        <td>ANSI/ISEA Z89.1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class C (Conductive)</strong></td>
+                        <td>Protect against impact only, no electrical protection</td>
+                        <td>Areas without electrical hazards</td>
+                        <td>ANSI/ISEA Z89.1</td>
+                    </tr>
+                </table>
+
+                <h3>B. Eye and Face Protection</h3>
+                <p>Eye and face protection safeguards against flying particles, chemical splashes, molten metal, and harmful radiation.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Hazards Addressed</th>
+                        <th>Typical Use</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Glasses</strong></td>
+                        <td>Basic eye protection with side shields</td>
+                        <td>Flying particles, dust, impact</td>
+                        <td>Manufacturing, construction, woodworking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Goggles</strong></td>
+                        <td>Tight-fitting eye protection that seals around eyes</td>
+                        <td>Chemical splashes, dust, fumes</td>
+                        <td>Laboratories, chemical handling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Face Shields</strong></td>
+                        <td>Full face protection worn over safety glasses</td>
+                        <td>Chemical splashes, flying debris, molten metal</td>
+                        <td>Welding, grinding, chemical transfer</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Welding Shields</strong></td>
+                        <td>Protect eyes from intense light and sparks</td>
+                        <td>UV/IR radiation, sparks, molten metal</td>
+                        <td>Welding, cutting, brazing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Laser Safety Goggles</strong></td>
+                        <td>Specialized protection for specific wavelengths</td>
+                        <td>Laser radiation</td>
+                        <td>Research, medical, industrial lasers</td>
+                    </tr>
+                </table>
+
+                <h3>C. Hearing Protection</h3>
+                <p>Hearing protection reduces noise exposure to prevent noise-induced hearing loss, one of the most common occupational illnesses.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Noise Reduction Rating (NRR)</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Foam Earplugs</strong></td>
+                        <td>28-33 dB</td>
+                        <td>Inexpensive, disposable, high protection</td>
+                        <td>Requires proper insertion technique</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reusable Earplugs</strong></td>
+                        <td>20-25 dB</td>
+                        <td>Cost-effective over time, consistent fit</td>
+                        <td>Must be cleaned regularly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Earmuffs</strong></td>
+                        <td>22-30 dB</td>
+                        <td>Easy to don/doff, visible compliance</td>
+                        <td>Bulky, may interfere with other PPE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electronic Earmuffs</strong></td>
+                        <td>22-26 dB</td>
+                        <td>Allow communication while protecting</td>
+                        <td>Expensive, requires batteries</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Double Protection</strong></td>
+                        <td>33-36 dB</td>
+                        <td>Maximum protection for extreme noise</td>
+                        <td>Overprotection can cause isolation</td>
+                    </tr>
+                </table>
+
+                <h3>D. Respiratory Protection</h3>
+                <p>Respiratory protection prevents inhalation of airborne contaminants including dusts, fumes, gases, vapors, and biological agents.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Classification</th>
+                        <th>Protection Against</th>
+                        <th>Limitations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>N95 Respirators</strong></td>
+                        <td>Filtering Facepiece</td>
+                        <td>Particulates (non-oil based)</td>
+                        <td>Not for gases/vapors, requires fit testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Half-Face Respirators</strong></td>
+                        <td>Air-Purifying</td>
+                        <td>Particulates, gases, vapors (with appropriate cartridges)</td>
+                        <td>Requires cartridge selection, fit testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Full-Face Respirators</strong></td>
+                        <td>Air-Purifying</td>
+                        <td>Same as half-face plus eye protection</td>
+                        <td>Bulky, may fog, requires fit testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Powered Air-Purifying (PAPR)</strong></td>
+                        <td>Powered Air-Purifying</td>
+                        <td>High level of protection, positive pressure</td>
+                        <td>Expensive, requires batteries, maintenance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supplied Air (SCBA)</strong></td>
+                        <td>Atmosphere-Supplying</td>
+                        <td>Highest protection, IDLH atmospheres</td>
+                        <td>Bulky, limited air supply, extensive training</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> All respirators require fit testing and medical evaluation before use. The wrong fit or type can give a false sense of security while providing inadequate protection.
+                </div>
+
+                <h3>E. Hand Protection</h3>
+                <p>Hand protection must be selected based on the specific hazards present. No single glove material protects against all hazards.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Material</th>
+                        <th>Protection Against</th>
+                        <th>Limitations</th>
+                        <th>Typical Applications</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Leather</strong></td>
+                        <td>Abrasion, heat, sparks</td>
+                        <td>Not chemical resistant, not waterproof</td>
+                        <td>Welding, construction, material handling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nitrile</strong></td>
+                        <td>Oils, solvents, chemicals, punctures</td>
+                        <td>Poor cold protection, limited dexterity</td>
+                        <td>Chemical handling, automotive, laboratory</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Latex</strong></td>
+                        <td>Biological hazards, water-based chemicals</td>
+                        <td>Allergies, poor oil resistance</td>
+                        <td>Healthcare, food handling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neoprene</strong></td>
+                        <td>Acids, bases, alcohols, solvents</td>
+                        <td>Expensive, bulky</td>
+                        <td>Chemical manufacturing, Hazmat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kevlar</strong></td>
+                        <td>Cuts, heat</td>
+                        <td>Not chemical resistant</td>
+                        <td>Glass handling, metal fabrication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chainmail</strong></td>
+                        <td>Severe cuts, knives</td>
+                        <td>Heavy, expensive</td>
+                        <td>Meat processing, glass cutting</td>
+                    </tr>
+                </table>
+
+                <h3>F. Foot Protection</h3>
+                <p>Safety footwear protects against impact, compression, punctures, slips, and electrical hazards.</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Features</th>
+                        <th>Protection</th>
+                        <th>Applications</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Steel Toe</strong></td>
+                        <td>Steel cap in toe area</td>
+                        <td>Impact (75 ft-lbs), compression (2,500 lbs)</td>
+                        <td>Construction, manufacturing, warehousing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Composite Toe</strong></td>
+                        <td>Non-metal toe cap</td>
+                        <td>Same as steel toe, non-conductive</td>
+                        <td>Electrical work, airports (metal-free)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metatarsal Guard</strong></td>
+                        <td>Extended protection over foot top</td>
+                        <td>Impact to metatarsal bones</td>
+                        <td>Foundries, heavy manufacturing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Puncture-Resistant</strong></td>
+                        <td>Steel plate in sole</td>
+                        <td>Penetration from nails, sharps</td>
+                        <td>Construction, demolition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrical Hazard</strong></td>
+                        <td>Insulated construction</td>
+                        <td>Protection from open circuits up to 600V</td>
+                        <td>Electrical work, utilities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Slip-Resistant</strong></td>
+                        <td>Special sole patterns</td>
+                        <td>Slips on wet/oily surfaces</td>
+                        <td>Food service, healthcare, kitchens</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: PPE Selection and Hazard Assessment -->
+        <div class="module-section">
+            <h2 class="module-title">2. PPE Selection and Hazard Assessment</h2>
+            <div class="module-content">
+                <p>Proper PPE selection requires a systematic approach beginning with a thorough hazard assessment. This process ensures that the selected PPE is appropriate for the specific hazards present and provides adequate protection.</p>
+
+                <h3>A. The Hazard Assessment Process</h3>
+                <p>OSHA requires employers to conduct hazard assessments to determine if workplace hazards necessitate PPE. The process involves:</p>
+                
+                <ol>
+                    <li><strong>Walk-through survey</strong> of all work areas to identify potential hazards</li>
+                    <li><strong>Analysis of each task</strong> to identify specific hazards (using Job Safety Analysis)</li>
+                    <li><strong>Documentation</strong> of findings in a written certification</li>
+                    <li><strong>Re-assessment</strong> whenever changes occur in the workplace</li>
+                </ol>
+
+                <h4>Hazard Assessment Checklist:</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Hazard Type</th>
+                        <th>Questions to Ask</th>
+                        <th>PPE to Consider</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Impact</strong></td>
+                        <td>Are there falling objects? Moving machinery? Flying particles?</td>
+                        <td>Hard hats, safety glasses, face shields</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Penetration</strong></td>
+                        <td>Are there sharp objects that could cut or puncture?</td>
+                        <td>Cut-resistant gloves, puncture-resistant soles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compression</strong></td>
+                        <td>Are there rolls, presses, or heavy objects that could crush?</td>
+                        <td>Steel-toe boots, compression-resistant gloves</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chemical</strong></td>
+                        <td>Are there splashes, fumes, vapors, or dusts?</td>
+                        <td>Chemical goggles, respirators, chemical suits</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heat/Cold</strong></td>
+                        <td>Are there extreme temperatures?</td>
+                        <td>Insulated gloves, cold suits, face shields</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrical</strong></td>
+                        <td>Is there potential for electrical contact?</td>
+                        <td>Non-conductive hard hats, insulated gloves</td>
+                    </tr>
+                </table>
+
+                <h3>B. PPE Selection Criteria</h3>
+                <p>Once hazards are identified, PPE must be selected based on:</p>
+                
+                <ul>
+                    <li><strong>Nature of the hazard:</strong> Different hazards require different protection (e.g., chemical gloves vs. cut-resistant gloves)</li>
+                    <li><strong>Degree of protection:</strong> Level of protection must match the hazard severity (e.g., chemical permeation resistance)</li>
+                    <li><strong>Fit and comfort:</strong> PPE must fit properly to provide protection and encourage use</li>
+                    <li><strong>Compatibility:</strong> Different PPE items must work together (e.g., hard hat with ear muffs)</li>
+                    <li><strong>Durability:</strong> PPE must withstand work conditions</li>
+                    <li><strong>Standards compliance:</strong> Must meet relevant ANSI, NIOSH, or other standards</li>
+                </ul>
+
+                <h3>C. Chemical Protective Clothing Selection</h3>
+                <p>For chemical hazards, selection requires understanding of chemical resistance:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                        <th>Importance</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Degradation</strong></td>
+                        <td>Physical change in material due to chemical contact</td>
+                        <td>Indicates visible breakdown, swelling, or discoloration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permeation</strong></td>
+                        <td>Chemical movement through material at molecular level</td>
+                        <td>Can occur without visible change - most dangerous</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Breakthrough Time</strong></td>
+                        <td>Time until chemical is detected on inside of material</td>
+                        <td>Determines safe wearing time</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permeation Rate</strong></td>
+                        <td>Speed at which chemical moves through material</td>
+                        <td>Indicates exposure level after breakthrough</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Key Principle:</strong> Always consult Safety Data Sheets (SDS) and chemical resistance guides when selecting gloves and suits for chemical hazards. Different brands and materials have different resistance properties.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: PPE Training, Fit, and Maintenance -->
+        <div class="module-section">
+            <h2 class="module-title">3. PPE Training, Fit Testing, and Maintenance</h2>
+            <div class="module-content">
+                <p>Providing PPE is not enough. Workers must be trained in proper use, and programs must ensure PPE is maintained and replaced as needed.</p>
+
+                <h3>A. Training Requirements</h3>
+                <p>OSHA and other regulations require comprehensive PPE training that includes:</p>
+                
+                <ul>
+                    <li><strong>When PPE is necessary:</strong> Understanding which tasks require protection</li>
+                    <li><strong>What PPE is necessary:</strong> Knowing the specific equipment required</li>
+                    <li><strong>How to properly don, doff, and adjust:</strong> Correct wearing techniques</li>
+                    <li><strong>Limitations of PPE:</strong> What it will and will not protect against</li>
+                    <li><strong>Proper care, maintenance, and disposal:</strong> Extending life and ensuring effectiveness</li>
+                </ul>
+
+                <h3>B. Fit Testing for Respirators</h3>
+                <p>Respirators require fit testing to ensure an adequate seal. Two types are recognized:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Test Type</th>
+                        <th>Method</th>
+                        <th>Advantages</th>
+                        <th>Frequency</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Qualitative Fit Test</strong></td>
+                        <td>Uses test agent (bitrex, saccharin, banana oil) to detect leaks</td>
+                        <td>Inexpensive, no specialized equipment</td>
+                        <td>Initial and annually</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantitative Fit Test</strong></td>
+                        <td>Uses instrument to measure particle count inside/outside</td>
+                        <td>Provides numerical fit factor, more accurate</td>
+                        <td>Initial and annually</td>
+                    </tr>
+                </table>
+
+                <h3>C. Inspection and Maintenance</h3>
+                <p>Regular inspection ensures PPE remains effective:</p>
+                
+                <h4>Daily/Pre-Use Inspection Checklist:</h4>
+                <ul>
+                    <li><strong>Hard Hats:</strong> Check for cracks, dents, suspension integrity, expiration date</li>
+                    <li><strong>Safety Glasses:</strong> Check for scratches, cracks, bent frames, clean lenses</li>
+                    <li><strong>Hearing Protection:</strong> Check earplugs for dirt, damage; earmuffs for cushion integrity</li>
+                    <li><strong>Respirators:</strong> Check straps, seal, cartridge expiration, cleanliness</li>
+                    <li><strong>Gloves:</strong> Check for holes, tears, chemical degradation, flexibility</li>
+                    <li><strong>Safety Shoes:</strong> Check soles, toe cap integrity, tread wear</li>
+                </ul>
+
+                <h3>D. PPE Storage and Shelf Life</h3>
+                <p>Proper storage extends PPE life and ensures effectiveness:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>PPE Type</th>
+                        <th>Storage Requirements</th>
+                        <th>Shelf Life</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Hard Hats</strong></td>
+                        <td>Cool, dry place away from sunlight</td>
+                        <td>5 years from manufacture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Respirators</strong></td>
+                        <td>Sealed in original packaging, climate controlled</td>
+                        <td>3-5 years depending on type</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety Glasses</strong></td>
+                        <td>In case when not in use</td>
+                        <td>Indefinite with proper care</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rubber Gloves</strong></td>
+                        <td>Away from heat, ozone, light</td>
+                        <td>3-5 years</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hearing Protection</strong></td>
+                        <td>Clean, dry container</td>
+                        <td>Disposable: single use; Reusable: until worn</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>Never Compromise:</strong> Damaged or expired PPE must be immediately replaced. Using compromised PPE gives false security and can lead to serious injury or death.
+                </div>
+
+                <h3>E. PPE Program Evaluation</h3>
+                <p>A complete PPE program includes regular evaluation:</p>
+                
+                <ul>
+                    <li>Are workers wearing PPE correctly and consistently?</li>
+                    <li>Is PPE being maintained and stored properly?</li>
+                    <li>Have there been changes in processes or hazards?</li>
+                    <li>Are there new or better PPE options available?</li>
+                    <li>Are workers reporting comfort or fit issues?</li>
+                    <li>Review incident reports - did PPE perform as expected?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Personal Protective Equipment is a critical component of workplace safety, serving as the last line of defense when other control measures are insufficient. However, its effectiveness depends entirely on proper selection, fit, training, and maintenance. A comprehensive PPE program requires commitment from both employers and workers.</p>
+                
+                <p>Remember these key principles:</p>
+                <ul>
+                    <li><strong>PPE is the last resort</strong> - always consider elimination, substitution, engineering, and administrative controls first</li>
+                    <li><strong>One size does not fit all</strong> - proper fit is essential for protection</li>
+                    <li><strong>Training is mandatory</strong> - workers must understand when, why, and how to use PPE</li>
+                    <li><strong>Inspection saves lives</strong> - damaged PPE fails when needed most</li>
+                    <li><strong>Document everything</strong> - hazard assessments, training, fit tests, and inspections</li>
+                </ul>
+                
+                <p>When properly implemented, PPE programs prevent injuries, save lives, and contribute to a positive safety culture where workers feel valued and protected.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>PPE protects specific body parts from specific hazards - match the equipment to the hazard</li>
+                        <li>Hazard assessment must precede PPE selection</li>
+                        <li>Different materials protect against different hazards (chemicals, cuts, impact, etc.)</li>
+                        <li>Fit testing is required for respirators</li>
+                        <li>Regular inspection and maintenance extends PPE life and ensures effectiveness</li>
+                        <li>Training is essential for proper use</li>
+                        <li>PPE programs must be regularly evaluated and updated</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Personal Protective Equipment (PPE) module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="04-emergency-response.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-3';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'Where does PPE rank in the hierarchy of controls?',
+                options: [
+                    'First line of defense',
+                    'Second line of defense',
+                    'Last line of defense',
+                    'Equal to engineering controls'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What does NRR stand for in hearing protection?',
+                options: [
+                    'Noise Reduction Rating',
+                    'National Rating Requirement',
+                    'Noise Regulation Rule',
+                    'Natural Response Rate'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which glove material provides the best protection against chemical solvents?',
+                options: [
+                    'Leather',
+                    'Cotton',
+                    'Nitrile',
+                    'Kevlar'
+                ],
+                correct: 2
+            },
+            {
+                question: 'How often must respirator fit testing be performed?',
+                options: [
+                    'Only once when hired',
+                    'Every 5 years',
+                    'Annually',
+                    'Only when requested'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What is permeation?',
+                options: [
+                    'Visible breakdown of glove material',
+                    'Chemical movement through material at molecular level',
+                    'Tears or punctures in the glove',
+                    'Discoloration of the material'
+                ],
+                correct: 1
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+            // Trigger storage event for main page
+            if (window.opener) {
+                window.opener.localStorage.setItem(`progress_${topicId}`, completed);
+            }
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
