@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 8: Confined Space Entry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .confined-space-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .space-example {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 150px;
+            border-left: 5px solid #f44336;
+        }
+
+        .space-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .space-label {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .atmosphere-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .atmosphere-header {
+            background: #764ba2;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .atmosphere-safe {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .atmosphere-danger {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .atmosphere-caution {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .entry-team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #764ba2;
+        }
+
+        .team-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .team-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .permit-sample {
+            background: #fff3cd;
+            border: 2px dashed #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .permit-required {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .non-permit {
+            background: #d4edda;
+            border: 3px solid #28a745;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 8: Confined Space Entry</h1>
+            <div class="nav-buttons">
+                <a href="07-machine-guarding.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="09-chemical-handling.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Confined Space Examples -->
+        <div class="confined-space-diagram">
+            <div class="space-example">
+                <div class="space-icon">🛢️</div>
+                <div class="space-label">Storage Tank</div>
+                <small>Chemical residue, oxygen deficiency</small>
+            </div>
+            <div class="space-example">
+                <div class="space-icon">⚙️</div>
+                <div class="space-label">Reactor Vessel</div>
+                <small>Chemical exposure, engulfment</small>
+            </div>
+            <div class="space-example">
+                <div class="space-icon">🕳️</div>
+                <div class="space-label">Silo</div>
+                <small>Engulfment, dust explosion</small>
+            </div>
+            <div class="space-example">
+                <div class="space-icon">🚰</div>
+                <div class="space-label">Manhole</div>
+                <small>Sewer gas, oxygen deficiency</small>
+            </div>
+            <div class="space-example">
+                <div class="space-icon">🔧</div>
+                <div class="space-label">Pipeline</div>
+                <small>Residual chemicals, confined</small>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Confined Space Entry</h2>
+            <div class="module-content">
+                <p>Confined spaces are among the most dangerous work environments. Each year, workers die in confined spaces from oxygen deficiency, toxic atmospheres, engulfment, and other hazards. Often, would-be rescuers become victims themselves, making confined space incidents particularly deadly.</p>
+                
+                <div class="danger-box">
+                    <strong>Stark Reality:</strong> According to OSHA, approximately 60% of confined space fatalities are would-be rescuers. Never attempt rescue without proper training and equipment.
+                </div>
+
+                <p>A confined space is any space that is large enough for a worker to enter, has limited or restricted means of entry and exit, and is not designed for continuous occupancy. Examples include tanks, silos, storage bins, hoppers, vaults, pits, manholes, tunnels, equipment housings, and pipelines.</p>
+                
+                <p>This module covers the critical aspects of confined space safety, including identification, hazard assessment, atmospheric testing, permit systems, entry procedures, and emergency response.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Confined Space Classification -->
+        <div class="module-section">
+            <h2 class="module-title">1. Confined Space Classification</h2>
+            <div class="module-content">
+                <p>Not all confined spaces are the same. OSHA classifies confined spaces into two categories based on the presence of hazards.</p>
+
+                <h3>A. Non-Permit Required Confined Space</h3>
+                <div class="non-permit">
+                    <strong>✓ NON-PERMIT CONFINED SPACE</strong>
+                    <p>A confined space that does not contain or have the potential to contain any hazards capable of causing death or serious physical harm.</p>
+                </div>
+                <p>Characteristics:</p>
+                <ul>
+                    <li>No actual or potential atmospheric hazards</li>
+                    <li>No engulfment hazards</li>
+                    <li>No internal configuration hazards (like sloping walls that could trap)</li>
+                    <li>No other serious safety hazards</li>
+                </ul>
+                <p>While these spaces don't require a permit, they still require hazard assessment and safe work practices.</p>
+
+                <h3>B. Permit-Required Confined Space (Permit Space)</h3>
+                <div class="permit-required">
+                    <strong>⚠️ PERMIT-REQUIRED CONFINED SPACE ⚠️</strong>
+                    <p>Contains or has potential to contain serious hazards. Requires written permit, trained entrants/attendants, and specific procedures.</p>
+                </div>
+                
+                <p>A permit-required confined space has one or more of these characteristics:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Hazard Type</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Consequences</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Atmospheric Hazards</strong></td>
+                        <td>Hazardous air contaminants, oxygen deficiency/enrichment, flammable atmosphere</td>
+                        <td>H2S, CO, solvent vapors, methane, low O2</td>
+                        <td>Asphyxiation, poisoning, explosion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Engulfment Hazards</strong></td>
+                        <td>Material that can surround and trap a worker</td>
+                        <td>Grain, sand, liquids, sewage, powders</td>
+                        <td>Suffocation, crushing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Configuration Hazards</strong></td>
+                        <td>Internal shape that could trap or asphyxiate</td>
+                        <td>Converging walls, sloping floors, hoppers</td>
+                        <td>Entrapment, inability to escape</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other Hazards</strong></td>
+                        <td>Any other serious safety hazard</td>
+                        <td>Mechanical equipment, electrical, heat, noise, falling objects</td>
+                        <td>Crushing, electrocution, burns, impact</td>
+                    </tr>
+                </table>
+
+                <h3>C. Reclassification</h3>
+                <p>A permit space can be reclassified as a non-permit space if:</p>
+                <ul>
+                    <li>All hazards have been eliminated (not just controlled)</li>
+                    <li>Documentation shows how hazards were eliminated</li>
+                    <li>No entry is made for any other purpose</li>
+                </ul>
+                <p>If hazards are only controlled (e.g., ventilation), the space remains a permit space.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Atmospheric Hazards and Testing -->
+        <div class="module-section">
+            <h2 class="module-title">2. Atmospheric Hazards and Testing</h2>
+            <div class="module-content">
+                <p>Atmospheric hazards are the most dangerous and least visible confined space threats. Proper testing is essential.</p>
+
+                <h3>A. Oxygen Levels</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Oxygen Level</th>
+                        <th>Classification</th>
+                        <th>Hazards</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-danger"><strong>&lt; 19.5%</strong></td>
+                        <td>Oxygen Deficient</td>
+                        <td>Impaired judgment, unconsciousness, death</td>
+                        <td>DO NOT ENTER - ventilate, find source</td>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-safe"><strong>19.5% - 23.5%</strong></td>
+                        <td>Safe Range</td>
+                        <td>Normal breathing, safe for entry</td>
+                        <td>Acceptable for entry</td>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-danger"><strong>> 23.5%</strong></td>
+                        <td>Oxygen Enriched</td>
+                        <td>Increased fire risk, materials ignite easily</td>
+                        <td>DO NOT ENTER - find source</td>
+                    </tr>
+                </table>
+
+                <h3>B. Flammable Atmospheres</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>LEL Percentage</th>
+                        <th>Classification</th>
+                        <th>Risk</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-safe"><strong>0%</strong></td>
+                        <td>No flammable gas</td>
+                        <td>Safe for entry</td>
+                        <td>Continue monitoring</td>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-caution"><strong>1-9%</strong></td>
+                        <td>Trace amounts</td>
+                        <td>Potential hazard if source continues</td>
+                        <td>Investigate source, ventilate</td>
+                    </tr>
+                    <tr>
+                        <td class="atmosphere-danger"><strong>10%+</strong></td>
+                        <td>Flammable</td>
+                        <td>Explosion risk</td>
+                        <td>DO NOT ENTER - ventilate, find source</td>
+                    </tr>
+                </table>
+
+                <h3>C. Toxic Gases</h3>
+                <p>Common toxic gases in confined spaces:</p>
+                <table class="learning-table">
+                    <tr>
+                        <th>Gas</th>
+                        <th>Source</th>
+                        <th>PEL (OSHA)</th>
+                        <th>IDLH</th>
+                        <th>Effects</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Hydrogen Sulfide (H2S)</strong></td>
+                        <td>Sewage, petroleum, decomposing matter</td>
+                        <td>10 ppm</td>
+                        <td>100 ppm</td>
+                        <td>Rotten egg smell (then odorless), paralysis of smell, death</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carbon Monoxide (CO)</strong></td>
+                        <td>Combustion engines, heaters, welding</td>
+                        <td>50 ppm</td>
+                        <td>1,200 ppm</td>
+                        <td>Odorless, colorless, binds to blood, causes headache, death</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chlorine</strong></td>
+                        <td>Water treatment, chemical processes</td>
+                        <td>0.5 ppm</td>
+                        <td>10 ppm</td>
+                        <td>Respiratory irritation, pulmonary edema</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ammonia</strong></td>
+                        <td>Refrigeration, fertilizers, cleaning</td>
+                        <td>50 ppm</td>
+                        <td>300 ppm</td>
+                        <td>Respiratory irritation, burns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Methane</strong></td>
+                        <td>Decomposition, natural gas</td>
+                        <td>N/A (asphyxiant)</td>
+                        <td>N/A</td>
+                        <td>Displaces oxygen, explosive</td>
+                    </tr>
+                </table>
+
+                <h3>D. Atmospheric Testing Protocol</h3>
+                <p>Testing must be done in this order:</p>
+                <ol>
+                    <li><strong>Oxygen:</strong> Test first because it affects other readings</li>
+                    <li><strong>Flammability:</strong> Test second because oxygen affects readings</li>
+                    <li><strong>Toxic gases:</strong> Test third, specific to expected contaminants</li>
+                </ol>
+
+                <h4>Testing Requirements:</h4>
+                <ul>
+                    <li>Test at all levels (top, middle, bottom) because gases stratify</li>
+                    <li>Continuous monitoring while occupied</li>
+                    <li>Calibrate monitors before each use</li>
+                    <li>Document all test results on permit</li>
+                    <li>Retest if conditions change or after breaks</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> Hydrogen sulfide is heavier than air and accumulates at the bottom. Methane is lighter than air and accumulates at the top. Test ALL levels.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Confined Space Entry Team -->
+        <div class="module-section">
+            <h2 class="module-title">3. Confined Space Entry Team</h2>
+            <div class="module-content">
+                <p>Every confined space entry requires a trained team with specific roles and responsibilities.</p>
+
+                <div class="entry-team">
+                    <div class="team-card">
+                        <div class="team-icon">🚪</div>
+                        <div class="team-title">Entrant</div>
+                        <small>Worker entering the space</small>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Knows hazards</li>
+                            <li>Uses PPE properly</li>
+                            <li>Maintains communication</li>
+                            <li>Exits immediately if ordered</li>
+                        </ul>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-icon">👁️</div>
+                        <div class="team-title">Attendant</div>
+                        <small>Outside monitor</small>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Monitors entrants</li>
+                            <li>Tracks who's inside</li>
+                            <li>Summons rescue</li>
+                            <li>No other duties</li>
+                        </ul>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-icon">📋</div>
+                        <div class="team-title">Entry Supervisor</div>
+                        <small>Authorizes entry</small>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Verifies permit</li>
+                            <li>Confirms testing</li>
+                            <li>Ensures rescue plan</li>
+                            <li>Terminates entry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>A. Entrant Responsibilities</h3>
+                <ul>
+                    <li>Know the hazards that may be faced during entry</li>
+                    <li>Properly use equipment (PPE, monitoring, communications)</li>
+                    <li>Maintain continuous communication with attendant</li>
+                    <li>Alert attendant of warning signs or hazardous conditions</li>
+                    <li>Exit as quickly as possible when ordered, when alarm sounds, or when aware of danger</li>
+                </ul>
+
+                <h3>B. Attendant Responsibilities</h3>
+                <ul>
+                    <li>Remain outside the space at all times during entry</li>
+                    <li>Know the hazards and recognize signs of danger</li>
+                    <li>Maintain accurate count of entrants</li>
+                    <li>Monitor activities inside and outside the space</li>
+                    <li>Order evacuation when necessary</li>
+                    <li>Summon rescue services when needed</li>
+                    <li>Perform non-entry rescues if trained and equipped</li>
+                    <li>No other duties that could distract from monitoring</li>
+                </ul>
+
+                <h3>C. Entry Supervisor Responsibilities</h3>
+                <ul>
+                    <li>Verify entry permit is complete and accurate</li>
+                    <li>Confirm all tests have been conducted and are acceptable</li>
+                    <li>Verify all procedures and equipment are in place</li>
+                    <li>Terminate entry and cancel permit when work is complete</li>
+                    <li>Remove unauthorized individuals</li>
+                    <li>Ensure rescue services are available</li>
+                </ul>
+
+                <div class="danger-box">
+                    <strong>NEVER:</strong> The attendant may never enter the space to attempt rescue. This is the leading cause of multiple fatalities. Wait for trained rescuers.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Permit System and Entry Procedures -->
+        <div class="module-section">
+            <h2 class="module-title">4. Permit System and Entry Procedures</h2>
+            <div class="module-content">
+                <p>The entry permit is a written document that authorizes entry and ensures all precautions have been taken.</p>
+
+                <h3>A. Permit Requirements</h3>
+                <p>OSHA requires permits to include:</p>
+                <ul>
+                    <li>Space identification</li>
+                    <li>Purpose of entry</li>
+                    <li>Date and duration of permit</li>
+                    <li>Authorized entrants (names)</li>
+                    <li>Attendant(s) and supervisor</li>
+                    <li>Hazards of the space</li>
+                    <li>Isolation methods used</li>
+                    <li>Atmospheric test results</li>
+                    <li>Rescue services and methods</li>
+                    <li>Communication procedures</li>
+                    <li>Equipment required (PPE, monitoring, lighting)</li>
+                    <li>Signature of entry supervisor</li>
+                </ul>
+
+                <div class="permit-sample">
+                    <strong>📋 SAMPLE PERMIT ENTRIES:</strong><br>
+                    Space: Reactor Vessel R-101<br>
+                    Date: 02/17/2025 | Time: 08:00 - 16:00<br>
+                    Entrants: J. Smith, M. Jones<br>
+                    Attendant: R. Brown<br>
+                    Supervisor: T. Wilson<br>
+                    O2: 20.9% | LEL: 0% | H2S: 0 ppm | CO: 0 ppm<br>
+                    Isolation: Blanked, Locked out<br>
+                    PPE: Full face respirator, coveralls, gloves<br>
+                    Communication: Radio channel 3<br>
+                </div>
+
+                <h3>B. Entry Procedures</h3>
+                
+                <h4>Before Entry:</h4>
+                <ol>
+                    <li>Identify and evaluate hazards</li>
+                    <li>Isolate the space (lockout/tagout, blanking, disconnects)</li>
+                    <li>Purge, inert, flush, or ventilate as needed</li>
+                    <li>Conduct atmospheric testing (top to bottom)</li>
+                    <li>Complete entry permit</li>
+                    <li>Review permit with all team members</li>
+                    <li>Stage rescue equipment</li>
+                    <li>Verify communication systems</li>
+                </ol>
+
+                <h4>During Entry:</h4>
+                <ol>
+                    <li>Continuous atmospheric monitoring</li>
+                    <li>Continuous communication between entrant and attendant</li>
+                    <li>Attendant maintains visual contact when possible</li>
+                    <li>Monitor for changing conditions</li>
+                    <li>Rotate entrants as needed (fatigue)</li>
+                </ol>
+
+                <h4>Terminating Entry:</h4>
+                <ol>
+                    <li>Remove all entrants and equipment</li>
+                    <li>Close and secure the space</li>
+                    <li>Cancel permit</li>
+                    <li>Review entry for lessons learned</li>
+                </ol>
+
+                <h3>C. Isolation Methods</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Application</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Blank/Blind</strong></td>
+                        <td>Solid plate inserted between flanges</td>
+                        <td>Pipes, ducts, lines entering space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Double Block and Bleed</strong></td>
+                        <td>Two valves closed, vent open between them</td>
+                        <td>Piping systems, ensures no flow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lockout/Tagout</strong></td>
+                        <td>Lock energy-isolating devices</td>
+                        <td>Electrical, mechanical, hydraulic energy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disconnect</strong></td>
+                        <td>Physically separate piping or wiring</td>
+                        <td>Positive isolation, highest reliability</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chocking/Blocking</strong></td>
+                        <td>Prevent movement of parts</td>
+                        <td>Elevated parts, gravity hazards</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5: Ventilation and PPE -->
+        <div class="module-section">
+            <h2 class="module-title">5. Ventilation and Personal Protective Equipment</h2>
+            <div class="module-content">
+                <p>Proper ventilation and PPE are critical for safe confined space entry.</p>
+
+                <h3>A. Ventilation Requirements</h3>
+                <ul>
+                    <li><strong>Mechanical ventilation:</strong> Required for all permit spaces unless atmosphere is safe without it</li>
+                    <li><strong>Air movement:</strong> Must provide at least 20 air changes per hour</li>
+                    <li><strong>Duct placement:</strong> Supply air should be placed to sweep all areas, exhaust near contaminant source</li>
+                    <li><strong>Monitoring:</strong> Continuously monitor to ensure ventilation is effective</li>
+                    <li><strong>Backup:</strong> Have backup ventilation in case of failure</li>
+                </ul>
+
+                <h3>B. PPE for Confined Spaces</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>PPE Type</th>
+                        <th>When Required</th>
+                        <th>Considerations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Respiratory Protection</strong></td>
+                        <td>Any atmospheric hazard, or if ventilation inadequate</td>
+                        <td>SCBA or airline respirator with escape bottle for IDLH</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Head Protection</strong></td>
+                        <td>Always in industrial confined spaces</td>
+                        <td>Hard hat with chin strap (looking up/down)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Body Protection</strong></td>
+                        <td>Chemical hazards, abrasion, heat/cold</td>
+                        <td>Coveralls, chemical suits, flash suits</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hand Protection</strong></td>
+                        <td>Chemical, cut, abrasion hazards</td>
+                        <td>Chemical gloves, cut-resistant liners</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Foot Protection</strong></td>
+                        <td>Always</td>
+                        <td>Steel-toe, chemical-resistant if needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fall Protection</strong></td>
+                        <td>Vertical entry, elevated work</td>
+                        <td>Harness, lanyard, retractable, tripod/winch</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retrieval Equipment</strong></td>
+                        <td>All permit spaces</td>
+                        <td>Harness, lifeline, mechanical retrieval device</td>
+                    </tr>
+                </table>
+
+                <h3>C. Retrieval Systems</h3>
+                <p>OSHA requires retrieval systems for all permit space entries:</p>
+                <ul>
+                    <li><strong>Full-body harness:</strong> Worn by entrant with D-ring centered on back</li>
+                    <li><strong>Lifeline:</strong> Attached to harness, extends to outside</li>
+                    <li><strong>Mechanical retrieval device:</strong> Tripod/winch or davit arm for vertical entry</li>
+                    <li><strong>Attendant:</strong> Must be able to operate retrieval system</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Exception:</strong> If retrieval equipment would create a greater hazard or not assist rescue, alternative methods must be documented on permit.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Rescue and Emergency Response -->
+        <div class="module-section">
+            <h2 class="module-title">6. Rescue and Emergency Response</h2>
+            <div class="module-content">
+                <p>Rescue planning is not optional—it's required before any entry.</p>
+
+                <h3>A. Rescue Requirements</h3>
+                <ul>
+                    <li>Employer must ensure rescue services are available and capable</li>
+                    <li>Rescuers must be trained in confined space rescue</li>
+                    <li>Rescuers must practice annually</li>
+                    <li>Rescue equipment must be available and maintained</li>
+                    <li>Rescue must be initiated immediately if needed</li>
+                </ul>
+
+                <h3>B. Types of Rescue</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Rescue Type</th>
+                        <th>Description</th>
+                        <th>Requirements</th>
+                        <th>When Used</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Non-Entry Rescue</strong></td>
+                        <td>Entrant removed from outside using retrieval line</td>
+                        <td>Harness, lifeline, mechanical retrieval device</td>
+                        <td>First choice, fastest, safest</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entry Rescue</strong></td>
+                        <td>Rescuers enter to retrieve victim</td>
+                        <td>Trained rescuers, backup team, all PPE</td>
+                        <td>When non-entry fails or impossible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Self-Rescue</strong></td>
+                        <td>Entrant exits on own</td>
+                        <td>Awareness, ability, clear path</td>
+                        <td>When entrant detects problem early</td>
+                    </tr>
+                </table>
+
+                <h3>C. Emergency Procedures</h3>
+                <ol>
+                    <li><strong>Attendant recognizes emergency</strong> (alarm, loss of communication, visible distress)</li>
+                    <li><strong>Attendant orders evacuation</strong> and attempts non-entry rescue</li>
+                    <li><strong>Attendant summons rescue services</strong> immediately</li>
+                    <li><strong>No entry by untrained personnel</strong> - wait for trained rescuers</li>
+                    <li><strong>Provide information</strong> to rescuers (hazards, number of victims, last known location)</li>
+                </ol>
+
+                <div class="danger-box">
+                    <strong>NEVER FORGET:</strong> 60% of confined space fatalities are would-be rescuers. Do NOT enter to attempt rescue unless you are trained, equipped, and part of the official rescue team.
+                </div>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Confined spaces have limited entry/exit and are not for continuous occupancy</li>
+                        <li>Permit spaces have actual or potential hazards</li>
+                        <li>Test atmosphere in order: Oxygen, Flammability, Toxics</li>
+                        <li>Oxygen must be 19.5-23.5% for safe entry</li>
+                        <li>Entry team: Entrant, Attendant, Entry Supervisor</li>
+                        <li>Attendant NEVER enters the space</li>
+                        <li>Continuous monitoring and communication required</li>
+                        <li>Rescue must be planned before entry</li>
+                        <li>Non-entry rescue is the first choice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Confined spaces are unforgiving environments where mistakes can be fatal. Unlike many workplace hazards that give warnings, atmospheric hazards are often invisible and can overcome workers in seconds. The complexity of confined space safety—from proper classification to atmospheric testing to rescue planning—requires rigorous attention to detail and unwavering commitment to procedures.</p>
+                
+                <p>The key principles of confined space safety are:</p>
+                <ul>
+                    <li><strong>Never assume</strong> - Test and verify every time</li>
+                    <li><strong>Follow the permit</strong> - It exists to keep you alive</li>
+                    <li><strong>Stay in communication</strong> - Attendant is your lifeline</li>
+                    <li><strong>Don't become a victim</strong> - Never attempt untrained rescue</li>
+                    <li><strong>Continuous monitoring</strong> - Conditions can change instantly</li>
+                </ul>
+                
+                <p>Remember: The confined space doesn't care if you've entered safely a hundred times. It only takes one mistake, one unexpected condition, one moment of complacency to turn fatal.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Permit spaces have atmospheric, engulfment, configuration, or other serious hazards</li>
+                        <li>Test oxygen first, then flammability, then toxics</li>
+                        <li>Safe oxygen range: 19.5% - 23.5%</li>
+                        <li>Flammable gas must be <10% LEL for entry</li>
+                        <li>Entry team: Entrant (inside), Attendant (outside), Supervisor (authorizes)</li>
+                        <li>Attendant never enters the space - even in emergency</li>
+                        <li>Continuous monitoring and communication required</li>
+                        <li>Non-entry rescue is always the first choice</li>
+                        <li>60% of fatalities are would-be rescuers</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Confined Space Entry module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="09-chemical-handling.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-8';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What is the safe oxygen range for confined space entry?',
+                options: [
+                    '16.0% - 25.0%',
+                    '18.0% - 22.0%',
+                    '19.5% - 23.5%',
+                    '20.0% - 24.0%'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which team member is responsible for monitoring entrants from outside the space?',
+                options: [
+                    'Entrant',
+                    'Attendant',
+                    'Entry Supervisor',
+                    'Rescue Team'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What percentage of confined space fatalities are would-be rescuers?',
+                options: [
+                    '25%',
+                    '40%',
+                    '60%',
+                    '80%'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What order should atmospheric testing be performed?',
+                options: [
+                    'Toxics, Flammability, Oxygen',
+                    'Flammability, Oxygen, Toxics',
+                    'Oxygen, Flammability, Toxics',
+                    'Oxygen, Toxics, Flammability'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which of the following is NOT a characteristic of a permit-required confined space?',
+                options: [
+                    'Contains atmospheric hazards',
+                    'Has limited entry and exit',
+                    'Designed for continuous occupancy',
+                    'Presents engulfment hazards'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
