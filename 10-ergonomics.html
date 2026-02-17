@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Unit 10: Workplace Ergonomics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #5a3d7a;
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .module-title {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #764ba2;
+        }
+
+        .module-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .module-content h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            font-size: 1.4em;
+        }
+
+        .module-content h4 {
+            color: #666;
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+
+        .module-content p {
+            margin-bottom: 15px;
+        }
+
+        .module-content ul, .module-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .module-content li {
+            margin-bottom: 8px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            border-left: 4px solid #764ba2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .learning-table th {
+            background: #764ba2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .learning-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .learning-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .learning-table tr:hover {
+            background: #f1f3f4;
+        }
+
+        .ergo-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .ergo-part {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 120px;
+        }
+
+        .ergo-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .ergo-label {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .ergo-risk {
+            color: #f44336;
+            font-size: 0.9em;
+        }
+
+        .lifting-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .lifting-step {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #4CAF50;
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .workspace-setup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .desk-dimensions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .dimension-item {
+            text-align: center;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 10px;
+        }
+
+        .dimension-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2196F3;
+        }
+
+        .quiz-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid #764ba2;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #764ba2;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz-btn:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-result.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .quiz-result.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
+        }
+
+        .completion-status {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .completion-status.show {
+            display: block;
+        }
+
+        .home-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Core Unit 10: Workplace Ergonomics</h1>
+            <div class="nav-buttons">
+                <a href="09-chemical-handling.html" class="nav-btn">← Previous</a>
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="11-accident-investigation.html" class="nav-btn">Next →</a>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <h3>Your Progress</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="topicProgressBar" style="width: 0%">0%</div>
+            </div>
+        </div>
+
+        <!-- Body Parts Diagram -->
+        <div class="ergo-diagram">
+            <div class="ergo-part">
+                <div class="ergo-icon">🦴</div>
+                <div class="ergo-label">Neck/Shoulders</div>
+                <div class="ergo-risk">Strain, Tension</div>
+            </div>
+            <div class="ergo-part">
+                <div class="ergo-icon">💪</div>
+                <div class="ergo-label">Upper Back</div>
+                <div class="ergo-risk">Muscle Fatigue</div>
+            </div>
+            <div class="ergo-part">
+                <div class="ergo-icon">🤚</div>
+                <div class="ergo-label">Wrists/Hands</div>
+                <div class="ergo-risk">Carpal Tunnel</div>
+            </div>
+            <div class="ergo-part">
+                <div class="ergo-icon">🦵</div>
+                <div class="ergo-label">Lower Back</div>
+                <div class="ergo-risk">Disc Injury</div>
+            </div>
+            <div class="ergo-part">
+                <div class="ergo-icon">🦶</div>
+                <div class="ergo-label">Legs/Feet</div>
+                <div class="ergo-risk">Fatigue, Swelling</div>
+            </div>
+        </div>
+
+        <!-- Introduction Module -->
+        <div class="module-section">
+            <h2 class="module-title">📌 Introduction to Ergonomics</h2>
+            <div class="module-content">
+                <p>Ergonomics is the scientific discipline concerned with understanding the interactions between humans and other elements of a work system. It applies theory, principles, data, and methods to design workplaces that optimize human well-being and overall system performance.</p>
+                
+                <div class="info-box">
+                    <strong>Stark Reality:</strong> According to OSHA, musculoskeletal disorders (MSDs) account for nearly 30% of all workplace injuries requiring time away from work. These injuries cost employers billions annually in workers' compensation, lost productivity, and medical expenses.
+                </div>
+
+                <p>Unlike acute injuries from falls or machinery, ergonomic injuries develop gradually over time. They result from repetitive motions, awkward postures, forceful exertions, and prolonged static positions. Because they develop slowly, workers may not recognize the problem until significant damage has occurred.</p>
+                
+                <p>This module covers the fundamentals of workplace ergonomics, including risk factors, common disorders, proper workstation setup, safe lifting techniques, and ergonomic program implementation.</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Understanding Ergonomic Risk Factors -->
+        <div class="module-section">
+            <h2 class="module-title">1. Understanding Ergonomic Risk Factors</h2>
+            <div class="module-content">
+                <p>Ergonomic injuries result from the cumulative effect of various risk factors. Understanding these factors is the first step in prevention.</p>
+
+                <h3>A. Primary Ergonomic Risk Factors</h3>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Risk Factor</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Potential Injuries</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Repetition</strong></td>
+                        <td>Performing the same motions repeatedly without sufficient recovery time</td>
+                        <td>Assembly line work, data entry, scanning items</td>
+                        <td>Tendonitis, carpal tunnel, muscle strain</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Force</strong></td>
+                        <td>Amount of physical effort required to perform a task</td>
+                        <td>Lifting heavy objects, pushing/pulling carts, gripping tools</td>
+                        <td>Muscle strain, disc herniation, joint damage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Posture</strong></td>
+                        <td>Position of body while performing work</td>
+                        <td>Twisting, bending, reaching overhead, kneeling</td>
+                        <td>Back pain, neck strain, joint stress</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Duration</strong></td>
+                        <td>Length of continuous exposure to risk factors</td>
+                        <td>Standing for 8 hours, typing continuously</td>
+                        <td>Fatigue, cumulative trauma</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contact Stress</strong></td>
+                        <td>Pressure on specific body parts from tools or surfaces</td>
+                        <td>Wrist resting on hard edge, kneeling on hard surface</td>
+                        <td>Nerve compression, tissue damage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vibration</strong></td>
+                        <td>Exposure to whole-body or hand-arm vibration</td>
+                        <td>Jackhammers, grinders, driving vehicles</td>
+                        <td>Vibration white finger, back problems</td>
+                    </tr>
+                </table>
+
+                <h3>B. Common Ergonomic Disorders</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Disorder</th>
+                        <th>Affected Area</th>
+                        <th>Causes</th>
+                        <th>Common Occupations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Carpal Tunnel Syndrome</strong></td>
+                        <td>Wrist, hand</td>
+                        <td>Repetitive wrist flexion/extension, forceful gripping</td>
+                        <td>Assembly, data entry, meatpacking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tendonitis</strong></td>
+                        <td>Shoulders, elbows, wrists</td>
+                        <td>Repetitive motion, awkward postures</td>
+                        <td>Construction, manufacturing, sports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Epicondylitis (Tennis Elbow)</strong></td>
+                        <td>Elbow</td>
+                        <td>Repetitive forearm rotation, gripping</td>
+                        <td>Assembly, carpentry, painting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lower Back Pain</strong></td>
+                        <td>Lumbar spine</td>
+                        <td>Heavy lifting, twisting, prolonged sitting</td>
+                        <td>Warehouse, nursing, truck driving</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rotator Cuff Injuries</strong></td>
+                        <td>Shoulder</td>
+                        <td>Overhead work, repetitive arm motion</td>
+                        <td>Construction, painting, stocking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trigger Finger</strong></td>
+                        <td>Finger</td>
+                        <td>Repetitive gripping, tool use</td>
+                        <td>Manufacturing, tool operation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sciatica</strong></td>
+                        <td>Lower back, leg</td>
+                        <td>Disc herniation from lifting/twisting</td>
+                        <td>Heavy labor, prolonged sitting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neck Tension Syndrome</strong></td>
+                        <td>Neck, shoulders</td>
+                        <td>Poor monitor position, phone cradling</td>
+                        <td>Office work, customer service</td>
+                    </tr>
+                </table>
+
+                <h3>C. Early Warning Signs</h3>
+                <ul>
+                    <li>Recurring pain or discomfort in joints, muscles, or soft tissues</li>
+                    <li>Numbness or tingling (especially in hands or feet)</li>
+                    <li>Swelling or inflammation</li>
+                    <li>Stiffness or reduced range of motion</li>
+                    <li>Loss of grip strength</li>
+                    <li>Fatigue that doesn't resolve with rest</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Critical:</strong> Ergonomic injuries are progressive. Early reporting and intervention can prevent permanent damage. Never ignore persistent pain or discomfort.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Office Ergonomics -->
+        <div class="module-section">
+            <h2 class="module-title">2. Office Ergonomics</h2>
+            <div class="module-content">
+                <p>Proper workstation setup prevents the most common office-related ergonomic injuries. The goal is to maintain neutral postures where joints are naturally aligned.</p>
+
+                <h3>A. Chair Setup</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Component</th>
+                        <th>Adjustment</th>
+                        <th>Proper Position</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Seat Height</strong></td>
+                        <td>Adjust so feet flat on floor</td>
+                        <td>Knees at 90°, thighs parallel to floor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seat Depth</strong></td>
+                        <td>Adjust for thigh support</td>
+                        <td>2-3 finger gap between seat edge and back of knee</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backrest</strong></td>
+                        <td>Support lower back curve</td>
+                        <td>Lumbar support at belt line</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Armrests</strong></td>
+                        <td>Height adjustable</td>
+                        <td>Shoulders relaxed, elbows at 90°</td>
+                    </tr>
+                </table>
+
+                <h3>B. Desk and Work Surface</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Element</th>
+                        <th>Requirement</th>
+                        <th>Reason</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Desk Height</strong></td>
+                        <td>29-30 inches typical, adjustable preferred</td>
+                        <td>Accommodates various tasks and users</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Clearance</strong></td>
+                        <td>Leg room: 30" wide, 20" deep, 24" high</td>
+                        <td>Allows leg movement and position changes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Work Zone</strong></td>
+                        <td>Primary zone within 16" reach</td>
+                        <td>Frequently used items close to body</td>
+                    </tr>
+                </table>
+
+                <h3>C. Computer Monitor Position</h3>
+                <div class="desk-dimensions">
+                    <div class="dimension-item">
+                        <div class="dimension-value">20-40"</div>
+                        <div>Viewing Distance</div>
+                    </div>
+                    <div class="dimension-item">
+                        <div class="dimension-value">15-20°</div>
+                        <div>Viewing Angle</div>
+                    </div>
+                    <div class="dimension-item">
+                        <div class="dimension-value">Top at eye level</div>
+                        <div>Screen Height</div>
+                    </div>
+                    <div class="dimension-item">
+                        <div class="dimension-value">Perpendicular</div>
+                        <div>To Windows</div>
+                    </div>
+                </div>
+
+                <ul>
+                    <li><strong>Distance:</strong> Arm's length away (approximately 20-40 inches)</li>
+                    <li><strong>Height:</strong> Top of screen at or slightly below eye level</li>
+                    <li><strong>Angle:</strong> Tilted back 10-20 degrees</li>
+                    <li><strong>Position:</strong> Directly in front of user, not to the side</li>
+                    <li><strong>Glare:</strong> Perpendicular to windows, use anti-glare filters if needed</li>
+                </ul>
+
+                <h3>D. Keyboard and Mouse</h3>
+                <ul>
+                    <li><strong>Keyboard height:</strong> Elbows at 90°, wrists straight (not bent up/down)</li>
+                    <li><strong>Mouse position:</strong> Close to keyboard, same level, within easy reach</li>
+                    <li><strong>Wrist rests:</strong> Use during pauses, not while typing</li>
+                    <li><strong>Alternative devices:</strong> Consider vertical mouse, split keyboard for comfort</li>
+                </ul>
+
+                <h3>E. Other Office Equipment</h3>
+                <ul>
+                    <li><strong>Telephone:</strong> Use headset if on phone frequently - never cradle between ear and shoulder</li>
+                    <li><strong>Document holder:</strong> Position at same height and distance as monitor</li>
+                    <li><strong>Footrest:</strong> Use if feet don't reach floor after proper chair adjustment</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Office Ergonomics Checklist:</h4>
+                    <ul>
+                        <li>Feet flat on floor or footrest</li>
+                        <li>Knees at 90°, same height as hips</li>
+                        <li>Thighs parallel to floor</li>
+                        <li>Lower back supported</li>
+                        <li>Shoulders relaxed, not hunched</li>
+                        <li>Elbows at 90°, close to body</li>
+                        <li>Wrists straight, not bent</li>
+                        <li>Monitor at eye level, arm's length</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Industrial Ergonomics -->
+        <div class="module-section">
+            <h2 class="module-title">3. Industrial Ergonomics</h2>
+            <div class="module-content">
+                <p>Industrial workplaces present unique ergonomic challenges including heavy lifting, repetitive tasks, and awkward postures.</p>
+
+                <h3>A. Material Handling</h3>
+                
+                <h4>Safe Lifting Guidelines (NIOSH Lifting Equation Considerations):</h4>
+                <table class="learning-table">
+                    <tr>
+                        <th>Factor</th>
+                        <th>Ideal</th>
+                        <th>Increased Risk</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Load Weight</strong></td>
+                        <td>< 35 lbs</td>
+                        <td>> 50 lbs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Horizontal Distance</strong></td>
+                        <td>< 10 inches from body</td>
+                        <td>> 25 inches from body</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vertical Lift</strong></td>
+                        <td>Waist to shoulder height</td>
+                        <td>Floor level or above shoulder</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twisting</strong></td>
+                        <td>No twist, feet pointing forward</td>
+                        <td>> 45° twist</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Frequency</strong></td>
+                        <td>< 1 lift per 5 minutes</td>
+                        <td>> 1 lift per minute</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coupling</strong></td>
+                        <td>Good handles, graspable</td>
+                        <td>Poor grip, slippery, awkward shape</td>
+                    </tr>
+                </table>
+
+                <h4>Proper Lifting Technique - 8 Steps:</h4>
+                <div class="lifting-guide">
+                    <div class="lifting-step">
+                        <div class="step-number">1</div>
+                        <strong>PLAN</strong>
+                        <small>Check path, know destination</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">2</div>
+                        <strong>POSITION</strong>
+                        <small>Feet shoulder-width apart</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">3</div>
+                        <strong>BEND KNEES</strong>
+                        <small>Squat, don't bend at waist</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">4</div>
+                        <strong>GRIP</strong>
+                        <small>Secure hold, close to body</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">5</div>
+                        <strong>LIFT</strong>
+                        <small>With legs, keep back straight</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">6</div>
+                        <strong>CARRY</strong>
+                        <small>Load close, don't twist</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">7</div>
+                        <strong>SET DOWN</strong>
+                        <small>Bend knees, keep back straight</small>
+                    </div>
+                    <div class="lifting-step">
+                        <div class="step-number">8</div>
+                        <strong>PIVOT</strong>
+                        <small>Turn with feet, not spine</small>
+                    </div>
+                </div>
+
+                <h3>B. Team Lifting</h3>
+                <ul>
+                    <li>Assign one person to coordinate the lift</li>
+                    <li>Lift and lower simultaneously</li>
+                    <li>Communicate throughout the lift</li>
+                    <li>Ensure path is clear for all lifters</li>
+                    <li>Load weight should be appropriate for team size</li>
+                </ul>
+
+                <h3>C. Mechanical Assistance</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>Equipment</th>
+                        <th>Application</th>
+                        <th>Benefit</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Forklifts/Pallet Jacks</strong></td>
+                        <td>Heavy palletized loads</td>
+                        <td>Eliminates lifting, transport</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hoists/Cranes</strong></td>
+                        <td>Overhead lifting, positioning</td>
+                        <td>Handles heavy, awkward loads</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lift Tables</strong></td>
+                        <td>Adjustable height work surfaces</td>
+                        <td>Brings work to proper height</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conveyors</strong></td>
+                        <td>Moving materials between stations</td>
+                        <td>Eliminates carrying</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vacuum Lifters</strong></td>
+                        <td>Sheet goods, boxes</td>
+                        <td>Easy manipulation, reduces force</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cart/Tugger</strong></td>
+                        <td>Multiple item transport</td>
+                        <td>Reduces carrying distance</td>
+                    </tr>
+                </table>
+
+                <h3>D. Task Design and Rotation</h3>
+                <ul>
+                    <li><strong>Job Rotation:</strong> Rotate workers through tasks with different physical demands to vary muscle use</li>
+                    <li><strong>Micro-breaks:</strong> Short rest breaks (30-60 seconds) every 20-30 minutes for repetitive tasks</li>
+                    <li><strong>Task Enlargement:</strong> Combine tasks to vary movements and postures</li>
+                    <li><strong>Work/Rest Cycles:</strong> Design schedules to allow recovery from high-exertion tasks</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Remember:</strong> Mechanical assistance isn't optional for very heavy loads. If a load is too heavy or awkward for safe manual lifting, use equipment or ask for help.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Ergonomic Controls and Solutions -->
+        <div class="module-section">
+            <h2 class="module-title">4. Ergonomic Controls and Solutions</h2>
+            <div class="module-content">
+                <p>Like other safety hazards, ergonomic hazards can be controlled using the hierarchy of controls.</p>
+
+                <h3>A. Engineering Controls</h3>
+                <p>Physical changes to the workplace that eliminate or reduce ergonomic hazards:</p>
+                
+                <table class="learning-table">
+                    <tr>
+                        <th>Control Type</th>
+                        <th>Examples</th>
+                        <th>Risk Factor Addressed</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Workstation Design</strong></td>
+                        <td>Adjustable height workbenches, sit-stand stations</td>
+                        <td>Posture, static positions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tool Design</strong></td>
+                        <td>Ergonomic handles, pistol vs. inline grips, lightweight tools, balancers</td>
+                        <td>Force, posture, repetition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Material Handling</strong></td>
+                        <td>Conveyors, lift tables, hoists, vacuum lifters</td>
+                        <td>Force, repetition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Workstation Layout</strong></td>
+                        <td>Materials within easy reach, turntables, gravity feed</td>
+                        <td>Reach, posture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flooring</strong></td>
+                        <td>Anti-fatigue mats, cushioned flooring</td>
+                        <td>Standing fatigue</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lighting</strong></td>
+                        <td>Task lighting, glare reduction</td>
+                        <td>Eye strain, posture</td>
+                    </tr>
+                </table>
+
+                <h3>B. Administrative Controls</h3>
+                <ul>
+                    <li><strong>Job Rotation:</strong> Rotating workers through different tasks to vary physical demands</li>
+                    <li><strong>Work Pacing:</strong> Allowing workers to control pace where possible</li>
+                    <li><strong>Rest Breaks:</strong> Scheduled breaks to allow recovery</li>
+                    <li><strong>Training:</strong> Proper techniques, hazard awareness, early reporting</li>
+                    <li><strong>Maintenance:</strong> Keeping tools and equipment in good condition</li>
+                </ul>
+
+                <h3>C. Personal Protective Equipment (PPE) for Ergonomics</h3>
+                <table class="learning-table">
+                    <tr>
+                        <th>PPE Type</th>
+                        <th>Application</th>
+                        <th>Limitations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Back Supports</strong></td>
+                        <td>May remind proper lifting technique</td>
+                        <td>No evidence of injury prevention, not a substitute for proper lifting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anti-Vibration Gloves</strong></td>
+                        <td>Reduce hand-arm vibration exposure</td>
+                        <td>Must be properly fitted, limited reduction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wrist Supports/Splints</strong></td>
+                        <td>May help during recovery, not for use during work</td>
+                        <td>Can restrict movement, cause other problems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Knee Pads</strong></td>
+                        <td>Protect knees during kneeling tasks</td>
+                        <td>Don't address underlying need to kneel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compression Sleeves</strong></td>
+                        <td>May provide proprioceptive feedback</td>
+                        <td>Limited evidence of prevention</td>
+                    </tr>
+                </table>
+
+                <div class="info-box">
+                    <strong>Note:</strong> PPE is the least effective control for ergonomic hazards. Focus on engineering and administrative controls first.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Ergonomic Program Implementation -->
+        <div class="module-section">
+            <h2 class="module-title">5. Ergonomic Program Implementation</h2>
+            <div class="module-content">
+                <p>An effective ergonomic program requires systematic approach and worker participation.</p>
+
+                <h3>A. Program Elements</h3>
+                <ol>
+                    <li><strong>Management Commitment:</strong> Resources, policy, support</li>
+                    <li><strong>Worker Participation:</strong> Involvement in identifying problems and solutions</li>
+                    <li><strong>Hazard Identification:</strong> Job analysis, worker reports, injury data</li>
+                    <li><strong>Training:</strong> Awareness, risk factors, reporting</li>
+                    <li><strong>Job Analysis:</strong> Detailed evaluation of high-risk tasks</li>
+                    <li><strong>Hazard Control:</strong> Implementing solutions</li>
+                    <li><strong>Healthcare Management:</strong> Early reporting, treatment, return to work</li>
+                    <li><strong>Program Evaluation:</strong> Tracking progress, effectiveness</li>
+                </ol>
+
+                <h3>B. Job Hazard Analysis for Ergonomics</h3>
+                <p>When analyzing jobs for ergonomic hazards, look for:</p>
+                <ul>
+                    <li><strong>Force:</strong> How much physical effort is required?</li>
+                    <li><strong>Repetition:</strong> How often is the same motion repeated?</li>
+                    <li><strong>Posture:</strong> Are workers bending, twisting, reaching?</li>
+                    <li><strong>Duration:</strong> How long are these exposures?</li>
+                    <li><strong>Recovery:</strong> Is there adequate rest or variation?</li>
+                </ul>
+
+                <h3>C. Worker Reporting System</h3>
+                <p>Encourage early reporting by:</p>
+                <ul>
+                    <li>Making reporting easy and non-punitive</li>
+                    <li>Responding quickly to reports</li>
+                    <li>Investigating root causes, not just symptoms</li>
+                    <li>Following up on implemented solutions</li>
+                    <li>Tracking trends to identify problem areas</li>
+                </ul>
+
+                <h3>D. Stretching and Warm-up Programs</h3>
+                <p>While controversial, stretching programs may help when:</p>
+                <ul>
+                    <li>Part of comprehensive ergonomic program</li>
+                    <li>Job-specific stretches targeting muscles used</li>
+                    <li>Performed before work and during breaks</li>
+                    <li>Combined with other controls</li>
+                </ul>
+
+                <div class="key-points">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Ergonomic injuries develop over time from repetition, force, and awkward postures</li>
+                        <li>Proper workstation setup maintains neutral postures</li>
+                        <li>Use legs to lift, keep back straight, load close to body</li>
+                        <li>Mechanical assistance should be used for heavy loads</li>
+                        <li>Engineering controls are most effective (adjustable workstations, tools, lift equipment)</li>
+                        <li>Report early signs of discomfort before permanent damage occurs</li>
+                        <li>Job rotation and breaks allow recovery</li>
+                        <li>Never ignore pain - it's your body's warning system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion Module -->
+        <div class="module-section">
+            <h2 class="module-title">🎯 Conclusion</h2>
+            <div class="module-content">
+                <p>Ergonomics is about designing work for people, not forcing people to adapt to poorly designed work. When workplaces are ergonomically sound, workers are more comfortable, more productive, and less likely to develop painful, debilitating injuries.</p>
+                
+                <p>The key principles of ergonomics are:</p>
+                <ul>
+                    <li><strong>Maintain neutral postures</strong> - Joints naturally aligned</li>
+                    <li><strong>Keep work close to the body</strong> - Reduce reach and leverage</li>
+                    <li><strong>Avoid static positions</strong> - Move and change positions regularly</li>
+                    <li><strong>Use mechanical assistance</strong> - Don't be a hero, get help</li>
+                    <li><strong>Listen to your body</strong> - Pain is a warning sign</li>
+                </ul>
+                
+                <p>Remember: Ergonomic injuries are 100% preventable. By applying these principles, you can work comfortably and safely throughout your career.</p>
+                
+                <div class="key-points">
+                    <h4>Key Takeaways from This Module:</h4>
+                    <ul>
+                        <li>Primary risk factors: repetition, force, posture, duration, contact stress, vibration</li>
+                        <li>Common disorders: carpal tunnel, tendonitis, back pain, rotator cuff injuries</li>
+                        <li>Office setup: monitor at eye level, elbows at 90°, feet flat, lumbar support</li>
+                        <li>Proper lifting: bend knees, keep back straight, load close, no twisting</li>
+                        <li>Use mechanical help for loads > 50 lbs</li>
+                        <li>Engineering controls are most effective (workstations, tools, equipment)</li>
+                        <li>Job rotation and breaks provide recovery time</li>
+                        <li>Report early signs: pain, numbness, tingling, stiffness</li>
+                        <li>Never ignore persistent discomfort</li>
+                    </ul>
+                </div>
+
+                <p>Now test your knowledge with the quiz below. You need to score at least 4 out of 5 to complete this topic.</p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h3>📋 Knowledge Check Quiz</h3>
+            <p>Answer all 5 questions correctly to complete this topic (passing score: 4/5)</p>
+            
+            <div id="quizContainer"></div>
+            
+            <button class="submit-quiz-btn" id="submitQuizBtn" onclick="submitQuiz()">Submit Quiz</button>
+            
+            <div id="quizResult"></div>
+        </div>
+
+        <!-- Completion Status -->
+        <div class="completion-status" id="completionStatus">
+            <h3>✅ Topic Completed!</h3>
+            <p>You have successfully completed the Workplace Ergonomics module.</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="home-btn">🏠 Back to Home</a>
+                <a href="11-accident-investigation.html" class="home-btn" style="margin-left: 10px;">Next Topic →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Topic identification
+        const topicId = 'core-10';
+        
+        // Quiz questions
+        const quiz = [
+            {
+                question: 'What are the primary ergonomic risk factors?',
+                options: [
+                    'Heat, cold, noise',
+                    'Repetition, force, posture',
+                    'Voltage, current, resistance',
+                    'Pressure, temperature, volume'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What is the proper position for a computer monitor?',
+                options: [
+                    'Top of screen at or below eye level',
+                    'Bottom of screen at eye level',
+                    'As high as possible',
+                    'To the side of the user'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What should you do when lifting heavy objects?',
+                options: [
+                    'Bend at the waist, keep legs straight',
+                    'Twist while lifting to reach destination',
+                    'Bend knees, keep back straight, load close',
+                    'Lift quickly to minimize effort'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which type of control is most effective for ergonomic hazards?',
+                options: [
+                    'Personal Protective Equipment',
+                    'Administrative controls',
+                    'Engineering controls',
+                    'Stretching programs'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What percentage of workplace injuries requiring time away from work are MSDs?',
+                options: [
+                    '10%',
+                    '20%',
+                    '30%',
+                    '50%'
+                ],
+                correct: 2
+            }
+        ];
+
+        let quizAnswers = {};
+        let topicCompleted = false;
+
+        // Load progress
+        function loadProgress() {
+            const saved = localStorage.getItem(`progress_${topicId}`);
+            topicCompleted = saved === 'true';
+            
+            if (topicCompleted) {
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Already Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            }
+        }
+
+        // Save progress
+        function saveProgress(completed) {
+            localStorage.setItem(`progress_${topicId}`, completed);
+        }
+
+        // Generate quiz HTML
+        function generateQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = '';
+            
+            quiz.forEach((q, index) => {
+                html += `
+                    <div class="quiz-question" id="question-${index}">
+                        <div class="question-text">${index + 1}. ${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <label class="option" onclick="selectOption(${index}, ${optIndex})">
+                                    <input type="radio" name="q${index}" value="${optIndex}">
+                                    ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Select option
+        function selectOption(questionIndex, optionIndex) {
+            if (topicCompleted) return;
+            
+            quizAnswers[questionIndex] = optionIndex;
+            
+            // Visual feedback
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            if (topicCompleted) return;
+            
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            let correctCount = 0;
+            quiz.forEach((q, index) => {
+                if (quizAnswers[index] === q.correct) {
+                    correctCount++;
+                }
+            });
+            
+            const passed = correctCount >= 4;
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (passed) {
+                topicCompleted = true;
+                saveProgress('true');
+                
+                document.getElementById('topicProgressBar').style.width = '100%';
+                document.getElementById('topicProgressBar').textContent = '100%';
+                
+                resultDiv.className = 'quiz-result pass';
+                resultDiv.innerHTML = `
+                    <p>✅ Congratulations! You passed with ${correctCount}/5 correct!</p>
+                    <p>Topic marked as complete. You can now proceed to the next topic.</p>
+                `;
+                
+                document.getElementById('submitQuizBtn').disabled = true;
+                document.getElementById('submitQuizBtn').textContent = '✓ Completed';
+                document.getElementById('completionStatus').classList.add('show');
+            } else {
+                resultDiv.className = 'quiz-result fail';
+                resultDiv.innerHTML = `
+                    <p>❌ You scored ${correctCount}/5. Need 4/5 to pass.</p>
+                    <p>Please review the material and try again.</p>
+                `;
+            }
+            
+            // Show correct/incorrect answers
+            quiz.forEach((q, index) => {
+                const questionDiv = document.getElementById(`question-${index}`);
+                const options = questionDiv.querySelectorAll('.option');
+                const selectedIndex = quizAnswers[index];
+                
+                options.forEach((opt, optIndex) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (optIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (optIndex === selectedIndex && optIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            });
+        }
+
+        // Initialize
+        loadProgress();
+        generateQuiz();
+    </script>
+</body>
+</html>
